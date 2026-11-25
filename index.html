@@ -66,21 +66,33 @@
     padding: 4px 10px;
     border-radius: 99px;
   }
+  .nav-group-label {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    padding: 8px 10px 4px;
+    margin-top: 4px;
+  }
   .nav-btn {
     width: 100%;
     text-align: left;
     background: transparent;
     border: 1px solid transparent;
-    padding: 11px 12px;
-    border-radius: 9px;
-    font-size: 13.5px;
+    padding: 9px 11px;
+    border-radius: 8px;
+    font-size: 13px;
     font-weight: 600;
     color: var(--text-body);
     cursor: pointer;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 7px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     transition: all 0.15s;
   }
   .nav-btn:hover { background: var(--bg-card); border-color: var(--border); color: var(--text-bold); }
@@ -115,10 +127,11 @@
   .main {
     margin-left: 300px;
     flex: 1;
+    min-width: 0;
+    max-width: calc(100vw - 300px);
     padding: 26px 36px;
-    max-width: 1360px;
   }
-  .tab-panel { display: none; }
+  .tab-panel { display: none; min-width: 0; max-width: 100%; }
   .tab-panel.active { display: block; }
 
   .top-bar {
@@ -138,13 +151,18 @@
   .top-bar p { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
 
   /* CARDS */
-  .card-grid { display: flex; flex-direction: column; gap: 14px; }
+  .card-grid { display: flex; flex-direction: column; gap: 14px; min-width: 0; max-width: 100%; }
   .step-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-left: 4px solid var(--accent-blue);
     border-radius: 11px;
     padding: 18px 22px;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
   }
   .step-card:hover { background: var(--bg-card-hover); border-color: #3e4760; }
   .step-head {
@@ -188,6 +206,14 @@
     gap: 7px;
     font-size: 15px;
     color: var(--text-body);
+    min-width: 0;
+    max-width: 100%;
+  }
+  .step-list li {
+    min-width: 0;
+    max-width: 100%;
+    word-break: break-word;
+    overflow-wrap: anywhere;
   }
   .step-list b { color: var(--text-bold); }
   code {
@@ -196,8 +222,12 @@
     padding: 2px 7px;
     border-radius: 5px;
     font-family: Consolas, monospace;
-    font-size: 13.5px;
+    font-size: 13px;
     border: 1px solid var(--border);
+    word-break: break-all;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+    max-width: 100%;
   }
   .url-inline {
     margin-top: 10px;
@@ -540,16 +570,24 @@
     </div>
 
     <div class="sidebar-nav-list">
-      <button class="nav-btn active" onclick="switchTab('tab-order', this)">1️⃣ 10 Bước Chuẩn &amp; Fix 65 SGD</button>
-      <button class="nav-btn" onclick="switchTab('tab-secrets', this)" style="border-color:rgba(52,211,153,0.5);color:#6ee7b7;background:rgba(16,185,129,0.12);">🗝️ 2️⃣ Link Mật &amp; Tut Ngầm (Chia 6 Mục)</button>
-      <button class="nav-btn" onclick="switchTab('tab-lab', this)" style="border-color:rgba(251,191,36,0.35);color:#fcd34d;">🏆 3️⃣ Phòng Lab 5 Tool AI</button>
-      <button class="nav-btn" onclick="switchTab('tab-ai', this)">🤖 4️⃣ DeepSeek 18 Nguồn</button>
-      <button class="nav-btn" onclick="switchTab('tab-mindmap', this)">🧠 5️⃣ Sơ Đồ Tư Duy 7 Nhánh</button>
-      <button class="nav-btn" onclick="switchTab('tab-10to500', this)">💵 6️⃣ Bí Mật $10 Chạy $500</button>
-      <button class="nav-btn" onclick="switchTab('tab-tuts', this)">⚡ 7️⃣ 12 Tut &amp; Cứu TK 2 Task</button>
-      <button class="nav-btn" onclick="switchTab('tab-18ways', this)">🛡️ 8️⃣ 18 Cách Gắn Billing</button>
-      <button class="nav-btn" onclick="switchTab('tab-tools', this)">🛠️ 9️⃣ Kho 42+ Tool Ads</button>
-      <button class="nav-btn" onclick="switchTab('tab-links', this)">🔗 🔟 33 Link &amp; 17 Hội Nhóm</button>
+      <div class="nav-group-label">🗝️ TẠO TÀI KHOẢN &amp; LÁCH QUÉT</div>
+      <button class="nav-btn" onclick="openSecretCatFromSidebar('cat-1', this)" style="border-color:rgba(52,211,153,0.4);color:#6ee7b7;">🗝️ 1. Link Tạo Tài Khoản Bí Mật</button>
+      <button class="nav-btn" onclick="openSecretCatFromSidebar('cat-2', this)" style="border-color:rgba(52,211,153,0.4);color:#6ee7b7;">🚪 2. 14 Cổng Ngầm Tạo Tài Khoản</button>
+      <button class="nav-btn" onclick="openSecretCatFromSidebar('cat-3', this)" style="border-color:rgba(248,113,113,0.4);color:#fca5a5;">💳 3. Lách Thanh Toán &amp; Fix 65 SGD</button>
+      <button class="nav-btn" onclick="openSecretCatFromSidebar('cat-4', this)" style="border-color:rgba(251,191,36,0.4);color:#fcd34d;">✅ 4. Cách Live Xác Minh (XMDT)</button>
+      <button class="nav-btn" onclick="openSecretCatFromSidebar('cat-5', this)" style="border-color:rgba(192,132,252,0.4);color:#d8b4fe;">🕵️ 5. Lên Camp Ngầm Lách Bot</button>
+      <button class="nav-btn" onclick="openSecretCatFromSidebar('cat-6', this)" style="border-color:rgba(56,189,248,0.4);color:#7dd3fc;">♾️ 6. Chống Xóa TK Không Sử Dụng</button>
+
+      <div class="nav-group-label">📋 QUY TRÌNH, MÃ $500 &amp; TOOL AI</div>
+      <button class="nav-btn active" onclick="switchTab('tab-order', this)">📋 7. Quy Trình 10 Bước Từ A–Z</button>
+      <button class="nav-btn" onclick="switchTab('tab-10to500', this)">💵 8. Cách Chơi $10 Chạy Mã $500</button>
+      <button class="nav-btn" onclick="switchTab('tab-tuts', this)">⚡ 9. 12 Mẹo Lên Camp &amp; Cứu TK</button>
+      <button class="nav-btn" onclick="switchTab('tab-18ways', this)">🛡️ 10. 18 Cách Gắn Thẻ &amp; Billing</button>
+      <button class="nav-btn" onclick="switchTab('tab-mindmap', this)">🧠 11. Sơ Đồ Tư Duy 7 Nhánh</button>
+      <button class="nav-btn" onclick="switchTab('tab-lab', this)" style="border-color:rgba(251,191,36,0.35);color:#fcd34d;">🏆 12. Phòng Lab 5 Công Cụ AI</button>
+      <button class="nav-btn" onclick="switchTab('tab-ai', this)">🤖 13. DeepSeek Quét 18 Nguồn</button>
+      <button class="nav-btn" onclick="switchTab('tab-tools', this)">🛠️ 14. Kho 42+ Tool Google Ads</button>
+      <button class="nav-btn" onclick="switchTab('tab-links', this)">🔗 15. 33 Link &amp; 17 Hội Nhóm Kín</button>
     </div>
   </div>
 
@@ -605,73 +643,6 @@
         <li><b>Bộ lọc 4 — <code>Final URL / Domain Footprint</code> (Dấu vết tên miền đích):</b> Domain mới mua dưới 30 ngày, domain từng gắn vào tài khoản đã chết, thiếu trang <i>Privacy Policy / Terms / Contact Us</i>, thiếu <i>Cookie Consent Mode v2</i> (với US/EU), hoặc có redirect/tracking template ngay từ lần duyệt đầu.</li>
         <li><b>Bộ lọc 5 — <code>Geo-Target Mismatch</code> (Lệch vùng nhắm mục tiêu):</b> Tài khoản + Billing + IP ở quốc gia A (ví dụ VN/SG), nhưng camp đầu tiên vừa lên đã target thẳng sang quốc gia Tier-1 khác (ví dụ US/UK) với từ khóa thương mại nhạy cảm.</li>
         <li><b>Phân biệt 2 trạng thái XMDT:</b> (1) <b>Hard Pause (Tệ nhất):</b> Bị tạm dừng ở $0 bắt nạp tiền + bắt XMDT xong mới cho chạy; (2) <b>Soft / Proactive (An toàn 100%):</b> Chủ động lấy tích xanh XMDT trước khi lên camp (qua Link Nhóm A) hoặc nhận hạn 30 ngày vừa chạy cắn tiền mượt vừa xác minh.</li>
-      </ul>
-    </div>
-
-    <!-- THẺ ĐẶC BIỆT MỚI: 16 LINK MẬT TẠO TÀI KHOẢN GOOGLE ADS + LIVE XÁC MINH KHÔNG BẮT THANH TOÁN + CHỐNG XÓA/HỦY KHI KHÔNG SỬ DỤNG -->
-    <div class="step-card" style="margin-bottom:16px;border-left-color:var(--accent-green);">
-      <div class="step-head">
-        <div class="step-title">🗝️ 16 LINK MẬT TỪ GOOGLE TẠO TÀI KHOẢN TRẮNG (0 CAMP, 0 BILLING) + QUY TRÌNH LIVE XÁC MINH KHÔNG BẮT THANH TOÁN &amp; 5 CÁCH CHỐNG BỊ XÓA KHI KHÔNG SỬ DỤNG</div>
-        <span class="step-badge" style="color:var(--accent-green);border-color:var(--accent-green);">Tuyệt Mật • Full 3 Phần</span>
-      </div>
-      <ul class="step-list">
-        <li><b>PHẦN 1 — 16 LINK MẬT NỘI BỘ &amp; CỔNG NGẦM HỆ SINH THÁI GOOGLE (TẠO TÀI KHOẢN TRẮNG KHÔNG DÍNH WIZARD LÊN CAMP &amp; KHÔNG ÉP GẮN THẺ):</b><br>
-          <b>[Nhóm A — 6 Link Mật Tham Số Nội Bộ Router <code>ads.google.com</code>]:</b><br>
-          • <b>Link Mật #1 (Ép tạo CID trắng qua Keyword Planner bằng cờ <code>fna=true&amp;sf=kp</code> — Bỏ qua 100% bước tạo camp &amp; gắn thẻ):</b><br>
-          &nbsp;&nbsp;+ Bản rút gọn (khi đã login Gmail): <code>https://ads.google.com/nav/login?dst=/signup?fna%3Dtrue%26sf%3Dkp%26authuser%3D0%26dst%3D/aw/keywordplanner/home</code><br>
-          &nbsp;&nbsp;+ Bản bọc <code>WebLiteSignIn</code> (ép đẻ CID mới kể cả trên Gmail đã có tài khoản): <code>https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526sf%253Dkp%2526authuser%253D0%2526dst%253D%2Faw%2Fkeywordplanner%2Fhome%3Fauthuser%25253D0%2526subid%253Dvn-vi-awhp-g-aw-c-t-kwp-hero%21o2%2526pli%253D1%2526sourceid%253Demp&amp;followup=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526sf%253Dkp%2526authuser%253D0&amp;ltmpl=signin&amp;osid=1&amp;passive=1209600&amp;service=adwords&amp;skipvpage=true&amp;flowName=WebLiteSignIn&amp;flowEntry=ServiceLogin</code><br>
-          &nbsp;&nbsp;<i>Giải mã tham số mật:</i> <code>fna=true</code> (<i>Force New Account</i> — ép cấp CID mới không đá về selectaccount); <code>sf=kp</code> (<i>Signup Flow = Keyword Planner</i> — báo với router chỉ vào tra từ khóa nên miễn tạo camp &amp; miễn hỏi thẻ!).<br>
-          • <b>Link Mật #2 (Tạo MCC Tổng trực tiếp bằng cờ <code>sf=manager</code> Hero BGC — Không bị kẹt như trang accountcreate cũ):</b><br>
-          &nbsp;&nbsp;+ Bản VN: <code>https://ads.google.com/signup?subid=vn-vi-awhp-g-aw-c-t-man-hero-bgc!o2&amp;sf=manager&amp;authuser=0</code><br>
-          &nbsp;&nbsp;+ Bản US: <code>https://ads.google.com/signup?subid=us-en-awhp-g-aw-c-t-man-hero-bgc!o2&amp;sf=manager&amp;authuser=0</code><br>
-          • <b>Link Mật #3 (Deep Route tạo "MCC Con / Sub-Manager" ẩn bên trong MCC Mẹ — Nhân bản cây MCC):</b><br>
-          &nbsp;&nbsp;<code>https://ads.google.com/aw/account/newsubmanager?ocid=&lt;OCID_MCC_CHA&gt;&amp;ascid=&lt;OCID_MCC_CHA&gt;&amp;uscid=&lt;OCID_MCC_CHA&gt;&amp;authuser=0</code> (Thay <code>&lt;OCID_MCC_CHA&gt;</code> bằng mã ocid của MCC mẹ để mở thẳng form tạo MCC con kế thừa Quốc gia/Tiền tệ).<br>
-          • <b>Link Mật #4 (Deep Route mở thẳng bảng đẻ Sub-account bỏ qua thanh Switcher chống bị Google Throttle):</b><br>
-          &nbsp;&nbsp;<code>https://ads.google.com/aw/accounts?ocid=&lt;OCID_MCC_CHA&gt;&amp;authuser=0</code> và trang bóc <code>ocid</code> toàn cục: <code>https://ads.google.com/nav/selectaccount?authuser=0&amp;dst=%2Faw%2Foverview</code><br>
-          • <b>Link Mật #5 (Cổng Auto-Apply Mã khuyến mãi ngầm theo khu vực):</b> <code>https://ads.google.com/intl/en_us/lp/coupons/</code> (US $500) | <code>.../intl/en_gb/lp/coupons/</code> (UK £400) | <code>.../intl/en_sg/lp/coupons/</code> (SG S$600) | <code>.../intl/vi_vn/lp/coupons/</code> (VN 5.6tr).<br>
-          • <b>Link Mật #6 (Cổng cưỡng bức thoát màn hình Smart Campaign / Express):</b> Gõ thẳng <code>https://ads.google.com/aw/overview?authuser=0</code> hoặc <code>https://ads.google.com/aw/preferences?authuser=0</code> rồi bấm <i>Switch to Expert Mode</i>.<br><br>
-          <b>[Nhóm B — 10 Cổng Ngầm "Hệ Sinh Thái Google" (Backdoor Provisioning — Nhờ Sản Phẩm Khác Của Google Khởi Tạo Hộ Để Lấy Cờ Trust Cao)]:</b><br>
-          • <b>Link Mật #7 (Google Business Manager):</b> <code>https://business.google.com/manager/?hl=vi</code> (hoặc <code>https://business.google.com/manager/linkedapps?a=&lt;MA_BM_OM&gt;&amp;hl=vi</code>) &rarr; <i>Thêm dịch vụ &gt; Google Ads &gt; Tài khoản mới &gt; Liên kết &gt; Hủy liên kết (Unlink)</i> &rarr; Ra CID trắng 100% mang cờ <code>BM_PROVISIONED</code>.<br>
-          • <b>Link Mật #8 (Google AdMob Publisher — Trust cao nhất):</b> <code>https://admob.google.com/v2/signup</code> &rarr; Đăng ký AdMob (chọn chưa có app trên Store) &rarr; Backend AdMob tự động tạo ngầm 1 tài khoản Google Ads trắng hoàn toàn (0 camp, 0 thẻ) gắn nhãn <code>PUBLISHER_HOUSE_ADS</code> cực khỏe!<br>
-          • <b>Link Mật #9 (Google Merchant Center):</b> <code>https://merchants.google.com/mc/overview</code> &rarr; <i>Settings &gt; Linked accounts &gt; Google Ads &gt; Create Account</i> &rarr; Sinh CID trắng từ RPC của GMC.<br>
-          • <b>Link Mật #10 (YouTube Studio Promotions):</b> <code>https://studio.youtube.com/</code> &rarr; <i>Content &gt; Tab Promotions &gt; Get started &gt; Create new Google Ads account</i> (Gắn cờ <code>YOUTUBE_CREATOR</code>).<br>
-          • <b>Link Mật #11 (Google Analytics 4 Product Links):</b> <code>https://analytics.google.com/analytics/web/</code> &rarr; <i>Admin &gt; Product Links &gt; Google Ads Links</i>.<br>
-          • <b>Link Mật #12 (Google Play Console + Mã D-U-N-S — Tạo Hồ sơ thanh toán Tổ chức đã xác thực D&amp;B với 0 đồng):</b> Mở <code>https://play.google.com/console/signup</code> &rarr; Chọn <i>An organization</i> &rarr; Ở bước <i>Create or select payments profile</i>, nhập mã <b>D-U-N-S (9 số)</b> (bằng extension <code>play_duns</code> của anh iu) để tạo ra 1 <b>Organization Payments Profile</b> đã xác thực tên &amp; địa chỉ công ty trên hệ thống Dun &amp; Bradstreet mà không cần đóng $25 hoàn tất Play Console! Khi mở Google Ads trên cùng Gmail, chọn luôn Payments Profile D-U-N-S này.<br>
-          • <b>Link Mật #13 (Google Business Profile Maps):</b> <code>https://business.google.com/create</code> &rarr; Tạo hồ sơ doanh nghiệp địa phương rồi kích hoạt Ads.<br>
-          • <b>Link Mật #14 (Google Nonprofits / Ad Grants):</b> <code>https://www.google.com/nonprofits/account/home</code> (Tài khoản không có module gắn thẻ, cấp sẵn $10.000/tháng).<br>
-          • <b>Link Mật #15 (Google Ads Mobile App iOS/Android — Lách 100% Web BotGuard &amp; reCAPTCHA):</b> Đăng nhập Gmail trên ứng dụng di động <b>Google Ads</b> chính chủ (Android/iOS) và bấm tạo tài khoản mới ngay trên App &rarr; Đi qua cổng <code>gRPC Mobile Endpoint</code> nên không bao giờ bị hỏi reCAPTCHA hình ảnh!<br>
-          • <b>Link Mật #16 (Google Ads API <code>CreateCustomerClient</code>):</b> Gọi trực tiếp <code>POST https://googleads.googleapis.com/v25/customers/{mcc_id}:createCustomerClient</code> tạo tài khoản con trong DB không qua trình duyệt.
-        </li>
-        <li><b>PHẦN 2 — QUY TRÌNH TẠO TÀI KHOẢN &amp; LÊN CAMP "KHÔNG BỊ BẮT THANH TOÁN TRƯỚC" + "LIVE XÁC MINH (XMDT LIVE 100%)":</b><br>
-          • <b>Bước 1 (Lấy "Live Xác Minh / Tích Xanh XMDT" TRƯỚC khi có chiến dịch — Chặn đứng lỗi khóa 2 Task):</b><br>
-          &nbsp;&nbsp;+ <i>Cách A (XMDT Tổ chức siêu tốc qua D-U-N-S):</i> Dùng Hồ sơ thanh toán Tổ chức đã tạo qua mã D-U-N-S ở Link Mật #12 (hoặc liên kết vào MCC đã có sẵn <code>Payments Profile</code> đạt tích xanh <i>Verified</i> và chọn <i>Use existing payments profile</i> để <b>kế thừa luôn trạng thái Live Xác Minh trong 0 giây</b>).<br>
-          &nbsp;&nbsp;+ <i>Cách B (XMDT Cá nhân 15 phút):</i> Khi gắn hồ sơ thanh toán, chọn loại tài khoản là <b>Individual (Cá nhân)</b> &rarr; Mở thẳng <code>https://ads.google.com/aw/billing/advertiserverification</code> trả lời 3 câu hỏi và nộp ảnh CCCD/Hộ chiếu rõ 4 góc ngay khi tài khoản còn trống (0 camp) &rarr; Bot AI duyệt lên tích xanh <b>Verified (Live Xác Minh)</b> sau 15–45 phút.<br>
-          • <b>Bước 2 (Tách phiên 12–24h &amp; Gắn thẻ sạch ở số dư 0.00):</b> Gắn thẻ có 16 số mới hoàn toàn (chưa từng dính tài khoản hủy hoàn tiền) hoặc thẻ đã mồi giao dịch Google One $1.99 trên <code>payments.google.com</code>. <b>Để nguyên số dư = 0.00</b>, nghỉ phiên 12–24 giờ.<br>
-          • <b>Bước 3 (Kỹ thuật "Tạo Camp Ở Trạng Thái PAUSED + Ngân Sách 1–2 SGD/Ngày" — Giảm 80% tỷ lệ bắt thanh toán trước):</b><br>
-          &nbsp;&nbsp;+ Tuyệt đối <b>không xuất bản chiến dịch ở trạng thái <code>Enabled</code> ngay lập tức</b> (vì khi mẫu quảng cáo còn đang <i>Under review</i> mà chiến dịch đã đòi chạy <code>Enabled</code>, cả 2 bot <i>Policy Scanner</i> và <i>Billing Pre-Auth Scanner</i> sẽ quét chồng lên nhau và bật bảng bắt thanh toán trước).<br>
-          &nbsp;&nbsp;+ Hãy tạo chiến dịch Search với <b>Ngân sách ngày = 1.00 – 2.00 SGD/ngày ($1–$2/ngày)</b>, giá thầu <b>Manual CPC</b>, và để chiến dịch ở trạng thái <b><code>PAUSED</code> (Tạm dừng)</b> (đúng như chế độ mặc định của <code>ads_ops.py</code>).<br>
-          &nbsp;&nbsp;+ Đợi <b>4–6 giờ</b> cho bot duyệt chữ RSA chuyển sang <b><code>Eligible</code> (Đủ điều kiện)</b> trong lúc camp vẫn đang <code>Paused</code> &rarr; Khi Ad đã sạch 100% (<code>Eligible</code>), mới gạt nút bật chiến dịch sang <b><code>Enabled</code></b> &rarr; Tài khoản đi thẳng vào luồng cắn tiền ngưỡng trả sau!
-        </li>
-        <li><b>PHẦN 3 — 5 CÁCH CHỐNG GOOGLE HỦY / XÓA TÀI KHOẢN KHI KHÔNG SỬ DỤNG (NGÂM KHO TÀI KHOẢN VĨNH VIỄN CHI PHÍ 0 ĐỒNG):</b><br>
-          <b>[3 Mốc Google Tự Động Hủy/Xóa Tài Khoản Không Dùng]:</b> (1) Tài khoản kẹt ở chữ <i>Đang thiết lập (Setting up / Draft)</i> chưa vào Dashboard: bị xóa hoàn toàn sau <b>30–60 ngày</b>; (2) Tài khoản trắng rỗng 100% (0 camp, 0 bản nháp, không ai truy cập): tự động bị đóng <code>Cancelled</code> sau <b>90 ngày (3 tháng)</b>; (3) Tài khoản đã có cấu trúc camp nhưng <code>0 Impression</code> liên tục: tự động bị đóng <code>Cancelled</code> sau <b>15 tháng (450 ngày)</b> (hoặc sau 90 ngày kể từ lúc bấm Reactivate).<br>
-          • <b>Cách 1 (Xóa nhãn <code>Đang thiết lập / Setting up</code> ngay lúc tạo):</b> Khi tạo tài khoản mới qua Link hoặc Sub-MCC, nếu bị đẩy vào <code>/aw/signup</code> hoặc <code>/aw/express</code>, bắt buộc phải bấm <i>Chuyển sang Chế độ chuyên gia (Switch to Expert Mode) &rarr; Tạo tài khoản không cần chiến dịch</i> để vào tới <code>/aw/overview</code>. Tuyệt đối không để CID còn chữ <i>Đang thiết lập</i> trong danh sách MCC.<br>
-          • <b>Cách 2 (Kỹ thuật "Neo Chiến Dịch Tạm Dừng — Paused Campaign Anchor" — Vượt mốc quét 90 ngày với 0 đồng):</b> Bot quét tài khoản bỏ hoang 90 ngày kiểm tra điều kiện <code>COUNT(campaigns) == 0</code>. Chỉ cần tạo sẵn <b>1 Chiến dịch Search ở trạng thái <code>PAUSED</code> (Tạm dừng)</b> (không cần gắn thẻ, không tốn 1 xu), tài khoản lập tức được xếp vào nhóm <i>Configured Account (Đã có cấu trúc)</i> và được nâng tuổi thọ ngâm từ 90 ngày lên <b>15 tháng (450 ngày)</b>!<br>
-          • <b>Cách 3 (Cài Google Ads Script "Auto Keep-Alive Ping" Ở Cấp MCC — Tự động giữ sống hàng trăm tài khoản mỗi tháng trên đám mây Google không cần mở GPM):</b> Vào MCC Mẹ &rarr; <code>Tools &gt; Bulk Actions &gt; Scripts</code> &rarr; Dán đoạn Script dưới đây và đặt lịch chạy tự động <b>Monthly (Mỗi tháng 1 lần)</b> để máy chủ Google tự tạo hoạt động quản trị (Touch/Label) cho toàn bộ tài khoản con:<br>
-          <pre style="background:#0d1322;padding:10px;border-radius:8px;border:1px solid #26324d;color:#6ee7b7;font-size:12px;overflow-x:auto;margin-top:6px;">function main() {
-  var it = AdsManagerApp.accounts().get();
-  while (it.hasNext()) {
-    var acc = it.next();
-    AdsManagerApp.select(acc);
-    var lbl = "KEEP_ALIVE_ACTIVE";
-    if (!AdsApp.labels().withCondition("Name = '" + lbl + "'").get().hasNext()) {
-      AdsApp.createLabel(lbl, "Auto keep-alive touch");
-    }
-    Logger.log("Keep-alive pinged: " + acc.getCustomerId());
-  }
-}</pre>
-          • <b>Cách 4 (Kỹ thuật "1-Impression Heartbeat" cho tài khoản đã gắn Billing):</b> Để reset đồng hồ 15 tháng về 0 vĩnh viễn mà tốn 0 đồng, chỉ cần cho camp mồi chạy hiện đúng <b>1–5 lượt hiển thị (Impressions) với 0 Click (= 0.00 SGD)</b> rồi gạt lại sang <code>Paused</code> &rarr; Đồng hồ 15 tháng được làm mới 100%!<br>
-          • <b>Cách 5 (Link Mật Mở Khóa 1-Click Khi Tài Khoản Đã Lỡ Bị Hủy Do Không Hoạt Động — <code>Reactivate Account</code>):</b> Nếu tài khoản để quá lâu hiện bảng đỏ <i>"Your account is cancelled (Tài khoản đã bị hủy do không hoạt động)"</i>, nó <b>CHƯA hề bị xóa</b>! Mở thẳng <code>https://ads.google.com/aw/preferences</code> &rarr; Bấm vào mục <b>Account Status (Trạng thái tài khoản)</b> &rarr; Bấm nút <b>Reactivate my account (Kích hoạt lại tài khoản)</b> là tài khoản sống lại ngay lập tức sau 1 giây!
-        </li>
       </ul>
     </div>
 
@@ -2787,9 +2758,11 @@ function renderSecrets6Cats() {
 function filterSecretCategory(catId, btn) {
   const wrap = document.getElementById("tab-secrets");
   if (!wrap) return;
-  wrap.querySelectorAll(".btn-group button").forEach(b => {
-    b.className = (b === btn) ? "btn-main" : "btn-sub";
-  });
+  if (btn) {
+    wrap.querySelectorAll(".btn-group button").forEach(b => {
+      b.className = (b === btn) ? "btn-main" : "btn-sub";
+    });
+  }
   wrap.querySelectorAll(".secret-cat-block").forEach(el => {
     if (catId === "all") {
       el.style.display = "";
@@ -2797,6 +2770,22 @@ function filterSecretCategory(catId, btn) {
       el.style.display = el.classList.contains(catId) ? "" : "none";
     }
   });
+}
+
+function openSecretCatFromSidebar(catId, sidebarBtn) {
+  document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
+  document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+  document.getElementById("tab-secrets").classList.add("active");
+  if (sidebarBtn) sidebarBtn.classList.add("active");
+  filterSecretCategory(catId, null);
+  const wrap = document.getElementById("tab-secrets");
+  if (wrap) {
+    const topBtns = wrap.querySelectorAll(".btn-group button");
+    const mapIdx = { "all": 0, "cat-1": 1, "cat-2": 2, "cat-3": 3, "cat-4": 4, "cat-5": 5, "cat-6": 6 };
+    const idx = mapIdx[catId] ?? 0;
+    topBtns.forEach((b, i) => { b.className = (i === idx) ? "btn-main" : "btn-sub"; });
+  }
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 render10Steps();
