@@ -586,8 +586,8 @@
       <button class="nav-btn" onclick="switchTab('tab-mindmap', this)">🧠 11. Sơ Đồ Tư Duy 7 Nhánh</button>
       <button class="nav-btn" onclick="switchTab('tab-lab', this)" style="border-color:rgba(251,191,36,0.35);color:#fcd34d;">🏆 12. Phòng Lab 5 Công Cụ AI</button>
       <button class="nav-btn" onclick="switchTab('tab-ai', this)">🤖 13. DeepSeek Quét 18 Nguồn</button>
-      <button class="nav-btn" onclick="switchTab('tab-tools', this)">🛠️ 14. Kho 42+ Tool Google Ads</button>
-      <button class="nav-btn" onclick="switchTab('tab-links', this)">🔗 15. 33 Link &amp; 17 Hội Nhóm Kín</button>
+      <button class="nav-btn" onclick="switchTab('tab-tools', this)">🛠️ 14. Kho 105+ Tool Google Ads</button>
+      <button class="nav-btn" onclick="switchTab('tab-links', this)">🔗 15. 44+ Hội Nhóm &amp; 33 Link</button>
     </div>
   </div>
 
@@ -1046,23 +1046,23 @@
     <div class="card-grid" id="container-18ways"></div>
   </div>
 
-  <!-- TAB 7: KHO 42+ TOOL GOOGLE ADS -->
+  <!-- TAB 7: KHO 105+ TOOL GOOGLE ADS -->
   <div class="tab-panel" id="tab-tools">
-    <div class="top-bar">
+    <div class="top-bar" style="border-left-color:var(--accent-green);">
       <div>
-        <h1>🛠️ KHO 42+ TOOL GOOGLE ADS ĐANG CÓ TRÊN THỊ TRƯỜNG (ĐÀO SÂU 8 NHÓM CÔNG CỤ 2025–2026)</h1>
-        <p>Đầy đủ tên công cụ, trang chủ, cơ chế hoạt động và cách phối hợp trong hệ thống.</p>
+        <h1>🛠️ KHO 105+ TOOL GOOGLE ADS CÔNG KHAI, MÃ NGUỒN MỞ GITHUB/MCP &amp; TOOL NGẦM UNDERGROUND (CHIA 12 NHÓM ĐẦY ĐỦ NHẤT 2026)</h1>
+        <p>Tổng hợp toàn bộ 12 nhóm công cụ từ Chính chủ Google, AI Agent MCP Server trên GitHub, SaaS Tối ưu PPC cho đến Tool Ngầm Underground (Antidetect, Auto-Farm, Cloaking, Tracker, Whitepage AI, Thẻ VCC 3DS, Bank ACH, ISP Proxy, Spy Ads, Chống Click Tặc &amp; Chợ Tài Khoản).</p>
       </div>
     </div>
     <div class="card-grid" id="container-tools"></div>
   </div>
 
-  <!-- TAB 8: ĐỦ 33 LINK (7 NHÓM) & 17 CỘNG ĐỒNG -->
+  <!-- TAB 8: 44+ HỘI NHÓM (5 NHÓM) & 33 LINK (7 NHÓM) -->
   <div class="tab-panel" id="tab-links">
-    <div class="top-bar">
+    <div class="top-bar" style="border-left-color:var(--accent-amber);">
       <div>
-        <h1>🔗 TOÀN BỘ 33 ĐƯỜNG LINK CHUẨN (ĐỦ 7 NHÓM A, B, C, D, E, F, G) &amp; 17 HỘI NHÓM / BOT DÒ TUT</h1>
-        <p>Đã khôi phục đầy đủ 100% cả 33 đường link HTTP 200 và 17 nhóm cộng đồng kèm hướng dẫn câu lệnh Bot.</p>
+        <h1>🔗 TOÀN BỘ 44+ HỘI NHÓM, KÊNH TELEGRAM, DIỄN ĐÀN, CHỢ NGẦM GOOGLE ADS (5 NHÓM) &amp; 33 LINK HỆ THỐNG</h1>
+        <p>Đầy đủ 5 nhóm cộng đồng: (1) 12 Kênh &amp; Phòng Chat Telegram Arbitrage Nga/CIS; (2) 8 Diễn Đàn Underground Quốc Tế; (3) 8 Cộng Đồng &amp; Chợ MMO/Ads Việt Nam; (4) 8 Cộng Đồng PPC Chính Thống &amp; Reddit; (5) 8 Bot &amp; Máy Tìm Kiếm Tin Nhắn Nhóm Kín Telegram Theo Thời Gian Thực.</p>
       </div>
     </div>
     <div class="card-grid" id="container-community" style="margin-bottom:22px;"></div>
@@ -1591,85 +1591,176 @@ const DATA_18WAYS_FULL = [
   }
 ];
 
-// 6. KHO 42+ TOOL GOOGLE ADS (8 NHÓM)
+// 6. KHO 105+ TOOL GOOGLE ADS CÔNG KHAI, MÃ NGUỒN MỞ GITHUB/MCP & BÍ MẬT UNDERGROUND (12 NHÓM)
 const DATA_TOOLS_CATALOG = [
   {
-    badge: "Nhóm Tool 1 • Antidetect & RPA Farming",
-    title: "NHÓM 1: Tool Nuôi Tài Khoản, Ngâm Cookie Tự Động & Lên Camp Hàng Loạt (RPA / Anti-Detect)",
+    badge: "Nhóm 1/12 • Chính Chủ Google (Công Khai & Ẩn)",
+    title: "NHÓM 1 [CÔNG KHAI & CHÍNH CHỦ]: 8 Công Cụ Chính Chủ Google Ads Dành Cho Dân Chuyên & Lên Camp Không Qua Web UI",
     bullets: [
-      "<b>1. GPM-Login (Đang tích hợp trong dự án GPM Studio của anh iu):</b> Antidetect Browser tối ưu nhất tại VN, API local port 9495 điều khiển tự động mở profile, ngâm cookie, login Gmail và lên camp RPA không qua Google Ads API.",
-      "<b>2. Dolphin{anty} (dolphin-anty.com):</b> Trình duyệt Antidetect số 1 của giới Arbitrage Nga/CIS, giả lập Canvas/WebGL/WebRTC cực sạch cho Google Ads và có sẵn kịch bản Cookie Robot tự cày lịch sử web.",
-      "<b>3. Browser Automation Studio — BAS (bablosoft.com):</b> Phần mềm viết bot tự động hóa tạo Gmail, tự nuôi Cookie 7 ngày trên YouTube/Google Maps/Drive và tự động gắn thẻ lên camp mồi với quỹ đạo chuột người thật.",
-      "<b>4. ZennoPoster & ZennoBrowser (zennolab.com):</b> Hệ thống farm tài khoản Google Ads công nghiệp bằng kịch bản C#/XML, tích hợp sẵn API thuê SIM nhận OTP (5sim, SMS-Activate) và tự động kháng nghị.",
-      "<b>5. Octo Browser / Multilogin / AdsPower / GoLogin:</b> Bộ tứ Antidetect quốc tế chuyên dùng để cách ly từng tài khoản Google Ads với 1 vân tay phần cứng (MAC, GPU, AudioContext) riêng biệt."
+      "<b>1. Google Ads Editor Desktop (<code>ads.google.com/home/tools/ads-editor/</code>):</b> Phần mềm máy tính chính chủ của Google cho phép soạn thảo toàn bộ chiến dịch ở chế độ Offline <code>[Draft] / Paused</code> rồi bấm <i>Post</i> đồng bộ 1 lần duy nhất — bỏ qua 100% wizard tạo camp trên trình duyệt và giảm 80% tỷ lệ quét UI Telemetry.",
+      "<b>2. Google Ads Scripts V8 Engine (<code>ads.google.com/aw/bulk/scripts</code>):</b> Môi trường thực thi mã JavaScript chạy trực tiếp trên máy chủ nội bộ của Google (Server-side V8). Dùng để tạo chiến dịch ngầm (<code>AdsApp.bulkUploads()</code>), tự động canh ngưỡng thanh toán (<code>ads_billing.py</code>) và tự động Ping Keep-Alive giữ sống hàng trăm tài khoản con không cần mở trình duyệt.",
+      "<b>3. Google Ads REST / gRPC API v25 (<code>developers.google.com/google-ads/api</code>):</b> Cổng lập trình trực tiếp cho MCC đã có Developer Token &amp; OAuth — tạo tài khoản con (<code>CreateCustomerClient</code>), kiểm tra trạng thái và lên camp ở tốc độ mili-giây.",
+      "<b>4. Google Ads Transparency Center (<code>adstransparency.google.com</code>):</b> Kho dữ liệu công khai chính chủ của Google cho phép tra cứu toàn bộ mẫu quảng cáo Search, YouTube, Display đang chạy sống của bất kỳ tên miền hoặc nhà quảng cáo nào trên thế giới.",
+      "<b>5. Bộ 3 Công Cụ Lập Kế Hoạch (Keyword Planner / Reach Planner / Performance Planner):</b> Ngoài việc nghiên cứu từ khóa và CPC, đây còn là 3 cổng <code>sf=kp / sf=rp / sf=pp</code> dùng để tạo tài khoản trắng miễn hỏi thẻ và bơm Telemetry người thật trước khi lên camp.",
+      "<b>6. Google Tag Manager + Conversion Linker (<code>tagmanager.google.com</code>):</b> Quản lý thẻ chuyển đổi tập trung và nâng điểm uy tín Webmaster cho Gmail chạy Ads.",
+      "<b>7. Google Merchant Center Next (<code>merchants.google.com</code>):</b> Trung tâm nguồn cấp dữ liệu Google Shopping &amp; Performance Max, đồng thời là cổng ngầm tạo CID Google Ads trắng không qua wizard.",
+      "<b>8. Google Looker Studio Ads Connector (<code>lookerstudio.google.com</code>):</b> Kết nối trực tiếp vào nhiều CID/MCC để giám sát chi tiêu, CTR, CPC trên 1 bảng điều khiển duy nhất mà không cần đăng nhập vào từng tài khoản."
     ]
   },
   {
-    badge: "Nhóm Tool 2 • Cloaking & Bot Filter",
-    title: "NHÓM 2: Tool Cloaking & Chặn Bot Google Quét Trang Đích (AdsBot-Google / Reviewer Bypass)",
+    badge: "Nhóm 2/12 • Mã Nguồn Mở GitHub & AI MCP 2026",
+    title: "NHÓM 2 [MÃ NGUỒN MỞ GITHUB & AI AGENT MCP]: 9 Bộ Tool Điều Khiển Google Ads Tự Động Bằng AI (Claude / Cursor / DeepSeek)",
     bullets: [
-      "<b>1. Adspect.ai (VLA™ Machine Learning Cloaker):</b> Ông vua Cloaking cho Google Ads hiện nay. Nhận diện chính xác 100% bot duyệt quảng cáo của Google (AdsBot-Google), IP cơ sở hạ tầng Google và Reviewer thủ công để hiển thị trang Whitepage sạch, chỉ cho khách hàng thật vào trang bán hàng/Offer.",
-      "<b>2. Hoax.tech (Chuyên gia lọc lưu lượng PPC/Google Ads):</b> Cloaker thế hệ mới sử dụng phân tích hành vi JS và TLS Fingerprint để phát hiện bot Google ẩn danh qua mạng dân cư.",
-      "<b>3. Palladium & CloakIt (cloakit.pro):</b> Công cụ bọc link nhanh bằng PHP/WordPress plugin hoặc JS tích hợp trong 2 phút, chuyên dùng khi chạy Search Ads các ngành khó (Tài chính, Crypto, Thực phẩm chức năng, Affiliate).",
-      "<b>4. JustCloakIt (JCI) & TrafficArmor:</b> Hệ thống tường lửa lọc bot lâu đời nhất trên BlackHatWorld, cập nhật danh sách dải IP datacenter của Google Reviewer theo từng giờ.",
-      "<b>5. Keitaro Tracker (keitaro.io):</b> Hệ thống Tracking kiêm lọc lưu lượng tự chủ trên VPS riêng, cho phép chia luồng A/B testing, ẩn Referrer và điều hướng khách theo từ khóa tìm kiếm."
+      "<b>1. <code>googleads/google-ads-mcp</code> (<code>github.com/googleads/google-ads-mcp</code>):</b> MCP Server chính thức do đội ngũ Google Ads phát hành trên GitHub. Cho phép AI Agent truy vấn dữ liệu GAQL, khám phá cây tài khoản MCC và thực thi thay đổi qua cơ chế bảo vệ 2 bước (<i>Propose &amp; Confirm</i>).",
+      "<b>2. <code>clientskatbi/google-ads-campaign-mcp</code> (<code>github.com/clientskatbi/google-ads-campaign-mcp</code>):</b> MCP Server mã nguồn mở hỗ trợ cả Đọc &amp; Ghi (Read/Write): tự động tạo chiến dịch, chỉnh ngân sách, thêm từ khóa, lọc Search Terms và lấy gợi ý từ Keyword Planner bằng câu lệnh tự nhiên.",
+      "<b>3. <code>theusmyep/ads-editor-mcp</code> (<code>mcpservers.org</code>):</b> Server MCP đa nền tảng tích hợp hơn 250+ tool con để nhân bản chiến dịch (clone campaigns), quản lý từ khóa phủ định và tối ưu giá thầu hàng loạt.",
+      "<b>4. <code>cohnen/mcp-google-ads</code> (<code>github.com/cohnen/mcp-google-ads</code>):</b> Kết nối trực tiếp dữ liệu hiệu suất chiến dịch và điểm chất lượng từ khóa vào Claude/Cursor/Antigravity.",
+      "<b>5. <code>johnoconnor0/google-ads-scripts</code> (<code>github.com/johnoconnor0/google-ads-scripts</code>):</b> Kho mã nguồn mở chứa hàng chục tập lệnh <code>.gs</code> tự động kiểm tra lỗi 404 trang đích, tự động cắt từ khóa đốt tiền (N-Gram Analyzer), theo dõi Quality Score và khóa trần chi tiêu.",
+      "<b>6. <code>google/ads-account-structure-script</code> (<code>github.com/google/ads-account-structure-script</code>):</b> Bộ script chính chủ Google kiểm tra độ sẵn sàng của tài khoản và tự động xuất báo cáo ra Google Sheets.",
+      "<b>7. <code>Brainlabs Open-Source Google Ads Scripts</code>:</b> Thư viện script nổi tiếng nhất giới Agency (đấu giá theo thời tiết, heatmap theo giờ trong ngày, tự động tách chiến dịch Shopping/PMax).",
+      "<b>8. <code>romek-rozen/google-ads-generator-with-ai-assistants</code> (GitHub):</b> Bộ tool AI tự động cào nội dung trang đích và sinh 15 tiêu đề + 4 mô tả RSA chuẩn khung copywriting (PAS/BAB) không trùng lặp.",
+      "<b>9. Hệ Thống Nội Bộ Của Anh Iu (<code>GPM Studio Camp v3/v4</code> + Extension <code>TM_ver1</code> + <code>Play_DUNS</code> + <code>Content_Fill</code>):</b> Bộ tổ hợp tự động hóa độc quyền kết hợp API v25 + Google Ads Scripts + RPA GPM port 9495, tự động đẻ tài khoản BM/Link/MCC/Sub-MCC, tự điền D-U-N-S tạo hồ sơ thanh toán tổ chức và tự động lên camp/check camp qua Telegram."
     ]
   },
   {
-    badge: "Nhóm Tool 3 • Whitepage & Cloner",
-    title: "NHÓM 3: Tool Tạo Trang Đích Sạch (Whitepage Generator) & Cào Landing Page Đối Thủ Trong 1 Click",
+    badge: "Nhóm 3/12 • SaaS Quản Trị & Tối Ưu PPC Công Khai",
+    title: "NHÓM 3 [CÔNG KHAI — SAAS AGENCY]: 9 Phần Mềm Quản Trị, Tối Ưu Giá Thầu & Tự Động Hóa Google Ads Hàng Đầu Thế Giới",
     bullets: [
-      "<b>1. SaveWeb2Zip (saveweb2zip.com) & WebScrapBook:</b> Công cụ tải nguyên bộ giao diện HTML/CSS/JS của bất kỳ trang Landing Page đối thủ nào về máy thành file .zip chỉ trong 5 giây, tự động xóa sạch mã tracking cũ của đối thủ.",
-      "<b>2. Comsign / AI Whitepage Generators (Trên CPA.RIP & Partnerkin):</b> Các tool AI tự động sinh website doanh nghiệp đa trang (Trang chủ, Giới thiệu, Dịch vụ, Liên hệ, Privacy Policy, Terms of Service, Cookie Consent Mode v2) khớp 100% với bộ từ khóa Search Camp để vượt vòng duyệt mẫu quảng cáo.",
-      "<b>3. HTTrack Website Copier & Cyotek WebCopy:</b> Phần mềm Desktop cào toàn bộ cấu trúc website tĩnh để chỉnh sửa nhanh thành trang đích mồi (Warm-up Landing Page).",
-      "<b>4. Cloudflare Pages / Vercel Instant Hosting:</b> Giải pháp up trang Whitepage tĩnh miễn phí lên hạ tầng CDN toàn cầu của Cloudflare/Vercel giúp trang tải dưới 0.5 giây và có điểm chất lượng trang đích (Landing Page Experience) đạt 10/10."
+      "<b>1. Optmyzr (<code>optmyzr.com</code>):</b> Tiêu chuẩn vàng cho các Agency chạy Google Ads lớn — có Rule Engine tùy chỉnh, phân tích nguyên nhân tụt hiệu suất (Root Cause Analysis) và bộ Enhanced Scripts.",
+      "<b>2. Adalysis (<code>adalysis.com</code>):</b> Tự động chạy hơn 100+ bài kiểm tra sức khỏe tài khoản mỗi ngày, phát hiện xung đột từ khóa phủ định và tự động A/B test mẫu quảng cáo RSA.",
+      "<b>3. Opteo (<code>opteo.com</code>):</b> Theo dõi biến động tài khoản liên tục và đề xuất tối ưu 1-Click (tạm dừng từ khóa CPA cao, điều chỉnh giá thầu, cảnh báo hết ngân sách).",
+      "<b>4. Channable (<code>channable.com</code>) &amp; DataFeedWatch (<code>datafeedwatch.com</code>):</b> 2 công cụ quản lý Feed sản phẩm mạnh nhất cho Google Shopping &amp; Performance Max (tự động lọc sản phẩm hết hàng, tối ưu tiêu đề sản phẩm chuẩn SEO Shopping).",
+      "<b>5. HyperFX / Hawky.ai (<code>hawky.ai</code>):</b> Thế hệ AI Agent tự hành mới (2025–2026) tự động phân bổ ngân sách và tối ưu ROAS dưới trần ngân sách an toàn.",
+      "<b>6. WordStream / LocaliQ &amp; Google Ads Grader:</b> Công cụ chấm điểm tài khoản Google Ads và so sánh CTR/CPC với mặt bằng chung của ngành.",
+      "<b>7. Skai (Kenshoo) &amp; Marin Software:</b> Nền tảng quản trị đấu giá doanh nghiệp (Enterprise Bid Management) cho ngân sách lớn.",
+      "<b>8. Supermetrics &amp; Windsor.ai:</b> Tự động kéo dữ liệu chi phí từ hàng trăm tài khoản Google Ads về Google Sheets, BigQuery hoặc Excel mỗi giờ.",
+      "<b>9. SpeedPPC (<code>speedppc.com</code>):</b> Công cụ xây dựng chiến dịch Search SKAG/STAG hàng nghìn từ khóa kèm trang đích động (Dynamic Keyword Insertion) trong 5 phút."
     ]
   },
   {
-    badge: "Nhóm Tool 4 • Thẻ Ảo VCC 3DS & Bank ACH",
-    title: "NHÓM 4: Nguồn Thẻ Ảo VCC (Có 3DS / Đúng BIN) & Tài Khoản Ngân Hàng ACH Chuyên Trị Google Ads",
+    badge: "Nhóm 4/12 • Bí Mật / Underground Farm & RPA",
+    title: "NHÓM 4 [BÍ MẬT / UNDERGROUND]: 10 Tool Farm Tài Khoản, Auto-Reg Gmail/Ads, Ngâm Cookie & Giải Captcha/OTP Công Nghiệp",
     bullets: [
-      "<b>1. PST.NET (Thẻ Platinum chuyên Google Ads):</b> Cung cấp hơn 25 đầu BIN thẻ Mỹ/Châu Âu dành riêng cho Google Ads, hỗ trợ mã 3DS trả về ngay trong Dashboard/Telegram Bot, tỷ lệ qua vòng Pre-Auth $10 rất cao.",
-      "<b>2. LeadingCards (leadingcards.media):</b> Nền tảng cấp thẻ VCC số lượng lớn cho đội Media Buying, cho phép tùy chỉnh tên chủ thẻ và địa chỉ ZIP Code khớp chuẩn AVS 100%.",
-      "<b>3. YeezyPay / AnyBill / Combo.cards / EPN.net / Karta.io:</b> Các cổng phát hành thẻ ảo Visa/Mastercard quốc tế nạp bằng USDT, chuyên dùng để nuôi dàn tài khoản ăn mã khuyến mãi $500 (mỗi tài khoản 1 thẻ riêng).",
-      "<b>4. Wise Business / Mercury Bank / RelayFi / Revolut Business:</b> Nguồn cung cấp <b>Số tài khoản ngân hàng Mỹ (Routing + Account Number ACH)</b> và <b>Châu Âu (SEPA IBAN)</b> để gắn theo Cách 12 — xác thực bằng Micro-deposit ($0.05–$0.25), miễn nhiễm 100% với lỗi bắt nạp tiền trước."
+      "<b>1. GPMLogin Global v5 MCP &amp; GPM-Login (<code>gpmloginapp.com</code>):</b> Trình duyệt Antidetect hàng đầu tại Việt Nam, hỗ trợ giao thức MCP &amp; REST API (cổng 9495/19995) điều khiển hàng nghìn profile độc lập vân tay phần cứng.",
+      "<b>2. Dolphin{anty} (<code>dolphin-anty.com</code>):</b> Trình duyệt Antidetect số 1 của giới Arbitrage Nga/CIS, tích hợp sẵn <i>Cookie Robot</i> tự động bò qua danh sách website để ngâm Cookie Google và công cụ đồng bộ thao tác nhiều cửa sổ (Synchronizer).",
+      "<b>3. Browser Automation Studio — BAS (<code>bablosoft.com</code>):</b> Nền tảng đóng gói bot ngầm phổ biến nhất thế giới Underground. Dùng để viết hoặc mua các kịch bản (script) tự động tạo Gmail, tự nuôi Cookie 7–14 ngày trên YouTube/Maps/Docs với quỹ đạo chuột Gaussian giống người thật 100%.",
+      "<b>4. ZennoPoster 7 &amp; ZennoDroid (<code>zennolab.com</code>):</b> Vũ khí hạng nặng của các xưởng farm tài khoản (Account Farms) tại Nga và Đông Âu: ZennoPoster chạy đa luồng trên Web, còn <b>ZennoDroid</b> tự động điều khiển hàng trăm máy ảo Android để tạo tài khoản Google Ads qua <b>Mobile App gRPC</b> (né 100% reCAPTCHA hình ảnh trên Web!).",
+      "<b>5. Octo Browser / Undetectable.io / Multilogin / AdsPower / GoLogin:</b> Các trình duyệt Antidetect cao cấp chuyên spoofing nhân Chromium ở tầng C++ (Canvas, WebGL, AudioContext, WebRTC, ClientRects, Fonts).",
+      "<b>6. CapSolver (<code>capsolver.com</code>) &amp; 2Captcha (<code>2captcha.com</code>):</b> 2 dịch vụ API giải tự động <code>reCAPTCHA v2 / v3 / Enterprise</code> ngay trong form tạo MCC và Sub-account (đã tích hợp sẵn cơ chế nhận key <code>CAP-...</code> trong extension <code>TM_ver1</code> của anh iu!).",
+      "<b>7. XEvil 6.0 (<code>botmasterlabs.net</code>) &amp; CapMonster Cloud (<code>capmonster.cloud</code>):</b> Phần mềm giải reCAPTCHA tốc độ cao không giới hạn số lượng cho các dàn máy farm lớn.",
+      "<b>8. DaisySMS (<code>daisysms.com</code>) &amp; TextVerified (<code>textverified.com</code>):</b> Nguồn thuê <b>SIM vật lý thật của Mỹ (Non-VoIP US Real Carrier SIMs)</b> — chuyên dùng để vượt bước xác minh SMS của Gmail/Google Ads Mỹ mà các web thuê SIM ảo VoIP thông thường bị chặn.",
+      "<b>9. 5SIM.net / SMS-Activate / GrizzlySMS / OnlineSim:</b> Các cổng API thuê số điện thoại nhận mã OTP tự động tại hơn 180 quốc gia.",
+      "<b>10. Auto-Warmup Extensions &amp; Human-Typing Emulators (CDP Input Dispatch):</b> Kỹ thuật bắn sự kiện chuột và bàn phím thật ở tầng Chrome DevTools Protocol (<code>Input.dispatchMouseEvent</code> / <code>Input.dispatchKeyEvent</code> như trong <code>account_change.py</code> của anh iu) để vượt tường chống bot ở màn hình <i>Verify it's you</i>."
     ]
   },
   {
-    badge: "Nhóm Tool 5 • ISP Proxy & Mobile 4G/5G",
-    title: "NHÓM 5: Tool Proxy Dân Cư Tĩnh (Static ISP Proxy) & Mobile Proxy 4G/5G Không Dính Blacklist",
+    badge: "Nhóm 5/12 • Bí Mật / Underground Cloaking",
+    title: "NHÓM 5 [BÍ MẬT / UNDERGROUND]: 10 Hệ Thống Cloaking & Tường Lửa Chặn Bot Duyệt Quảng Cáo (AdsBot-Google / Manual Reviewer)",
     bullets: [
-      "<b>1. NodeMaven (nodemaven.com):</b> Có bộ lọc <i>IP Quality Filter</i> tự động loại bỏ các IP dân cư đã từng bị dùng để spam Google trước khi cấp cho trình duyệt, giữ kết nối tĩnh lên tới 24h.",
-      "<b>2. BrightData Static ISP & Oxylabs ISP Proxies:</b> Nguồn IP dân cư tĩnh đăng ký trực tiếp dưới tên các nhà mạng AT&T, Verizon, Comcast (Mỹ) hoặc Singtel (Singapore) — không bao giờ bị nhận diện là VPN/Datacenter.",
-      "<b>3. AstroProxy & Soax Mobile 4G/5G:</b> Nguồn Proxy di động 4G/5G thật từ SIM nhà mạng, cực mạnh khi dùng để tạo tài khoản mới và vượt xác minh SMS.",
-      "<b>4. IPQualityScore (ipqualityscore.com) & Scamalytics (scamalytics.com):</b> 2 công cụ bắt buộc phải kiểm tra trước khi đăng nhập Google Ads — chỉ dùng IP có <b>Fraud Score = 0</b> và <b>VPN/Proxy = No</b>."
+      "<b>1. Adspect.ai (<code>adspect.ai</code> — VLA™ Machine Learning Cloaker):</b> Hệ thống Cloaking mạnh nhất cho Google Ads hiện nay. Kết hợp CSDL hàng tỷ IP với trí tuệ nhân tạo VLA™ và quét vân tay JS/TCP/SSL để nhận diện cả bot Google ẩn danh qua IP dân cư, giữ khách thật vào trang Offer và đẩy toàn bộ bot/mod vào trang Whitepage.",
+      "<b>2. Hoax.tech (<code>hoax.tech</code>):</b> Cloaker chuyên biệt cho Google Search &amp; Display PPC, nổi tiếng với bộ lọc hành vi người dùng và phát hiện trình duyệt Headless của đội kiểm duyệt.",
+      "<b>3. Cloaking.House (<code>cloaking.house</code>):</b> Dịch vụ Cloaking đám mây rất phổ biến trên CPA.RIP, cài đặt bằng 1 file PHP trong 2 phút, lọc theo Quốc gia, ISP, Thiết bị, Referrer và danh sách đen Moderator.",
+      "<b>4. Palladium Cloaker (<code>palladium.expert</code>):</b> Hệ thống bảo vệ lưu lượng cao cấp của giới Arbitrage CIS chuyên trị các đợt quét gắt của Google Ads ở mảng Crypto, Nutra, iGaming và Tài chính.",
+      "<b>5. HideClick (<code>hide.click</code>):</b> Giải pháp Cloaking cho Google Ads, FB và TikTok hỗ trợ tích hợp không chuyển hướng (Zero-Redirect PHP/Node.js Include) để không làm đổi Final URL trên thanh địa chỉ.",
+      "<b>6. MagicChecker (<code>magicchecker.com</code>):</b> Phần mềm lọc bot và bảo vệ trang đích khỏi cả bot duyệt quảng cáo lẫn các tool Spy của đối thủ.",
+      "<b>7. JustCloakIt — JCI (<code>justcloakit.com</code>):</b> Một trong những hệ thống Cloaking lâu đời và uy tín nhất trên diễn đàn BlackHatWorld.",
+      "<b>8. TrafficArmor (<code>trafficarmor.com</code>):</b> Tường lửa lọc lưu lượng thời gian thực, chặn toàn bộ ASN của Google Cloud, GeoEdge, AdLightning và Confiant.",
+      "<b>9. Filter.ee &amp; CloakIt.pro:</b> Công cụ bọc link nhanh cho các chiến dịch test phễu ngắn hạn.",
+      "<b>10. NoIPFraud (<code>noipfraud.com</code>):</b> Hệ thống chống bot cấp độ cao dành cho các đội Media Buying chạy ngân sách lớn."
     ]
   },
   {
-    badge: "Nhóm Tool 6 • Spy Ads & Keyword Intelligence",
-    title: "NHÓM 6: Tool Spy Quảng Cáo Đối Thủ, Lộ Toàn Bộ Từ Khóa & Phễu Đang Chạy Lãi",
+    badge: "Nhóm 6/12 • Bí Mật / Underground Trackers",
+    title: "NHÓM 6 [BÍ MẬT / UNDERGROUND]: 7 Hệ Thống Tracker Arbitrage, Chia Luồng Không Chuyển Hướng & Ẩn Referrer",
     bullets: [
-      "<b>1. Google Ads Transparency Center (adstransparency.google.com):</b> Công cụ chính chủ miễn phí của Google cho phép gõ tên miền hoặc tên doanh nghiệp bất kỳ để xem toàn bộ mẫu quảng cáo Search, YouTube, Display mà đối thủ đang chạy sống hôm nay.",
-      "<b>2. SpyFu (spyfu.com) & Semrush Advertising Research:</b> Gõ domain đối thủ vào là xuất ra toàn bộ danh sách từ khóa họ đang mua, giá thầu CPC, mẫu tiêu đề RSA mang lại nhiều click nhất và lịch sử ngân sách.",
-      "<b>3. Adbeat (adbeat.com) & WhatRunsWhere:</b> Chuyên spy các chiến dịch Google Display Network (GDN) và YouTube Ads — xem chính xác đối thủ đang đặt banner ở trang báo nào, video nào.",
-      "<b>4. Keyword Planner + Keyword Sheeter / AlsoAsked:</b> Bộ công cụ vét cạn từ khóa ngách dài (Long-tail keywords) giá thầu rẻ nhưng tỷ lệ chuyển đổi cao."
+      "<b>1. Keitaro Tracker (<code>keitaro.io</code>):</b> Tracker tự cài trên VPS (Self-hosted) được 80% dân Arbitrage Google Ads sử dụng. Cho phép tích hợp trang Whitepage và Offer ngay trên cùng 1 domain thông qua <code>KClient PHP</code> (không dùng HTTP 301/302 Redirect — giúp tránh 100% lỗi <i>Circumventing Systems do Redirect Chain</i>!).",
+      "<b>2. Binom Tracker v2 (<code>binom.org</code>):</b> Tracker tự chủ tốc độ xử lý click nhanh nhất thế giới, phân tích sâu từng từ khóa, vị trí đặt quảng cáo và tự động xoay vòng trang đích (Landing Page Rotation).",
+      "<b>3. RedTrack.io (<code>redtrack.io</code>):</b> Tracker đám mây chuẩn Server-to-Server (S2S Postback) và tích hợp Google Ads Offline Conversion Tracking (OCT) để nuôi thuật toán Smart Bidding mà không cần gắn pixel trực tiếp lên trang Offer.",
+      "<b>4. Voluum (<code>voluum.com</code>):</b> Nền tảng Tracking đám mây cao cấp kèm tính năng Anti-Fraud tự động phát hiện lưu lượng bot.",
+      "<b>5. PeerClick (<code>peerclick.com</code>):</b> Tracker đám mây chịu tải hàng triệu click với chi phí tối ưu cho đội nhóm.",
+      "<b>6. BeMob (<code>bemob.com</code>) &amp; AdsBridge (<code>adsbridge.com</code>):</b> Các nền tảng Tracking có gói miễn phí/giá rẻ để test phễu và ẩn nguồn lưu lượng (Hide Referrer)."
     ]
   },
   {
-    badge: "Nhóm Tool 7 • Chống Click Tặc",
-    title: "NHÓM 7: Tool Chống Click Tặc / Click Ảo (Click Fraud Protection) Bảo Vệ Ngân Sách Camp",
+    badge: "Nhóm 7/12 • Whitepage AI & Cloner 1-Click",
+    title: "NHÓM 7 [BÍ MẬT / UNDERGROUND]: 9 Tool Sinh Trang Đích Sạch (Whitepage Generator AI) & Cào Landing Page Đối Thủ Trong 5 Giây",
     bullets: [
-      "<b>1. ClickCease (clickcease.com) & Lunio (lunio.ai):</b> Tự động phát hiện đối thủ hoặc bot bấm phá quảng cáo của bạn và đẩy IP/Device ID của kẻ phá hoại vào danh sách Chặn (IP Exclusions) trong Google Ads theo thời gian thực.",
-      "<b>2. TrafficGuard & FraudBlocker:</b> Chặn bot click trên mạng hiển thị (GDN) và chiến dịch Performance Max (PMax), giúp tiết kiệm 20%–35% ngân sách bị đốt oan."
+      "<b>1. Comsign Whitepage Generator (<code>comsign.io</code>):</b> Dịch vụ sinh trang Whitepage sạch chuyên dụng cho Google Ads (đầy đủ đa trang, chính sách bảo mật, điều khoản, form liên hệ, Cookie Consent v2 và nội dung chuẩn từ khóa để đạt điểm chất lượng 10/10).",
+      "<b>2. Adspect Built-in Whitepage Generator:</b> Tính năng tích hợp sẵn trong Adspect tự động tạo trang Whitepage giả lập cửa hàng thương mại điện tử, blog hoặc trang giới thiệu ứng dụng Google Play.",
+      "<b>3. WhitePage.monster / MoneySafe / Abolk:</b> Các dịch vụ cung cấp sẵn gói file zip Whitepage theo đúng ngách từ khóa và ngôn ngữ bản địa trên CPA.RIP.",
+      "<b>4. SaveWeb2Zip (<code>saveweb2zip.com</code>):</b> Công cụ trực tuyến miễn phí giúp tải toàn bộ giao diện HTML/CSS/JS/Hình ảnh của bất kỳ Landing Page đối thủ nào thành file <code>.zip</code> chỉ sau 5 giây, đồng thời tự động quét xóa mã Google Tag / Facebook Pixel cũ của đối thủ!",
+      "<b>5. WebScrapBook &amp; SingleFile (Chrome Extensions):</b> Tiện ích trình duyệt lưu trọn vẹn 1 trang web đang mở (kể cả trang render bằng React/Vue) về máy để làm trang đích.",
+      "<b>6. HTTrack Website Copier &amp; Cyotek WebCopy:</b> Phần mềm máy tính cào toàn bộ cấu trúc website đa trang về ổ cứng.",
+      "<b>7. Clean-HTML / ExifTool Scrubber:</b> Các script dọn sạch siêu dữ liệu (metadata) trong ảnh và đổi tên class CSS/DOM structure của trang clone để Google không bắt trùng mã băm (HTML Template Hash) với đối thủ.",
+      "<b>8. Cloudflare Pages / Vercel / Netlify Instant Deploy:</b> Hạ tầng lưu trữ trang đích tĩnh miễn phí trên CDN toàn cầu với SSL tự động, tốc độ tải &lt; 0.4 giây.",
+      "<b>9. LanderLab (<code>landerlab.io</code>) &amp; Unbounce:</b> Nền tảng chỉnh sửa nhanh các mẫu Landing Page đã cào về và tích hợp A/B testing."
     ]
   },
   {
-    badge: "Nhóm Tool 8 • Quản Trị Chính Chủ & Săn Mã KM",
-    title: "NHÓM 8: Tool Lên Camp Offline Chính Chủ (Giảm 80% Quét UI) & Tự Động Hóa MCC",
+    badge: "Nhóm 8/12 • Thẻ Ảo VCC 3DS, BIN & Bank ACH",
+    title: "NHÓM 8 [BÍ MẬT / UNDERGROUND]: 12 Cổng Phát Hành Thẻ Ảo VCC (Có 3DS / Đúng BIN), Ngân Hàng ACH Mỹ & Tool Check Đầu BIN Sống",
     bullets: [
-      "<b>1. Google Ads Editor (Phần mềm Desktop chính chủ của Google):</b> Sau khi tài khoản đã qua camp mồi đầu tiên, việc soạn và đẩy (Post) chiến dịch mới qua phần mềm <b>Google Ads Editor</b> giúp tránh được các bộ lọc theo dõi tốc độ chuột/bàn phím trên giao diện Web UI.",
-      "<b>2. Google Ads Scripts & Automated Rules:</b> Tự động kiểm tra sức khỏe tài khoản, tự động cảnh báo qua Telegram khi CPC tăng vọt hoặc khi camp ngừng cắn tiền.",
-      "<b>3. Couponer / Adcore Partner Promo Manager:</b> Công cụ dành cho các MCC Google Partner để tự động kích hoạt và theo dõi tiến độ hàng trăm mã khuyến mãi $500 (Offer A/B/C) trên toàn bộ dàn tài khoản con."
+      "<b>1. PST.NET (<code>pst.net</code> — Gói Google Ads Platinum):</b> Hơn 25 đầu BIN thẻ Mỹ và Châu Âu (Credit &amp; Commercial BIN) thiết kế riêng cho Google Ads, nhận mã OTP 3DS trực tiếp qua Telegram Bot hoặc Extension trình duyệt.",
+      "<b>2. LeadingCards (<code>leadingcards.media</code>):</b> Cấp thẻ VCC đa quốc gia, cho phép tự đặt Tên chủ thẻ và Mã bưu chính (ZIP Code) khớp 100% chuẩn kiểm tra địa chỉ AVS của Google Pay.",
+      "<b>3. AnyBill — ABcard (<code>anybill.io</code>):</b> Nền tảng cấp thẻ ảo miễn phí phát hành thẻ lẻ, có bảng thống kê tỷ lệ thanh toán thành công (Approval Rate) của từng đầu BIN trên Google Ads theo thời gian thực.",
+      "<b>4. Brocard — MyBrocard (<code>mybrocard.com</code>):</b> Cung cấp hơn 50 đầu BIN thẻ US, UK, EU, HK, SG với hạn mức phát hành hàng trăm thẻ cho đội nhóm Media Buying.",
+      "<b>5. FlexCard (<code>flexcard.cards</code>):</b> Nguồn thẻ VCC nạp qua USDT (TRC20) với đầu BIN tư nhân (Private BINs) ít bị đụng hàng.",
+      "<b>6. EPN.net (<code>epn.net</code>):</b> Hệ thống thẻ ảo quốc tế kèm tính năng kiểm tra độ khớp BIN trước khi gắn vào Google Ads.",
+      "<b>7. Combo.cards / Karta.io / YeezyPay / Spendge / Wallester Business:</b> Các nền tảng phát hành thẻ doanh nghiệp ảo Châu Âu &amp; Mỹ để nuôi dàn tài khoản chạy mã khuyến mãi $500.",
+      "<b>8. Capitalist (<code>capitalist.net</code>):</b> Ví thanh toán trung gian số 1 của giới Arbitrage để nạp tiền hàng loạt vào các cổng VCC và mạng quảng cáo.",
+      "<b>9. Wise Business / Mercury Bank / RelayFi / Payoneer / Revolut Business:</b> Nguồn lấy <b>Số tài khoản ngân hàng Mỹ (ACH Routing + Account Number)</b> và <b>Châu Âu (SEPA IBAN)</b> để gắn thanh toán bằng Micro-deposit ($0.05–$0.25) — miễn nhiễm 100% với bảng đỏ bắt nạp tiền trước của thẻ!",
+      "<b>10. PST Pulse / Binlist.net / ExactBin / BinCodes:</b> Các công cụ tra cứu thông tin 6–8 số đầu của thẻ (BIN Checker) để biết chính xác thẻ đó thuộc hạng <b>CREDIT</b> hay <b>DEBIT</b> hay <b>PREPAID</b> và quốc gia phát hành thực sự trước khi gắn vào Google Ads (luôn ưu tiên <code>CREDIT + COMMERCIAL</code> để không bị ép cọc 65 SGD!)."
+    ]
+  },
+  {
+    badge: "Nhóm 9/12 • ISP Proxy, 4G/5G & Fingerprint Check",
+    title: "NHÓM 9 [BÍ MẬT / UNDERGROUND]: 10 Nguồn Proxy Dân Cư Tĩnh (Static ISP), Mobile 4G/5G & Máy Quét Điểm Sạch Vân Tay",
+    bullets: [
+      "<b>1. NodeMaven (<code>nodemaven.com</code>):</b> Nguồn Proxy dân cư và ISP có thuật toán lọc trước các IP bẩn (Pre-filtered Clean IPs), giữ phiên sticky IP tĩnh lên đến 24 giờ cho Google Ads.",
+      "<b>2. BrightData Static ISP &amp; Oxylabs Static Residential:</b> Dải IP tĩnh đăng ký trực tiếp dưới ASN của các nhà mạng viễn thông thật (AT&amp;T, Verizon, Comcast, BT, Singtel, Viettel/VNPT) — tuyệt đối không bị Google nhận diện là Datacenter/Hosting.",
+      "<b>3. SOAX (<code>soax.com</code>) &amp; AstroProxy:</b> Nguồn Proxy di động 4G/5G từ SIM vật lý thật, có độ tin cậy (IP Trust) cao nhất khi dùng để tạo tài khoản mới và kháng nghị.",
+      "<b>4. Proxy-Seller / Webshare Static ISP / IPRoyal ISP:</b> Các nguồn thuê IP tĩnh cá nhân (Dedicated Static ISP) cố định 1 IP / 1 Profile GPM.",
+      "<b>5. IPQualityScore — IPQS (<code>ipqualityscore.com</code>):</b> Công cụ bắt buộc để kiểm tra IP trước khi mở Google Ads — chỉ sử dụng IP có <b>Fraud Score = 0</b>, <b>VPN = False</b>, <b>Proxy = False</b>.",
+      "<b>6. Scamalytics (<code>scamalytics.com</code>) &amp; IP2Location:</b> Kiểm tra điểm rủi ro gian lận của dải IP và độ khớp múi giờ / tọa độ địa lý.",
+      "<b>7. Pixelscan.net (<code>pixelscan.net</code>) &amp; CreepJS (<code>abrahamjuliot.github.io/creepjs/</code>):</b> 2 máy quét vân tay trình duyệt khắt khe nhất để kiểm tra xem profile Antidetect của bạn có bị lộ dấu vết giả lập Canvas, WebGL, WebRTC hoặc lệch hệ điều hành hay không.",
+      "<b>8. BrowserLeaks.com &amp; Whoer.net:</b> Kiểm tra rò rỉ DNS (DNS Leak), IPv6 Leak và độ khớp ngôn ngữ trình duyệt (<code>Accept-Language</code>)."
+    ]
+  },
+  {
+    badge: "Nhóm 10/12 • Tool Spy Ads, Từ Khóa & Phễu Ngầm",
+    title: "NHÓM 10 [CÔNG KHAI & NGẦM]: 10 Tool Spy Quảng Cáo Đối Thủ, Đào Trộm Từ Khóa Lãi & Bóc Phễu Cloaking",
+    bullets: [
+      "<b>1. SpyFu (<code>spyfu.com</code>):</b> Xem toàn bộ lịch sử từ khóa Google Search mà bất kỳ đối thủ nào đã mua trong 15 năm qua, mẫu quảng cáo RSA nào được họ giữ chạy lâu nhất (tức là đang ra đơn lãi nhất).",
+      "<b>2. Semrush Advertising Research &amp; PLA Research (<code>semrush.com</code>):</b> Phân tích từ khóa trả phí, mẫu quảng cáo văn bản và cả quảng cáo Google Shopping (PLA) của đối thủ.",
+      "<b>3. Ahrefs Paid Search Report (<code>ahrefs.com</code>):</b> Soi chính xác đối thủ đang đổ traffic Google Ads về những trang Landing Page ẩn nào trên website của họ.",
+      "<b>4. VidTao (<code>vidtao.com</code>) &amp; TubeSift (<code>tubesift.com</code>):</b> 2 công cụ Spy chuyên biệt cho <b>YouTube Ads &amp; Google Demand Gen</b> — tìm ra các video quảng cáo đang scale ngân sách mạnh nhất kèm link trang đích.",
+      "<b>5. Adbeat (<code>adbeat.com</code>) &amp; WhatRunsWhere:</b> Chuyên spy quảng cáo banner trên mạng hiển thị Google Display Network (GDN) — biết chính xác đối thủ đang đặt banner ở những website/trang báo nào.",
+      "<b>6. Anstrex (<code>anstrex.com</code>) / BigSpy / AdSpy / Tyver / SpyOver:</b> Các công cụ spy đa nền tảng của giới Affiliate cho phép tải luôn trang Landing Page của đối thủ về máy.",
+      "<b>7. Keyword Sheeter / AlsoAsked (<code>alsoasked.com</code>) / AnswerThePublic:</b> Vét cạn các cụm từ khóa câu hỏi dài (Long-tail Intent Keywords) có CPC siêu rẻ mà đối thủ bỏ sót.",
+      "<b>8. User-Agent Switcher + Residential Proxy Mobile Inspection:</b> Thủ thuật bóc trang Offer thật của đối thủ đang chạy Cloaking (bằng cách đổi User-Agent sang iPhone Safari + đi qua IP 4G đúng quốc gia mục tiêu và bấm trực tiếp từ trang kết quả tìm kiếm Google)."
+    ]
+  },
+  {
+    badge: "Nhóm 11/12 • Chống Click Tặc & Bảo Vệ Ngân Sách",
+    title: "NHÓM 11 [CÔNG KHAI & NGẦM]: 7 Tool Chống Click Tặc, Chặn Bot Phá Ngân Sách & Lọc Vị Trí Đặt Quảng Cáo Rác",
+    bullets: [
+      "<b>1. Lunio.ai (<code>lunio.ai</code>):</b> Hệ thống chống Invalid Traffic (IVT) cấp doanh nghiệp, tự động chặn botnet (như BADBOX 3.0) và click farm trên cả Search, PMax, YouTube và Display.",
+      "<b>2. ClickCease / CHEQ Essentials (<code>clickcease.com</code>):</b> Tự động phát hiện đối thủ bấm phá quảng cáo lặp lại và đẩy thẳng IP của kẻ phá hoại vào mục <i>IP Exclusions</i> của chiến dịch Google Ads theo thời gian thực.",
+      "<b>3. TrafficGuard (<code>trafficguard.ai</code>) &amp; FraudBlocker (<code>fraudblocker.com</code>):</b> Chấm điểm từng lượt click và cung cấp báo cáo bằng chứng để yêu cầu Google hoàn tiền click không hợp lệ (Invalid Clicks Refund).",
+      "<b>4. ClickGuard &amp; ClickPatrol:</b> Bảo vệ chiến dịch khỏi các cuộc tấn công click bằng proxy xoay vòng.",
+      "<b>5. Microsoft Clarity (<code>clarity.microsoft.com</code> — Miễn phí 100%):</b> Công cụ quay video màn hình thao tác thật của từng khách bấm vào quảng cáo Google Ads và bản đồ nhiệt (Heatmap), giúp bạn nhìn tận mắt khách thật đang làm gì hay là bot click rồi thoát ngay!"
+    ]
+  },
+  {
+    badge: "Nhóm 12/12 • Chợ Tài Khoản Cổ, MCC Invoice & DUNS",
+    title: "NHÓM 12 [BÍ MẬT / UNDERGROUND]: 7 Chợ Mua Bán Tài Khoản Cổ (Aged Accounts), Thuê Tài Khoản Agency Invoice & Tra Cứu D-U-N-S",
+    bullets: [
+      "<b>1. Partnerkin Accounts Marketplace (<code>t.me/partnerkin_accounts</code> &amp; <code>partnerkin.com</code>):</b> Chợ trao đổi tài khoản Google Ads cổ (Aged Accounts 2015–2024 đã chi tiêu và đã có tích xanh XMDT), MCC ngưỡng cao và dịch vụ xác minh doanh nghiệp của giới Arbitrage quốc tế.",
+      "<b>2. BlackHatWorld Marketplace — Social Media &amp; Ad Accounts (<code>blackhatworld.com</code>):</b> Nơi các nhà cung cấp lâu năm (Jr. VIP) bán tài khoản Google Ads đã qua XMDT và cho thuê tài khoản Agency.",
+      "<b>3. Tạp Hóa MMO (<code>taphoammo.net</code> — Việt Nam):</b> Sàn giao dịch tự động lớn nhất Việt Nam chuyên cung cấp Gmail cổ (Gmail 2014–2023), Via Google có lịch sử chi tiêu, tài khoản Google Ads kháng/XMDT và phôi/dịch vụ hỗ trợ.",
+      "<b>4. AccsMarket (<code>accsmarket.com</code>) &amp; HQ-Accounts:</b> Chợ quốc tế mua bán Gmail cổ ngâm lâu năm theo từng quốc gia (US, UK, DE, SG) để làm nguyên liệu gốc tạo tài khoản Google Ads.",
+      "<b>5. Các Nền Tảng Cho Thuê Tài Khoản Google Ads Agency (Monthly Invoicing):</b> <b>YeezyPay</b> (<code>yeezypay.io</code>), <b>ZaleyCash</b> (<code>zaleycash.com</code>), <b>GipsyLand</b>, <b>AdSkill</b>, <b>rib.agency</b> — cho phép nạp USDT để chạy trên các tài khoản đại lý cấp 1 (hạn mức chi tiêu không giới hạn, không dùng thẻ lẻ).",
+      "<b>6. Dun &amp; Bradstreet D-U-N-S Lookup (<code>dnb.com/duns-number/lookup.html</code>) + Extension <code>Play_DUNS</code>:</b> Hệ thống tra cứu và tự động ánh xạ mã D-U-N-S 9 chữ số của doanh nghiệp để tạo Hồ sơ thanh toán Tổ chức (Organization Payments Profile) đã xác thực pháp nhân."
     ]
   }
 ];
@@ -1712,23 +1803,59 @@ const ALL_33_LINKS = [
 ];
 
 const DATA_COMMUNITIES = [
-  { title: "1. CPA.RIP Official (@cparip) — Telegram Channel", desc: "Cộng đồng Arbitrage lớn nhất CIS/Quốc tế: Cập nhật tut lên camp Google Ads, BIN thẻ mới, vượt XMDT & warm-up tài khoản hàng ngày.", url: "https://t.me/cparip" },
-  { title: "2. Partnerkin English (@partnerkin_en) — Telegram Channel", desc: "Kênh tiếng Anh chuyên cập nhật thuật toán quét Google Ads, tut nuôi Via/Trust, nguồn Agency Account & Affiliate.", url: "https://t.me/partnerkin_en" },
-  { title: "3. Partnerkin Main (@thepartnerkin) — Telegram Channel", desc: "Cập nhật nhanh nhất các đợt bão quét (ban wave) của Google Ads, lỗ hổng Billing/Threshold & công cụ Antidetect/Proxy.", url: "https://t.me/thepartnerkin" },
-  { title: "4. Partnerkin Accounts (@partnerkin_accounts) — Telegram Group", desc: "Chuyên sâu về tài khoản Google Ads (TK cổ đã XMDT, MCC Invoice, nguồn thẻ VCC & dịch vụ KYC doanh nghiệp).", url: "https://t.me/partnerkin_accounts" },
-  { title: "5. Affiliate Times (@afftimes) — Telegram Channel", desc: "Kênh cập nhật tin tức Media Buying, chính sách Google Ads/FB Ads & mẹo lách lỗi Suspicious Payment hàng ngày.", url: "https://t.me/afftimes" },
-  { title: "6. Keitaro Tracker Chat EN (@keitaro_chat_en) — Telegram Chat", desc: "Phòng chat thực chiến tiếng Anh của dân chạy Google Ads Affiliate: Cấu hình Whitepage, bọc link & chống bot quét URL.", url: "https://t.me/keitaro_chat_en" },
-  { title: "7. Keitaro Tracker Chat CIS (@keitaro_ru_chat) — Telegram Chat", desc: "Phòng chat kỹ thuật cực đông (bật dịch tự động trên Telegram): Báo động sớm nhất mỗi khi Google đổi thuật toán quét camp.", url: "https://t.me/keitaro_ru_chat" },
-  { title: "8. Adspect Cloaking EN (@adspect_en) — Telegram Channel", desc: "Chuyên sâu về cơ chế AdsBot-Google, cách vượt vòng duyệt mẫu quảng cáo và bảo vệ trang đích không bị gắn cờ.", url: "https://t.me/adspect_en" },
-  { title: "9. TelegramDB Search Bot (@tgdb_bot) — Bot Dò Nhóm Kín", desc: "Mở bot và gõ lệnh: /search google ads | /search adwords | /search threshold | /search billing | /search арбитраж google để lấy danh sách hàng trăm group Telegram kín mới nhất.", url: "https://t.me/tgdb_bot" },
-  { title: "10. Searchee Bot (@SearcheeBot) — Bot Dò Nhóm Kín", desc: "Bot tìm kiếm danh bạ các kênh và nhóm Telegram kín theo từ khóa (Google Ads, Adwords Tut, VCC Google Ads, GMC Google Ads).", url: "https://t.me/SearcheeBot" },
-  { title: "11. TGStat Global Search — Công Cụ Tìm Tut Theo Thời Gian Thực", desc: "Khi Google vừa có đợt quét mới (ví dụ 'Pay with your payment method'), gõ chính xác câu thông báo lỗi vào ô Search của TGStat để thấy ngay các nhóm Telegram vừa đăng cách fix trong 1–2 giờ qua.", url: "https://tgstat.com/en/search" },
-  { title: "12. BlackHatWorld — Box Google Ads (Adwords)", desc: "Số 1 Thế Giới về Tut Threshold, Billing Pause, KYC Verification, Mã KM $500, Cloaking & Agency Invoice cập nhật từng giờ.", url: "https://www.blackhatworld.com/forums/adwords.83/" },
-  { title: "13. CPA.RIP Web Portal", desc: "Kho bài viết hướng dẫn từng bước kèm ảnh chụp màn hình về farm tài khoản Google Ads, lên camp mồi & vượt quét Billing.", url: "https://cpa.rip/" },
-  { title: "14. Reddit r/PPC (180.000+ Media Buyers)", desc: "Báo động thời gian thực mỗi khi Google cập nhật thuật toán quét Billing, tụt ngưỡng hoặc lỗi XMDT.", url: "https://www.reddit.com/r/PPC/" },
-  { title: "15. Reddit r/googleads", desc: "Thảo luận cách xử lý lỗi Account Paused, Start Task, BOV verification và kháng nghị tạm ngưng.", url: "https://www.reddit.com/r/googleads/" },
-  { title: "16. MMO4ME — Diễn Đàn MMO Việt Nam", desc: "Cộng đồng trao đổi nguồn thẻ VCC, Proxy dân cư, nuôi tài khoản Google Ads và dịch vụ XMDT tại Việt Nam.", url: "https://mmo4me.com/" },
-  { title: "17. AffiliateFix — Pay Per Click Forum", desc: "Chia sẻ chiến thuật chạy Search Ads, Display, YouTube và quản lý tài khoản MCC.", url: "https://www.affiliatefix.com/forums/pay-per-click.20/" }
+  // NHÓM 1: 12 KÊNH & PHÒNG CHAT TELEGRAM ARBITRAGE NGA/CIS & QUỐC TẾ (NƠI XUẤT PHÁT 80% TUT & TOOL NGẦM)
+  { group: "NHÓM 1 • Telegram Arbitrage Nga/CIS & Quốc Tế", title: "1. CPA.RIP Official (@cparip) — Kênh Telegram Số 1 Về Tut Google Ads", desc: "Cộng đồng Arbitrage lớn nhất CIS/Quốc tế: Cập nhật tut lên camp Google Ads, đầu BIN thẻ VCC mới, cách vượt XMDT, tạo Whitepage & warm-up tài khoản hàng ngày.", url: "https://t.me/cparip" },
+  { group: "NHÓM 1 • Telegram Arbitrage Nga/CIS & Quốc Tế", title: "2. ProTraffic Official (@protraffic_com) — Kênh Phân Tích Thuật Toán Quét Google", desc: "Chuyên mổ xẻ các đợt cập nhật thuật toán chống gian lận của Google Ads, tut chạy ngưỡng (Threshold), UAC, Search và case study thực chiến.", url: "https://t.me/protraffic_com" },
+  { group: "NHÓM 1 • Telegram Arbitrage Nga/CIS & Quốc Tế", title: "3. GdeTraffic (@gdetraffic) — Tin Tức Ngầm Media Buying & Cloaking", desc: "Cập nhật hàng ngày các phương pháp bọc link, lách kiểm duyệt ngành khó và danh sách các cổng thanh toán VCC đang sống.", url: "https://t.me/gdetraffic" },
+  { group: "NHÓM 1 • Telegram Arbitrage Nga/CIS & Quốc Tế", title: "4. Partnerkin Main (@thepartnerkin) — Kênh Cảnh Báo Bão Quét (Ban Waves)", desc: "Cập nhật nhanh nhất các đợt bão quét của Google Ads, lỗ hổng Billing/Threshold & công cụ Antidetect/Proxy mới.", url: "https://t.me/thepartnerkin" },
+  { group: "NHÓM 1 • Telegram Arbitrage Nga/CIS & Quốc Tế", title: "5. Partnerkin English (@partnerkin_en) — Bản Tiếng Anh Quốc Tế", desc: "Kênh tiếng Anh chuyên cập nhật thuật toán quét Google Ads, tut nuôi Via/Trust, nguồn Agency Account & Affiliate toàn cầu.", url: "https://t.me/partnerkin_en" },
+  { group: "NHÓM 1 • Telegram Arbitrage Nga/CIS & Quốc Tế", title: "6. Partnerkin Accounts (@partnerkin_accounts) — Chợ Tài Khoản & Hồ Sơ KYC", desc: "Chuyên sâu về mua bán/trao đổi tài khoản Google Ads cổ đã XMDT, MCC Invoice, nguồn thẻ VCC & dịch vụ KYC doanh nghiệp.", url: "https://t.me/partnerkin_accounts" },
+  { group: "NHÓM 1 • Telegram Arbitrage Nga/CIS & Quốc Tế", title: "7. Traffic Cardinal (@traffic_cardinal) — Cộng Đồng Media Buying Thực Chiến", desc: "Chia sẻ quy trình farm tài khoản Google Ads, cách xử lý lỗi Suspicious Payments và Circumventing Systems.", url: "https://t.me/traffic_cardinal" },
+  { group: "NHÓM 1 • Telegram Arbitrage Nga/CIS & Quốc Tế", title: "8. ZorbasMedia (@zorbasmedia) — Kênh Tin Tức Affiliate & Google Ads Quốc Tế", desc: "Phân tích chuyên sâu về lưu lượng tìm kiếm (Search Arbitrage), PMax, YouTube Ads và các công cụ AI hỗ trợ lên camp.", url: "https://t.me/zorbasmedia" },
+  { group: "NHÓM 1 • Telegram Arbitrage Nga/CIS & Quốc Tế", title: "9. Affiliate Times (@afftimes) — Bản Tin Media Buying Hàng Ngày", desc: "Cập nhật chính sách mới của Google Ads, danh sách đầu BIN thẻ và các bài test thực tế từ các đội chạy Ads lớn.", url: "https://t.me/afftimes" },
+  { group: "NHÓM 1 • Telegram Arbitrage Nga/CIS & Quốc Tế", title: "10. Keitaro Tracker Chat EN (@keitaro_chat_en) — Phòng Chat Kỹ Thuật Cloaking/Tracking", desc: "Phòng chat tiếng Anh của dân chạy Google Ads Affiliate: Cấu hình KClient PHP không chuyển hướng, Whitepage & chống bot quét URL.", url: "https://t.me/keitaro_chat_en" },
+  { group: "NHÓM 1 • Telegram Arbitrage Nga/CIS & Quốc Tế", title: "11. Keitaro Tracker Chat CIS (@keitaro_ru_chat) — Phòng Chat Kỹ Thuật Đông Nhất", desc: "Phòng chat kỹ thuật cực đông (bật tính năng Dịch tự động của Telegram để đọc): Báo động sớm nhất mỗi khi Google đổi dải IP bot duyệt camp.", url: "https://t.me/keitaro_ru_chat" },
+  { group: "NHÓM 1 • Telegram Arbitrage Nga/CIS & Quốc Tế", title: "12. Adspect Cloaking & Bot Research (@adspect_en) — Nghiên Cứu AdsBot-Google", desc: "Chuyên sâu về cơ chế hoạt động của AdsBot-Google, JS Fingerprinting và cách bảo vệ trang đích không bị gắn cờ Malicious/Compromised.", url: "https://t.me/adspect_en" },
+
+  // NHÓM 2: 8 DIỄN ĐÀN UNDERGROUND & AFFILIATE QUỐC TẾ (BHW, CPA.RIP, STM, AFFLIFT...)
+  { group: "NHÓM 2 • Diễn Đàn Underground Quốc Tế", title: "13. BlackHatWorld — Box Google Ads / Adwords (Số 1 Thế Giới Về Tut Ngầm)", desc: "Box thảo luận sôi động nhất thế giới về Tut Threshold, lỗi Pay with your payment method, KYC Verification, Mã KM $500, Cloaking & kháng tài khoản.", url: "https://www.blackhatworld.com/forums/adwords.83/" },
+  { group: "NHÓM 2 • Diễn Đàn Underground Quốc Tế", title: "14. BlackHatWorld — Box Cloaking & Content Generators", desc: "Chuyên mục bàn sâu về các phần mềm Cloaker cho Google Ads, cách tạo Whitepage tự động và kỹ thuật ẩn phễu bán hàng.", url: "https://www.blackhatworld.com/forums/cloaking-and-content-generators.2/" },
+  { group: "NHÓM 2 • Diễn Đàn Underground Quốc Tế", title: "15. BlackHatWorld — Marketplace (Mua Bán Tài Khoản Cổ, VCC, Proxy)", desc: "Chợ giao dịch tài khoản Google Ads đã xác minh, dịch vụ thuê tài khoản Agency Invoice và thẻ ảo VCC của các seller quốc tế.", url: "https://www.blackhatworld.com/forums/social-media.200/" },
+  { group: "NHÓM 2 • Diễn Đàn Underground Quốc Tế", title: "16. CPA.RIP — Chuyên Mục Google Ads Tutorials (Kho Tut Chi Tiết Nhất)", desc: "Tổng hợp hàng trăm bài hướng dẫn từng bước kèm ảnh chụp màn hình về farm tài khoản Google Ads, lên camp mồi & vượt quét Billing.", url: "https://cpa.rip/google-ads/" },
+  { group: "NHÓM 2 • Diễn Đàn Underground Quốc Tế", title: "17. Traffic Cardinal — Google Ads & UAC Arbitrage Portal", desc: "Cổng thông tin chuyên về kỹ thuật chạy Google Ads, Universal App Campaigns (UAC) và cách xử lý tài khoản bị tạm ngưng.", url: "https://trafficcardinal.com/" },
+  { group: "NHÓM 2 • Diễn Đàn Underground Quốc Tế", title: "18. AffLIFT — Diễn Đàn Paid Traffic & Google Ads Affiliate", desc: "Cộng đồng chia sẻ các chiến dịch chạy thật (Follow-Along Campaigns), cách tối ưu từ khóa và tracking chuyển đổi.", url: "https://afflift.com/" },
+  { group: "NHÓM 2 • Diễn Đàn Underground Quốc Tế", title: "19. STM Forum (Affiliate World Forum) — Diễn Đàn Media Buying Cao Cấp", desc: "Diễn đàn kín lâu đời nhất của các Super Affiliates thế giới chuyên bàn về Google Search, YouTube Ads và E-commerce scaling.", url: "https://stmforum.com/" },
+  { group: "NHÓM 2 • Diễn Đàn Underground Quốc Tế", title: "20. AffiliateFix — Pay Per Click (PPC) Forum", desc: "Diễn đàn thảo luận công khai về cách thiết lập chiến dịch Search, Display, YouTube và xử lý các lỗi thanh toán cơ bản.", url: "https://www.affiliatefix.com/forums/pay-per-click.20/" },
+
+  // NHÓM 3: 8 CỘNG ĐỒNG, DIỄN ĐÀN & CHỢ MMO / GOOGLE ADS TẠI VIỆT NAM
+  { group: "NHÓM 3 • Cộng Đồng & Chợ Google Ads Việt Nam", title: "21. MMO4ME (mmo4me.com) — Diễn Đàn Kiếm Tiền Online Lớn Nhất Việt Nam", desc: "Nơi anh em MMO Việt Nam trao đổi nguồn thẻ VCC, ngân hàng số, Proxy dân cư, tool tự động hóa và kinh nghiệm nuôi tài khoản Google Ads.", url: "https://mmo4me.com/" },
+  { group: "NHÓM 3 • Cộng Đồng & Chợ Google Ads Việt Nam", title: "22. Tạp Hóa MMO (taphoammo.net) — Sàn Mua Bán Nguyên Liệu Google Ads VN", desc: "Chợ tự động lớn nhất VN cung cấp Gmail cổ (2014–2023), Via Google có lịch sử, tài khoản Google Ads đã XMDT, mã khuyến mãi và dịch vụ kháng nghị.", url: "https://taphoammo.net/" },
+  { group: "NHÓM 3 • Cộng Đồng & Chợ Google Ads Việt Nam", title: "23. Hệ Sinh Thái GPMLogin Việt Nam (gpmloginapp.com)", desc: "Cộng đồng người dùng trình duyệt Antidetect GPMLogin tại Việt Nam: Chia sẻ script RPA, extension tự động hóa tạo tài khoản và nuôi Gmail.", url: "https://gpmloginapp.com/" },
+  { group: "NHÓM 3 • Cộng Đồng & Chợ Google Ads Việt Nam", title: "24. Cộng Đồng Google Ads Việt Nam (Nhóm Facebook Thực Chiến)", desc: "Nơi cập nhật nhanh tình hình bão quét tại thị trường Việt Nam, đầu thẻ ngân hàng VN nào (ACB, VPBank, Techcombank, MB, Timo) đang gắn mượt.", url: "https://www.facebook.com/search/groups/?q=google%20ads%20vi%E1%BB%87t%20nam" },
+  { group: "NHÓM 3 • Cộng Đồng & Chợ Google Ads Việt Nam", title: "25. Cộng Đồng Google Merchant Center (GMC) & Google Shopping Việt Nam", desc: "Chuyên sâu về tạo và kháng tài khoản GMC, fix lỗi Misrepresentation (Gian lận/Trình bày sai lệch) và đồng bộ feed sang Google Ads.", url: "https://www.facebook.com/search/groups/?q=google%20merchant%20center%20vi%E1%BB%87t%20nam" },
+  { group: "NHÓM 3 • Cộng Đồng & Chợ Google Ads Việt Nam", title: "26. Diễn Đàn VOZ — Chuyên Mục MMO & Digital Marketing", desc: "Các luồng thảo luận kỹ thuật sâu của lập trình viên & marketer Việt Nam về Google Ads, AdSense, AdMob và Global E-commerce.", url: "https://voz.vn/" },
+  { group: "NHÓM 3 • Cộng Đồng & Chợ Google Ads Việt Nam", title: "27. Danh Bạ Các Nhóm Telegram Google Ads Việt Nam Trên TGStat", desc: "Truy cập trực tiếp kết quả lọc toàn bộ các nhóm và kênh Telegram tại Việt Nam có từ khóa 'Google Ads', 'Via Google', 'GMC', 'XMDT'.", url: "https://tgstat.com/en/search?q=google%20ads%20vi%E1%BB%87t%20nam" },
+  { group: "NHÓM 3 • Cộng Đồng & Chợ Google Ads Việt Nam", title: "28. Cộng Đồng Tự Động Hóa ZennoPoster & BAS Việt Nam", desc: "Nơi chia sẻ các mẫu project (.xmlz / BAS script) tự động tạo và nuôi dàn tài khoản Google trên máy chủ Windows.", url: "https://www.facebook.com/search/groups/?q=browser%20automation%20studio%20viet%20nam" },
+
+  // NHÓM 4: 8 CỘNG ĐỒNG PPC CHÍNH THỐNG, REDDIT & DEVELOPER QUỐC TẾ (BÁO ĐỘNG LỖI HỆ THỐNG SỚM NHẤT)
+  { group: "NHÓM 4 • Cộng Đồng PPC & Developer Quốc Tế", title: "29. Reddit r/PPC (180.000+ Chuyên Gia Quản Lý Ngân Sách Lớn)", desc: "Nơi báo động theo thời gian thực mỗi khi Google cập nhật thuật toán quét Billing, lỗi giao diện, tụt hiển thị hoặc thay đổi quy trình XMDT.", url: "https://www.reddit.com/r/PPC/" },
+  { group: "NHÓM 4 • Cộng Đồng PPC & Developer Quốc Tế", title: "30. Reddit r/googleads (60.000+ Nhà Quảng Cáo Thực Chiến)", desc: "Chuyên thảo luận cách xử lý lỗi Account Paused, Pay with your payment method, Business Operations Verification (BOV) và kháng nghị Multiple Account Abuse.", url: "https://www.reddit.com/r/googleads/" },
+  { group: "NHÓM 4 • Cộng Đồng PPC & Developer Quốc Tế", title: "31. Reddit r/adwords — Kho Kinh Nghiệm Lâu Đời", desc: "Lưu trữ hàng nghìn ca xử lý sự cố tài khoản Google Ads và cấu trúc MCC thực tế.", url: "https://www.reddit.com/r/adwords/" },
+  { group: "NHÓM 4 • Cộng Đồng PPC & Developer Quốc Tế", title: "32. Google Ads Official Help Community (Diễn Đàn Product Experts Chính Chủ)", desc: "Khi gặp mã lỗi lạ (như OR_SC_01, OR-BAIH-01, lỗi kẹt xác minh), tra cứu tại đây để xem câu trả lời trực tiếp từ các Diamond Product Experts của Google.", url: "https://support.google.com/google-ads/community" },
+  { group: "NHÓM 4 • Cộng Đồng PPC & Developer Quốc Tế", title: "33. Google Ads API & Scripts Developer Forum (Google Groups Chính Chủ)", desc: "Diễn đàn kỹ thuật chính thức của kỹ sư Google Ads API & Scripts — nơi tra cứu mọi thay đổi về endpoint v25, OAuth và Bulk Upload.", url: "https://groups.google.com/g/adwords-api" },
+  { group: "NHÓM 4 • Cộng Đồng PPC & Developer Quốc Tế", title: "34. Search Engine Land — Chuyên Mục Google Ads News", desc: "Tờ báo chuyên ngành cập nhật sớm nhất mọi thay đổi về chính sách quảng cáo và thuật toán đấu giá của Google.", url: "https://searchengineland.com/library/platforms/google/google-ads" },
+  { group: "NHÓM 4 • Cộng Đồng PPC & Developer Quốc Tế", title: "35. PPC Chat Community (#ppcchat) & Slack Group", desc: "Cộng đồng thảo luận hàng tuần của các chuyên gia PPC tại Mỹ và Châu Âu.", url: "https://ppcchat.co/" },
+  { group: "NHÓM 4 • Cộng Đồng PPC & Developer Quốc Tế", title: "36. Google Ads Status Dashboard (Bảng Kiểm Tra Lỗi Máy Chủ Google)", desc: "Trang kiểm tra chính thức xem hệ thống Google Ads toàn cầu có đang bị lỗi duyệt bài, lỗi báo cáo hay lỗi thanh toán hay không.", url: "https://ads.google.com/status/publisher/" },
+
+  // NHÓM 5: 8 BOT & MÁY TÌM KIẾM TIN NHẮN TRONG CÁC NHÓM TELEGRAM KÍN THEO THỜI GIAN THỰC
+  { group: "NHÓM 5 • Máy Dò Nhóm Kín & Code Ngầm Thời Gian Thực", title: "37. TGStat Global Real-Time Search (Đọc Tin Nhắn Mọi Nhóm Telegram Vừa Đăng)", desc: "Vũ khí lợi hại nhất: Gõ bất kỳ thông báo lỗi nào (ví dụ 'Multiple account abuse', '65 SGD', 'Pay with your payment method', 'промокод google ads 500') để đọc trực tiếp các tin nhắn vừa được đăng trong 1–2 giờ qua từ hàng nghìn nhóm Telegram!", url: "https://tgstat.com/en/search" },
+  { group: "NHÓM 5 • Máy Dò Nhóm Kín & Code Ngầm Thời Gian Thực", title: "38. TelegramDB Search Bot (@tgdb_bot) — Bot Liệt Kê Link Nhóm Kín", desc: "Mở bot trên Telegram và gõ lệnh: /search google ads | /search adwords | /search threshold | /search billing | /search арбитраж google để xuất ra hàng trăm nhóm chat kín.", url: "https://t.me/tgdb_bot" },
+  { group: "NHÓM 5 • Máy Dò Nhóm Kín & Code Ngầm Thời Gian Thực", title: "39. Searchee Bot (@SearcheeBot) — Bot Dò Kênh & Chợ Ngầm Telegram", desc: "Bot tìm kiếm danh bạ các kênh và nhóm Telegram theo từ khóa (Google Ads, VCC, BIN, DUNS, GMC, Cloaking).", url: "https://t.me/SearcheeBot" },
+  { group: "NHÓM 5 • Máy Dò Nhóm Kín & Code Ngầm Thời Gian Thực", title: "40. Telemetr.io (telemetr.io/en/channels) — Kho Phân Tích Kênh Telegram Thế Giới", desc: "Tìm kiếm và xếp hạng toàn bộ các kênh Telegram về Traffic Arbitrage, Google Ads và Crypto/CPA theo quốc gia.", url: "https://telemetr.io/en/channels" },
+  { group: "NHÓM 5 • Máy Dò Nhóm Kín & Code Ngầm Thời Gian Thực", title: "41. Telegago — Máy Tìm Kiếm Google Custom Search Dành Riêng Cho Link Mời Nhóm Kín (t.me/joinchat)", desc: "Công cụ Google CSE được cấu hình riêng để quét các đường link mời vào nhóm kín Telegram (t.me/joinchat/... và t.me/+...) liên quan đến Google Ads.", url: "https://cse.google.com/cse?cx=006368593537057042503:efxu7xprihg" },
+  { group: "NHÓM 5 • Máy Dò Nhóm Kín & Code Ngầm Thời Gian Thực", title: "42. Lyzem.com — Máy Tìm Kiếm Xuyên Qua Các Kênh & Nhóm Thảo Luận Telegram", desc: "Gõ từ khóa kỹ thuật Google Ads để tìm trực tiếp bài đăng và file chia sẻ bên trong các nhóm Telegram.", url: "https://lyzem.com/" },
+  { group: "NHÓM 5 • Máy Dò Nhóm Kín & Code Ngầm Thời Gian Thực", title: "43. GitHub Topic: google-ads-scripts (Kho Script Tự Động Hóa Cập Nhật Hàng Tuần)", desc: "Nơi các lập trình viên toàn cầu đẩy lên các đoạn code Google Ads Scripts mới nhất để tự động hóa quản lý camp và MCC.", url: "https://github.com/topics/google-ads-scripts" },
+  { group: "NHÓM 5 • Máy Dò Nhóm Kín & Code Ngầm Thời Gian Thực", title: "44. GitHub Topic: google-ads-api & MCP Servers", desc: "Tổng hợp toàn bộ các dự án mã nguồn mở tích hợp Google Ads API và AI Agent MCP Server mới nhất trên GitHub.", url: "https://github.com/topics/google-ads-api" }
 ];
 
 // CHUYỂN ĐỔI MARKDOWN CỦA DEEPSEEK SANG HTML ĐẸP NHƯ KHUNG CHAT
@@ -1849,13 +1976,13 @@ function renderCommunities() {
     card.innerHTML = `
       <div class="step-head">
         <div class="step-title">${c.title}</div>
-        <span class="step-badge">Hội Nhóm Kín &amp; Diễn Đàn</span>
+        <span class="step-badge">${c.group || "Hội Nhóm Kín & Diễn Đàn"}</span>
       </div>
       <div style="font-size:15px;color:var(--text-body);">${c.desc}</div>
       <div class="url-inline">${c.url}</div>
       <div class="btn-group">
         <button class="btn-main" onclick="copyText('${c.url}')">📋 Copy Link</button>
-        <a class="btn-sub" href="${c.url}" target="_blank">🚀 Truy Cập</a>
+        <a class="btn-sub" href="${c.url}" target="_blank">🚀 Truy Cập Ngay</a>
       </div>
     `;
     el.appendChild(card);
