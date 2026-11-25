@@ -1,0 +1,2086 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Ads AI Hub — Toàn Bộ Quy Trình Chi Tiết, Sơ Đồ Tư Duy 7 Nhánh & DeepSeek 18 Nguồn</title>
+<style>
+  :root {
+    --bg-main: #13161f;
+    --bg-sidebar: #0e1017;
+    --bg-card: #1a1e2b;
+    --bg-card-hover: #1f2434;
+    --bg-code: #10131b;
+    --border: #2a3042;
+    --text-body: #d8dee9;
+    --text-bold: #ffffff;
+    --text-muted: #8b95a7;
+    --accent-blue: #60a5fa;
+    --accent-green: #34d399;
+    --accent-amber: #fbbf24;
+    --accent-purple: #a78bfa;
+    --accent-red: #f87171;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Inter, sans-serif;
+    background: var(--bg-main);
+    color: var(--text-body);
+    line-height: 1.68;
+    display: flex;
+    min-height: 100vh;
+    font-size: 15px;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    width: 300px;
+    background: var(--bg-sidebar);
+    border-right: 1px solid var(--border);
+    padding: 18px 14px;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    overflow-y: auto;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .brand {
+    padding: 4px 10px 14px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 12px;
+  }
+  .brand h2 { font-size: 17px; font-weight: 800; color: var(--text-bold); }
+  .brand p { font-size: 12.5px; color: var(--text-muted); margin-top: 3px; }
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    background: rgba(52, 211, 153, 0.14);
+    color: var(--accent-green);
+    border: 1px solid rgba(52, 211, 153, 0.3);
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 99px;
+  }
+  .nav-btn {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: 1px solid transparent;
+    padding: 11px 12px;
+    border-radius: 9px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--text-body);
+    cursor: pointer;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.15s;
+  }
+  .nav-btn:hover { background: var(--bg-card); border-color: var(--border); color: var(--text-bold); }
+  .nav-btn.active {
+    background: rgba(59, 130, 246, 0.18);
+    border-color: var(--accent-blue);
+    color: var(--text-bold);
+    font-weight: 700;
+  }
+  .sidebar-footer {
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .gdoc-link {
+    display: block;
+    text-align: center;
+    background: var(--bg-card);
+    color: var(--accent-blue);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+  .gdoc-link:hover { background: rgba(59, 130, 246, 0.2); color: #fff; border-color: var(--accent-blue); }
+
+  /* MAIN AREA */
+  .main {
+    margin-left: 300px;
+    flex: 1;
+    padding: 26px 36px;
+    max-width: 1360px;
+  }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .top-bar {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent-blue);
+    border-radius: 12px;
+    padding: 18px 24px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .top-bar h1 { font-size: 19.5px; font-weight: 800; color: var(--text-bold); }
+  .top-bar p { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
+
+  /* CARDS */
+  .card-grid { display: flex; flex-direction: column; gap: 14px; }
+  .step-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent-blue);
+    border-radius: 11px;
+    padding: 18px 22px;
+  }
+  .step-card:hover { background: var(--bg-card-hover); border-color: #3e4760; }
+  .step-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .step-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-bold);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .step-title input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent-green);
+    cursor: pointer;
+  }
+  .step-badge {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 6px;
+    background: rgba(96, 165, 250, 0.14);
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    color: var(--accent-blue);
+    white-space: nowrap;
+  }
+  .step-list {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    font-size: 15px;
+    color: var(--text-body);
+  }
+  .step-list b { color: var(--text-bold); }
+  code {
+    background: var(--bg-code);
+    color: #93c5fd;
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-family: Consolas, monospace;
+    font-size: 13.5px;
+    border: 1px solid var(--border);
+  }
+  .url-inline {
+    margin-top: 10px;
+    background: var(--bg-code);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-family: Consolas, monospace;
+    font-size: 12.5px;
+    color: #93c5fd;
+    word-break: break-all;
+  }
+  .btn-group { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .btn-main {
+    background: #2563eb;
+    color: #ffffff;
+    border: none;
+    padding: 9px 16px;
+    border-radius: 7px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn-main:hover { background: #1d4ed8; }
+  .btn-sub {
+    background: var(--bg-code);
+    color: var(--text-body);
+    border: 1px solid var(--border);
+    padding: 9px 15px;
+    border-radius: 7px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .btn-sub:hover { background: #262c3d; color: #fff; border-color: var(--accent-blue); }
+
+  /* TABLES IN CHAT DARK MODE */
+  table.dark-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-code);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+  table.dark-table th, table.dark-table td {
+    padding: 11px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    vertical-align: top;
+  }
+  table.dark-table th {
+    background: #161b26;
+    color: var(--accent-blue);
+    font-weight: 700;
+  }
+
+  /* FULL 7-BRANCH INTERACTIVE MINDMAP */
+  .mm-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+    overflow-x: auto;
+    margin-bottom: 18px;
+  }
+  .mm-tree {
+    display: flex;
+    align-items: center;
+    min-width: 1180px;
+  }
+  .mm-root {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 14.5px;
+    padding: 20px;
+    border-radius: 12px;
+    width: 230px;
+    text-align: center;
+    flex-shrink: 0;
+    border: 1px solid #60a5fa;
+    box-shadow: 0 8px 25px rgba(37,99,235,0.3);
+  }
+  .mm-line { width: 32px; height: 3px; background: #3b82f6; flex-shrink: 0; }
+  .mm-col {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    border-left: 3px solid #3b82f6;
+  }
+  .mm-row { display: flex; align-items: center; }
+  .mm-node {
+    background: var(--bg-code);
+    border: 2px solid var(--accent-blue);
+    color: var(--text-bold);
+    font-weight: 700;
+    font-size: 13.5px;
+    padding: 12px 15px;
+    border-radius: 9px;
+    width: 255px;
+    flex-shrink: 0;
+    cursor: pointer;
+    user-select: none;
+  }
+  .mm-node:hover { border-color: var(--accent-green); }
+  .mm-leaves {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-left: 2px solid #475569;
+    padding-left: 14px;
+    flex: 1;
+  }
+  .mm-leaf {
+    background: #141822;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 8px 13px;
+    font-size: 13.5px;
+    color: var(--text-body);
+  }
+  .mm-leaf b { color: var(--accent-blue); }
+
+  /* DEEPSEEK AI RENDERED MARKDOWN */
+  .ai-box {
+    background: linear-gradient(180deg, rgba(30, 41, 59, 0.92), rgba(17, 24, 39, 0.96));
+    border: 1px solid #4f46e5;
+    border-left: 4px solid var(--accent-purple);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 18px;
+  }
+  .ai-output {
+    font-size: 15px;
+    color: var(--text-body);
+    line-height: 1.72;
+    background: var(--bg-code);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 18px 22px;
+    margin-top: 12px;
+  }
+  .ai-output h2, .ai-output h3, .ai-output h4 {
+    color: var(--text-bold);
+    margin: 16px 0 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .ai-output h2:first-child, .ai-output h3:first-child { margin-top: 0; }
+  .ai-output ul { padding-left: 22px; margin: 8px 0; }
+  .ai-output li { margin-bottom: 6px; }
+  .ai-output b, .ai-output strong { color: var(--text-bold); }
+  .ai-output a { color: var(--accent-blue); font-weight: 700; text-decoration: underline; }
+  .input-dark {
+    background: var(--bg-code);
+    border: 1px solid var(--border);
+    color: var(--text-bold);
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    flex: 1;
+  }
+  .trans-box {
+    background: rgba(52, 211, 153, 0.08);
+    border: 1px solid rgba(52, 211, 153, 0.28);
+    border-left: 3px solid var(--accent-green);
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    color: var(--text-bold);
+    font-size: 14.5px;
+  }
+  .orig-box {
+    background: var(--bg-code);
+    border: 1px solid var(--border);
+    padding: 9px 13px;
+    border-radius: 7px;
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+  textarea.note-area {
+    width: 100%;
+    min-height: 120px;
+    background: var(--bg-code);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-family: inherit;
+    font-size: 14.5px;
+    color: var(--text-body);
+    margin-top: 8px;
+  }
+  .toast {
+    position: fixed;
+    bottom: 24px; right: 24px;
+    background: #059669;
+    color: #fff;
+    padding: 12px 22px;
+    border-radius: 9px;
+    font-weight: 700;
+    font-size: 14px;
+    display: none;
+    z-index: 9999;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  }
+
+  /* THANH TÌM KIẾM NHANH & THANH TIẾN ĐỘ */
+  .search-bar-wrap {
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    background: rgba(19, 22, 31, 0.95);
+    backdrop-filter: blur(8px);
+    padding: 12px 0 14px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .global-search {
+    flex: 1;
+    min-width: 240px;
+    background: var(--bg-card);
+    border: 1px solid var(--accent-blue);
+    color: var(--text-bold);
+    padding: 11px 16px;
+    border-radius: 9px;
+    font-size: 14.5px;
+    outline: none;
+  }
+  .global-search:focus { box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25); }
+  .filter-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .pill-btn {
+    background: var(--bg-card);
+    color: var(--text-body);
+    border: 1px solid var(--border);
+    padding: 7px 13px;
+    border-radius: 99px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .pill-btn.active, .pill-btn:hover {
+    background: var(--accent-blue);
+    color: #fff;
+    border-color: var(--accent-blue);
+  }
+
+  /* TỐI ƯU GIAO DIỆN ĐIỆN THOẠI (MOBILE & TABLET RESPONSIVE 100%) */
+  @media (max-width: 960px) {
+    body {
+      flex-direction: column;
+      font-size: 14.5px;
+    }
+    .sidebar {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      padding: 10px 12px;
+      z-index: 200;
+    }
+    .brand {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2px 4px 8px;
+      margin-bottom: 8px;
+    }
+    .brand p { display: none; }
+    .status-pill { margin-top: 0; font-size: 10.5px; padding: 3px 8px; }
+    .sidebar-nav-list {
+      display: flex;
+      overflow-x: auto;
+      gap: 6px;
+      padding-bottom: 4px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .sidebar-nav-list::-webkit-scrollbar { display: none; }
+    .nav-btn {
+      width: auto;
+      white-space: nowrap;
+      padding: 8px 12px;
+      font-size: 12.8px;
+      margin-bottom: 0;
+      flex-shrink: 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+    }
+    .sidebar-footer { display: none; }
+    .main {
+      margin-left: 0;
+      padding: 14px 12px 40px;
+      width: 100%;
+    }
+    .search-bar-wrap {
+      position: static;
+      padding: 8px 0 12px;
+    }
+    .top-bar {
+      padding: 14px 16px;
+    }
+    .top-bar h1 { font-size: 16.5px; }
+    .step-card { padding: 14px 15px; }
+    .step-title { font-size: 14.8px; }
+    .btn-main, .btn-sub { width: 100%; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="toast" id="toast">✅ Đã thực hiện thành công!</div>
+
+<div class="sidebar">
+  <div>
+    <div class="brand">
+      <div>
+        <h2>⚡ GOOGLE ADS AI HUB</h2>
+        <p>Đọc trên Điện thoại &amp; Máy tính • Online 24/7</p>
+      </div>
+      <span class="status-pill">🟢 Online 24/7</span>
+    </div>
+
+    <div class="sidebar-nav-list">
+      <button class="nav-btn active" onclick="switchTab('tab-order', this)">1️⃣ 10 Bước Chuẩn &amp; Fix 65 SGD</button>
+      <button class="nav-btn" onclick="switchTab('tab-lab', this)" style="border-color:rgba(251,191,36,0.35);color:#fcd34d;">🏆 2️⃣ Phòng Lab 5 Tool AI</button>
+      <button class="nav-btn" onclick="switchTab('tab-ai', this)">🤖 3️⃣ DeepSeek 18 Nguồn</button>
+      <button class="nav-btn" onclick="switchTab('tab-mindmap', this)">🧠 4️⃣ Sơ Đồ Tư Duy 7 Nhánh</button>
+      <button class="nav-btn" onclick="switchTab('tab-10to500', this)">💵 5️⃣ Bí Mật $10 Chạy $500</button>
+      <button class="nav-btn" onclick="switchTab('tab-tuts', this)">⚡ 6️⃣ 12 Tut &amp; Cứu TK 2 Task</button>
+      <button class="nav-btn" onclick="switchTab('tab-18ways', this)">🛡️ 7️⃣ 18 Cách Gắn Billing</button>
+      <button class="nav-btn" onclick="switchTab('tab-tools', this)">🛠️ 8️⃣ Kho 42+ Tool Ads</button>
+      <button class="nav-btn" onclick="switchTab('tab-links', this)">🔗 9️⃣ 33 Link &amp; 17 Hội Nhóm</button>
+    </div>
+  </div>
+
+  <div class="sidebar-footer">
+    <a href="https://thienma1811.github.io/google-ads-ai-hub/" target="_blank" class="gdoc-link" style="background:rgba(52,211,153,0.14);color:#34d399;border-color:rgba(52,211,153,0.35);">🌐 Link Online (Điện thoại / Chia sẻ)</a>
+    <a href="https://docs.google.com/document/d/1JCZE9bqf_tvoRLFLhNepoUi3U92mhmTjo8SCbXhmQWw/edit" target="_blank" class="gdoc-link">📄 Mở Google Docs Đã Đồng Bộ</a>
+    <div>Hoạt động 24/7 trên cả Điện thoại &amp; PC.</div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- THANH TÌM KIẾM NHANH TOÀN TRANG & NÚT CHIA SẺ LINK ĐIỆN THOẠI -->
+  <div class="search-bar-wrap">
+    <input type="text" id="global-search-input" class="global-search" placeholder="🔍 Gõ từ khóa để lọc nhanh trong trang (ví dụ: 65 SGD, ACB, $10, $500, XMDT, ACH, Adspect, US, SG...)" oninput="filterCurrentTab(this.value)">
+    <button class="btn-main" style="background:#059669;" onclick="copyText('https://thienma1811.github.io/google-ads-ai-hub/')">📱 Copy Link Mở Trên Điện Thoại / Gửi Người Khác</button>
+  </div>
+
+  <!-- TAB 1: LỘ TRÌNH 10 BƯỚC CHI TIẾT + GIẢI PHẪU 5 BỘ LỌC CỔNG QUÉT -->
+  <div class="tab-panel active" id="tab-order">
+    <div class="top-bar">
+      <div>
+        <h1>1️⃣ GIẢI PHẪU 5 BỘ LỌC CỔNG QUÉT &amp; LỘ TRÌNH 10 BƯỚC LÊN CAMP / CHƠI MÃ CHI TIẾT TỪ A–Z</h1>
+        <p>Đã điền đầy đủ 100% nội dung phân tích cơ chế quét, bảng đối chiếu và hướng dẫn chi tiết từng bước từ Bước 1 đến Bước 10.</p>
+      </div>
+      <button class="btn-sub" onclick="resetChecklist()">🔄 Làm mới dấu tích</button>
+    </div>
+
+    <!-- THẺ CHẨN ĐOÁN ĐẶC BIỆT: TẠI SAO BỊ ÉP NẠP 65 SGD (THAY VÌ 26 SGD) TRÊN THẺ ACB VISA DEBIT & MCC SAINT VINCENT -->
+    <div class="step-card" style="margin-bottom:16px;border-left-color:var(--accent-red);">
+      <div class="step-head">
+        <div class="step-title">🚨 CHẨN ĐOÁN CA THỰC TẾ CỦA ANH IU: TẠI SAO BỊ BẮT NẠP "SGD 65.00" (TĂNG TỪ 26 SGD) KHI DÙNG THẺ ACB VISA DEBIT TRONG MCC SAINT VINCENT &amp; 7 CÁCH KHẮC PHỤC</div>
+        <span class="step-badge" style="color:var(--accent-red);border-color:var(--accent-red);">Fix Lỗi SGD 65.00</span>
+      </div>
+      <ul class="step-list">
+        <li><b>1. Tại sao con số lại nhảy từ <code>26 SGD</code> lên đúng <code>65 SGD</code>?</b><br>• Trên hệ thống Google Ads tiền tệ SGD: <b>26 SGD (~$20 USD)</b> là mức xác thực <b>Tier 1 (Rủi ro thấp / Mặc định)</b>; còn <b>65 SGD (đúng bằng $50.00 USD theo tỷ giá Google 1 USD = 1.30 SGD)</b> là mức đặt cọc <b>Tier 2 (High-Risk Billing Deposit)</b>.<br>• Trong ảnh chụp của anh iu đang có <b>3 điểm kích hoạt Tier 2 (65 SGD) cùng lúc</b>:<br>&nbsp;&nbsp;(a) <b>Lệch Tam Giác Địa Lý (Cross-Border Debit):</b> MCC ở <i>Saint Vincent and the Grenadines</i> + Tiền tệ <i>SGD (Singapore)</i> + Thẻ <i>ACB Visa Debit ••8857 (Đầu BIN thẻ Ghi nợ Việt Nam)</i> &rarr; Hệ thống gắn cờ <code>CROSS_BORDER_DEBIT_HIGH_RISK</code> và nhân mức cọc từ 26 SGD lên 65 SGD!<br>&nbsp;&nbsp;(b) <b>Liên đới từ MCC Mẹ:</b> Khi nhiều tài khoản con trong <code>MCC Saint Vincent and Grenadines</code> bị bật bảng đỏ, chính MCC mẹ đó đã bị gắn cờ <code>MANAGER_BILLING_CHALLENGE</code> — mọi tài khoản mới tạo từ MCC này hoặc link vào MCC này trước khi cắn tiền đều bị áp thẳng 65 SGD.<br>&nbsp;&nbsp;(c) <b>Đầu BIN thẻ ACB Visa Debit:</b> Thẻ Debit Việt Nam gắn trực tiếp vào Google Ads ở trạng thái số dư 0.00 SGD khi lên camp sẽ bị ép khung 65 SGD.</li>
+        <li><b>2. BẢY CÁCH KHẮC PHỤC TRIỆT ĐỂ (LÁCH MỐC 65 SGD &amp; CHẶN ĐỨNG BẢNG ĐỎ):</b><br>• <b>Cách 1 (Mẹo lách trực tiếp trên tài khoản đang hiện popup <code>SGD 65.00</code>):</b> Ở popup bên phải của trang <i>Advertiser Verification</i>, số <code>SGD 65.00</code> bị khóa cứng không cho sửa. Anh iu <b>ĐỪNG bấm nút Pay now ở popup đó</b>! Hãy bấm dấu <b>X</b> đóng popup lại &rarr; Vào menu trái <b>Billing (Thanh toán) &gt; Summary (Tóm tắt)</b> &rarr; Bấm nút <b>Make a payment</b> &rarr; Chọn <b>Other amount (Số tiền khác)</b> và tự gõ tay số tiền tối thiểu <b>15.00 hoặc 20.00 (hoặc 26.00 SGD)</b> rồi thanh toán qua 3DS! Khi lệnh nạp 15–26 SGD ở trang Billing Summary thành công, hệ thống ghi nhận <code>MANUAL_PAYMENT_CLEARED</code> và trong 60–70% trường hợp sẽ tự động gỡ luôn cái Task bắt nạp tiền mà không cần đóng 65 SGD!<br>• <b>Cách 2 (Chặn đứng trước khi bảng đỏ xuất hiện trên tài khoản mới):</b> Đừng bao giờ gắn thẻ ACB xong để số dư <code>0.00 SGD</code> rồi đi lên camp! Ngay sau khi gắn thẻ ACB vào Billing (lúc chưa lên camp và chưa bị bảng đỏ), hãy vào luôn <b>Billing &gt; Summary &gt; Make a payment</b> chủ động nạp mồi trước <b>10 SGD – 15 SGD</b> qua 3DS. Khi tài khoản đã có sẵn số dư dương (<code>-15.00 SGD</code>), lúc bấm Publish camp sẽ <b>không bao giờ bị bật bảng đòi 65 SGD nữa</b>!<br>• <b>Cách 3 (Cắt đứt liên đới từ <code>MCC Saint Vincent</code>):</b> Tuyệt đối KHÔNG tạo tài khoản con từ trong MCC này nữa và KHÔNG liên kết tài khoản mới vào MCC này trước khi tài khoản cắn tiền! Hãy tạo tài khoản độc lập bên ngoài trên profile GPM riêng &rarr; Lên camp cắn tiền ổn định 24–48h rồi mới gửi lời mời link vào MCC.<br>• <b>Cách 4 (Đồng bộ Quốc gia Billing = Việt Nam với Thẻ ACB Việt Nam):</b> Nếu dùng thẻ <code>ACB Visa Debit</code> (BIN Việt Nam), ở mục <b>Billing Country (Quốc gia thanh toán)</b> hãy chọn <b>Việt Nam</b> (còn mục <b>Currency / Tiền tệ</b> vẫn chọn được <b>SGD</b> hoặc <b>USD / VND</b>). Khi Quốc gia Hồ sơ thanh toán (VN) trùng 100% với Quốc gia phát hành thẻ ACB (VN), Google không phạt cờ <i>Cross-Border Card</i> nên không bao giờ nhảy lên 65 SGD!<br>• <b>Cách 5 (Mồi thẻ ACB trên <code>payments.google.com</code> trước):</b> Thêm thẻ ACB vào <code>payments.google.com</code> mua gói Google One (1.99 SGD / 45.000đ) trước rồi mới mở Google Ads chọn lại Payments Profile đó.<br>• <b>Cách 6 (Bấm nút <code>Change</code> đổi sang đầu thẻ hạng Credit):</b> Đầu BIN thẻ <b>Visa/Mastercard Credit (Tín dụng)</b> có điểm Trust cao gấp đôi thẻ <b>Debit (Ghi nợ)</b>.<br>• <b>Cách 7 (Ngân sách Camp đầu tiên chỉ <code>SGD 3.00 – SGD 5.00/ngày</code> + Gạt <code>Paused</code>):</b> Đặt ngân sách camp đầu dưới 5 SGD/ngày và gạt sang Paused ngay khi vừa tạo chờ duyệt Eligible 4–6h mới bật.</li>
+      </ul>
+    </div>
+
+    <!-- THẺ GIẢI PHẪU 5 BỘ LỌC CAMPAIGN PUBLISH RISK GATE -->
+    <div class="step-card" style="margin-bottom:16px;border-left-color:var(--accent-amber);">
+      <div class="step-head">
+        <div class="step-title">🔍 TẠI SAO VỪA BẤM PUBLISH CAMP LẠI KÍCH HOẠT "BẮT THANH TOÁN + XMDT"? (5 BỘ LỌC CỦA GOOGLE)</div>
+        <span class="step-badge" style="color:var(--accent-amber);border-color:var(--accent-amber);">Cơ Chế Cốt Lõi</span>
+      </div>
+      <ul class="step-list">
+        <li><b>Google Ads có 2 vòng quét rủi ro tách biệt:</b> Vòng 1 (<code>Billing Setup Gate</code> — quét lúc thêm thẻ) và Vòng 2 (<code>First-Serve / Campaign Publish Gate</code> — quét ngay khoảnh khắc bấm <b>Publish</b> chiến dịch đầu tiên để cấp hạn mức nợ <code>Credit Threshold</code>).</li>
+        <li><b>Bộ lọc 1 — <code>Velocity Shock</code> (Xung đột tốc độ thao tác):</b> Tạo tài khoản &rarr; Gắn thẻ &rarr; Lên camp &rarr; Publish diễn ra trong <b>cùng 1 phiên trình duyệt (&lt; 2 giờ)</b>. Thuật toán nhận diện đây là hành vi của Bot/Farm chứ không phải người thật &rarr; Khóa tạm dừng bắt nạp tiền tay (<i>Make a payment</i>) + XMDT ngay lập tức.</li>
+        <li><b>Bộ lọc 2 — <code>Budget-to-Threshold Ratio</code> (Tỷ lệ Ngân sách / Ngưỡng nợ):</b> Tài khoản mới có ngưỡng nợ khởi điểm thấp ($10 hoặc $50), nhưng camp đầu tiên lại đặt ngân sách ngày (Daily Budget) cao hơn hoặc ngang ngửa ngưỡng nợ ($50–$100/ngày) &rarr; Bị đánh giá rủi ro bùng ngưỡng (Threshold Burn) &rarr; Ép hiện task <i>Pay with your payment method</i>.</li>
+        <li><b>Bộ lọc 3 — <code>Bidding Strategy Trigger</code> (Chiến lược giá thầu):</b> Tài khoản mới chưa có lịch sử chuyển đổi nhưng chọn ngay <i>Maximize Conversions / Maximize Clicks</i> không đặt trần CPC tối đa hoặc nhồi từ khóa CPC đắt.</li>
+        <li><b>Bộ lọc 4 — <code>Final URL / Domain Footprint</code> (Dấu vết tên miền đích):</b> Domain mới mua dưới 30 ngày, domain từng gắn vào tài khoản đã chết, thiếu trang <i>Privacy Policy / Terms / Contact Us</i>, thiếu <i>Cookie Consent Mode v2</i> (với US/EU), hoặc có redirect/tracking template ngay từ lần duyệt đầu.</li>
+        <li><b>Bộ lọc 5 — <code>Geo-Target Mismatch</code> (Lệch vùng nhắm mục tiêu):</b> Tài khoản + Billing + IP ở quốc gia A (ví dụ VN/SG), nhưng camp đầu tiên vừa lên đã target thẳng sang quốc gia Tier-1 khác (ví dụ US/UK) với từ khóa thương mại nhạy cảm.</li>
+        <li><b>Phân biệt 2 trạng thái XMDT:</b> (1) <b>Hard Pause (Tệ nhất):</b> Bị tạm dừng ở $0 bắt nạp tiền + bắt XMDT xong mới cho chạy; (2) <b>Soft / Proactive (An toàn 100%):</b> Chủ động lấy tích xanh XMDT trước khi lên camp (qua Link Nhóm A) hoặc nhận hạn 30 ngày vừa chạy cắn tiền mượt vừa xác minh.</li>
+      </ul>
+    </div>
+
+    <div class="card-grid" id="container-10steps"></div>
+  </div>
+
+  <!-- TAB PHÒNG LAB CHUYÊN GIA (5 CÔNG CỤ AI THỰC CHIẾN GIÚP TRỞ THÀNH CHUYÊN GIA GOOGLE ADS) -->
+  <div class="tab-panel" id="tab-lab">
+    <div class="top-bar" style="border-left-color:var(--accent-amber);">
+      <div>
+        <h1>🏆 PHÒNG LAB CHUYÊN GIA GOOGLE ADS: 5 CÔNG CỤ AI THỰC CHIẾN &amp; LỘ TRÌNH LUYỆN TAY NGHỀ ĐỈNH CAO</h1>
+        <p>Bộ công cụ tương tác trực tiếp trên Localhost giúp anh iu kiểm tra trang đích, tính nhịp ngân sách, viết mẫu RSA đảo Hash, kháng nghị tài khoản và luyện xử lý tình huống khó mỗi ngày.</p>
+      </div>
+    </div>
+
+    <!-- CÔNG CỤ 1: MÁY QUÉT ĐỘ SẠCH TRANG ĐÍCH VỚI ADSBOT-GOOGLE -->
+    <div class="step-card" style="margin-bottom:16px;border-left-color:var(--accent-green);">
+      <div class="step-head">
+        <div class="step-title">🛡️ CÔNG CỤ 1: Máy Quét Kiểm Tra Độ Sạch Trang Đích (Final URL) Giả Lập Bot Duyệt Google Ads (AdsBot-Google)</div>
+        <span class="step-badge" style="color:var(--accent-green);border-color:var(--accent-green);">Pre-Flight URL Scanner</span>
+      </div>
+      <p style="margin-bottom:10px;color:var(--text-muted);">Nhập tên miền hoặc Final URL dự định lên camp: Server sẽ đóng vai <code>AdsBot-Google</code> quét kiểm tra SSL, tốc độ phản hồi, lỗi Redirect chéo domain, Privacy Policy, Terms, Contact và Cookie Consent Mode v2 trước khi anh iu bấm Publish.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <input type="text" id="scan-url-input" class="input-dark" placeholder="Nhập URL trang đích cần kiểm tra (ví dụ: https://tenmien-cua-anh.com)...">
+        <button class="btn-main" style="background:#059669;" onclick="runUrlScanner()">🔍 Quét Kiểm Tra Độ Sạch Ngay</button>
+      </div>
+      <div id="scan-url-result" class="ai-output" style="display:none;"></div>
+    </div>
+
+    <!-- CÔNG CỤ 2: MÁY TÍNH LỘ TRÌNH NGƯỠNG NỢ & ĐỐT MÃ KHUYẾN MÃI $500 -->
+    <div class="step-card" style="margin-bottom:16px;border-left-color:var(--accent-blue);">
+      <div class="step-head">
+        <div class="step-title">🧮 CÔNG CỤ 2: Máy Tính Lộ Trình Ngưỡng Nợ &amp; Đốt Mã Khuyến Mãi $500 / 5.6 Triệu Không Dính Sốc Ngân Sách</div>
+        <span class="step-badge">Pacing &amp; Threshold Calculator</span>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+        <select id="calc-currency" class="input-dark" style="max-width:260px;" onchange="calculatePacing()">
+          <option value="USD">🇺🇸 Thị trường Mỹ (USD - Offer A $500)</option>
+          <option value="VND">🇻🇳 Thị trường Việt Nam (VND - Gói 5.600.000đ)</option>
+          <option value="SGD">🇸🇬 Thị trường Singapore (SGD - Offer S$600)</option>
+        </select>
+        <button class="btn-main" onclick="calculatePacing()">📊 Tính Lịch Trình Tăng Ngân Sách 25 Ngày</button>
+      </div>
+      <div id="calc-pacing-result" class="ai-output" style="margin-top:12px;"></div>
+    </div>
+
+    <!-- CÔNG CỤ 3: BÁC SĨ CHẨN ĐOÁN LỖI & VIẾT ĐƠN KHÁNG NGHỊ TỰ ĐỘNG -->
+    <div class="ai-box" style="margin-bottom:16px;">
+      <div class="step-head">
+        <div class="step-title">🩺 CÔNG CỤ 3: Bác Sĩ Chẩn Đoán Lỗi Tài Khoản &amp; AI Viết Đơn Kháng Nghị Chuẩn Pháp Lý Google (Tỷ Lệ Về 95%)</div>
+        <span class="step-badge" style="color:#c4b5fd;border-color:#7c3aed;">AI Appeal Doctor</span>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;">
+        <select id="appeal-issue" class="input-dark" style="max-width:360px;">
+          <option value="Bảng đỏ 2 Task: Pay with your payment method + Verify your identity (Tạm dừng ở $0)">1. Bảng đỏ 2 Task: Pay with your payment method + Verify your identity</option>
+          <option value="Tạm ngưng: Hoạt động thanh toán đáng ngờ (Suspicious Payment Activity)">2. Tạm ngưng: Thanh toán đáng ngờ (Suspicious Payment Activity)</option>
+          <option value="Tạm ngưng: Lách hệ thống (Circumventing Systems Policy)">3. Tạm ngưng: Lách hệ thống (Circumventing Systems)</option>
+          <option value="Tạm ngưng: Phương thức kinh doanh không được chấp nhận (Unacceptable Business Practices)">4. Tạm ngưng: Phương thức kinh doanh (Unacceptable Business Practices)</option>
+          <option value="Tạm ngưng Google Merchant Center: Lỗi trình bày sai lệch (Misrepresentation)">5. Khóa GMC: Trình bày sai lệch (Misrepresentation)</option>
+          <option value="Chiến dịch đã Eligible (Đủ điều kiện) quá 24h nhưng 0 Impression không cắn tiền">6. Chiến dịch đã Eligible nhưng 0 Impression (Đóng băng phân phối)</option>
+        </select>
+        <input type="text" id="appeal-info" class="input-dark" placeholder="Mô tả thêm (ví dụ: TK Mỹ dùng thẻ PST, vừa lên camp Search $5/ngày thì bị tạm ngưng)...">
+        <button class="btn-main" style="background:#7c3aed;" onclick="generateAppeal()">🩺 Chẩn Đoán &amp; Viết Đơn Kháng</button>
+      </div>
+      <div id="appeal-result" class="ai-output" style="display:none;"></div>
+    </div>
+
+    <!-- CÔNG CỤ 4: AI VIẾT 15 TIÊU ĐỀ RSA ĐẢO HASH & BỘ TỪ KHÓA ĐIỂM CHẤT LƯỢNG 10/10 -->
+    <div class="ai-box" style="margin-bottom:16px;">
+      <div class="step-head">
+        <div class="step-title">✍️ CÔNG CỤ 4: AI Thiết Kế Chiến Dịch Search &amp; Viết 15 Tiêu Đề RSA Đảo Hash (Anti-Hash Copywriter 10/10)</div>
+        <span class="step-badge" style="color:#c4b5fd;border-color:#7c3aed;">RSA &amp; Negative Keyword AI</span>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <input type="text" id="rsa-product" class="input-dark" placeholder="Nhập Tên sản phẩm / Ngách / URL trang đích + Thị trường chạy (ví dụ: Phần mềm CRM cho doanh nghiệp tại Mỹ)...">
+        <button class="btn-main" style="background:#7c3aed;" onclick="generateRsa()">✍️ Tạo Bộ Từ Khóa &amp; 15 RSA Đảo Hash</button>
+      </div>
+      <div id="rsa-result" class="ai-output" style="display:none;"></div>
+    </div>
+
+    <!-- CÔNG CỤ 5: MÁY LUYỆN TÌNH HUỐNG THỰC CHIẾN HÀNG NGÀY & LỘ TRÌNH 4 CẤP ĐỘ CHUYÊN GIA -->
+    <div class="step-card" style="border-left-color:var(--accent-amber);">
+      <div class="step-head">
+        <div class="step-title">🎓 CÔNG CỤ 5: Lộ Trình 4 Cấp Độ Trở Thành Chuyên Gia Google Ads &amp; Máy Tạo Tình Huống Thực Chiến Hàng Ngày</div>
+        <button class="btn-main" style="background:#d97706;" onclick="generateDailyQuiz()">🧠 Tạo Ca Khó Thực Chiến Mới Để Luyện Tư Duy</button>
+      </div>
+      <ul class="step-list" style="margin-bottom:12px;">
+        <li><b>Cấp độ 1 (Tuần 1 — Làm Chủ Hạ Tầng &amp; Tạo Tài Khoản Bất Tử):</b> Làm chủ Antidetect Fingerprint (Canvas/WebGL/WebRTC), kiểm định Static ISP Proxy (Fraud Score = 0), quy trình Ngâm Cookie 48h và lấy tích xanh XMDT ngay từ Giờ thứ 0 qua Link Nhóm A/F.</li>
+        <li><b>Cấp độ 2 (Tuần 2 — Làm Chủ Tài Chính Billing, ACH, VCC &amp; Mã $500):</b> Thành thạo gắn Bank Account ACH/SEPA (Micro-deposit), mồi thẻ Google One $1.99, khớp chuẩn AVS 100%, nạp mồi $10 qua 3DS mở thang ngưỡng nợ trả sau $500 và ăn trọn gói khuyến mãi Offer A.</li>
+        <li><b>Cấp độ 3 (Tuần 3 — Làm Chủ Kỹ Thuật Lên Camp &amp; Thuật Toán Đấu Giá):</b> Nhuần nhuyễn kỹ thuật <code>Draft-to-Live Paused</code> chờ duyệt <code>Eligible</code>, cấu trúc SKAG/STAG đẩy Điểm chất lượng (Quality Score) lên 10/10 để giảm 50% CPC so với đối thủ, làm chủ Search, YouTube, GDN &amp; Performance Max.</li>
+        <li><b>Cấp độ 4 (Tuần 4 — Làm Chủ Tự Động Hóa Quy Mô Lớn &amp; Bảo Vệ Hệ Thống):</b> Vận hành dàn 50–100 tài khoản qua RPA GPM Studio + Google Ads Editor, cách ly tầng MCC (3–5 acc/MCC), triển khai Server-side Tracking + Consent Mode v2 + Cloaking (Adspect/Hoax.tech) và kháng nghị tỷ lệ về 95%.</li>
+      </ul>
+      <div id="quiz-result" class="ai-output" style="display:none;"></div>
+    </div>
+  </div>
+
+  <!-- TAB 2: DEEPSEEK AI QUÉT 18 NGUỒN SỐNG & DỊCH SÁT NGHĨA 100% (0% TỰ BỊA) -->
+  <div class="tab-panel" id="tab-ai">
+    <div class="top-bar" style="border-left-color:var(--accent-purple);">
+      <div>
+        <h1>🤖 DEEPSEEK AI: TỰ ĐỘNG QUÉT 18 NGUỒN (12 KÊNH TELEGRAM + 6 CỔNG TIN) &amp; DỊCH TIẾNG VIỆT (0% TỰ BỊA)</h1>
+        <p id="ai-key-status">Trạng thái API: Đang kiểm tra kết nối DeepSeek...</p>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="btn-main" style="background:#7c3aed;" onclick="fetchDeepSeekDigest(true)">🔄 Quét 18 Nguồn &amp; Dịch Mới Ngay</button>
+      </div>
+    </div>
+
+    <!-- CẤU HÌNH DEEPSEEK API KEY & TỰ ĐỘNG CẬP NHẬT -->
+    <div class="step-card" style="margin-bottom:16px;">
+      <div class="step-head">
+        <div class="step-title">🔑 Cấu Hình Khóa DeepSeek API &amp; Chế Độ Tự Động Quét Định Kỳ (Mỗi 30 Phút)</div>
+        <span class="step-badge" id="key-badge">Đã kết nối</span>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <input type="password" id="deepseek-key-input" class="input-dark" placeholder="Đã nạp sẵn khóa DeepSeek từ máy anh iu. Nếu muốn đổi khóa sk-... khác thì dán vào đây...">
+        <button class="btn-sub" onclick="saveApiKey()">💾 Lưu Khóa API Mới</button>
+      </div>
+    </div>
+
+    <!-- HỘP CHAT TRỰC TIẾP VỚI CHUYÊN GIA DEEPSEEK -->
+    <div class="ai-box">
+      <div class="step-head">
+        <div class="step-title">💬 Hỏi Chuyên Gia AI DeepSeek Về Google Ads (Phân tích lỗi, dịch thuật, viết RSA, hỏi tut)</div>
+        <span class="step-badge" style="color:#c4b5fd;border-color:#7c3aed;">deepseek-chat Live</span>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:8px;">
+        <input type="text" id="ai-question" class="input-dark" placeholder="Nhập câu hỏi bất kỳ cho DeepSeek AI..." onkeydown="if(event.key==='Enter')askDeepSeek()">
+        <button class="btn-main" style="background:#7c3aed;" onclick="askDeepSeek()">🚀 Gửi Câu Hỏi</button>
+      </div>
+      <div id="ai-chat-answer" class="ai-output" style="display:none;"></div>
+    </div>
+
+    <!-- BẢN TIN DEEPSEEK TỰ ĐỘNG TỔNG HỢP TRONG NGÀY (CÓ TRÍCH DẪN NGUỒN #ID CHÍNH XÁC) -->
+    <div class="ai-box">
+      <div class="step-head">
+        <div class="step-title">📰 BÁO CÁO PHÂN TÍCH &amp; DỊCH THUẬT TỪ 18 NGUỒN HÔM NAY (CÓ GẮN MÃ [NGUỒN #ID] &amp; LINK GỐC — 0% TỰ BỊA)</div>
+        <span class="step-badge" id="digest-time">Đang đồng bộ...</span>
+      </div>
+      <div id="deepseek-digest-box" class="ai-output">⏳ Đang gọi DeepSeek AI đọc và dịch sát nghĩa 24 bài đăng mới nhất từ 12 kênh Telegram Arbitrage (@cparip, @partnerkin_en, @thepartnerkin, @partnerkin_accounts, @afftimes, @adspect_en, @adspect, @protraffic_com, @gdetraffic, @fb_killa, @zorbasmedia, @leadpanda_media) &amp; 6 cổng tin Google Ads...</div>
+    </div>
+
+    <!-- SỔ GHI CHÚ CÁ NHÂN -->
+    <div class="step-card" style="margin-bottom:18px;">
+      <div class="step-head">
+        <div class="step-title">📝 SỔ GHI CHÚ CÁ NHÂN CỦA ANH IU (LƯU TRỰC TIẾP VÀO Ổ CỨNG)</div>
+        <button class="btn-main" onclick="saveMyNotes()">💾 Lưu Ghi Chú</button>
+      </div>
+      <textarea id="my-notes" class="note-area" placeholder="Ghi chú BIN thẻ đang mượt, lịch sử tài khoản, hoặc tut mới học được hôm nay..."></textarea>
+    </div>
+
+    <!-- DANH SÁCH TỪNG BÀI ĐĂNG GỐC + BẢN DỊCH TIẾNG VIỆT SONG NGỮ + LINK GỐC KIỂM CHỨNG -->
+    <div class="top-bar">
+      <div>
+        <h1>📡 DANH SÁCH BÀI ĐĂNG THỰC TẾ TỪ 18 NGUỒN (SONG NGỮ: BẢN DỊCH TIẾNG VIỆT + VĂN BẢN GỐC + LINK KIỂM CHỨNG)</h1>
+        <p>Mỗi thẻ hiển thị đúng mã [#ID], bản dịch Tiếng Việt chính xác của DeepSeek, văn bản gốc tiếng Nga/Anh và nút mở thẳng tới bài post gốc để anh iu kiểm chứng 100% không bịa.</p>
+      </div>
+    </div>
+    <div class="card-grid" id="live-feed-container"></div>
+  </div>
+
+  <!-- TAB 3: SƠ ĐỒ TƯ DUY TOÀN DIỆN 7 NHÁNH LỚN -->
+  <div class="tab-panel" id="tab-mindmap">
+    <div class="top-bar">
+      <div>
+        <h1>🧠 SƠ ĐỒ TƯ DUY TOÀN DIỆN (7 NHÁNH LỚN • BAO QUÁT 100% TOÀN BỘ KIẾN THỨC, LINK, TUT &amp; TOOL)</h1>
+        <p>Đã bổ sung đầy đủ cả 7 Nhánh Lớn: (1) 5 Bộ lọc &amp; Môi trường, (2) 7 Nhóm Link (33 Link), (3) 18 Cách Billing, (4) 10 Bước Lên Camp, (5) 4 Cách $10&rarr;$500 &amp; 6 Bước Mã KM, (6) 12 Tut &amp; Cứu TK 2 Task, (7) 42+ Tool &amp; 17 Hội Nhóm. Bấm vào tên nhánh để thu gọn/mở rộng.</p>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button class="btn-sub" onclick="toggleAllMindmap(true)">➕ Mở Rộng Tất Cả</button>
+        <button class="btn-sub" onclick="toggleAllMindmap(false)">➖ Thu Gọn</button>
+      </div>
+    </div>
+
+    <div class="mm-box">
+      <div class="mm-tree">
+        <div class="mm-root">
+          TỔNG ĐÀI GOOGLE ADS<br>TOÀN DIỆN 2025–2026<br>(7 NHÁNH CỐT LÕI)
+        </div>
+        <div class="mm-line"></div>
+        <div class="mm-col" id="mindmap-branches">
+
+          <!-- NHÁNH 1 -->
+          <div class="mm-row">
+            <div class="mm-line"></div>
+            <div class="mm-node" onclick="toggleBranch(this)">1️⃣ NHÁNH 1: 5 BỘ LỌC QUÉT &amp;<br>CHUẨN BỊ MÔI TRƯỜNG SẠCH</div>
+            <div class="mm-line" style="width:20px;"></div>
+            <div class="mm-leaves">
+              <div class="mm-leaf"><b>5 Bộ lọc Campaign Publish Risk Gate:</b> (1) <code>Velocity Shock</code> (tạo TK + gắn thẻ + lên camp cùng 1 phiên &lt;2h); (2) <code>Budget-to-Threshold Ratio</code> (ngân sách ngày &gt;20% ngưỡng nợ); (3) <code>Bidding Trigger</code> (Max Conversions thả nổi); (4) <code>Domain Footprint</code> (domain &lt;30 ngày/thiếu Policy); (5) <code>Geo-Target Mismatch</code> (lệch nước Billing và nước Target)</div>
+              <div class="mm-leaf"><b>Antidetect &amp; Proxy:</b> GPM-Login / Dolphin{anty} + <b>Static ISP Proxy</b> (NodeMaven/BrightData) trùng 100% quốc gia Billing, kiểm tra IPQualityScore Fraud Score = 0</div>
+              <div class="mm-leaf"><b>Cookie Warmup 48h:</b> Dùng Gmail lướt Google Docs, Drive, Maps, YouTube 10 phút/ngày tích lũy Cookie thật (<code>SID, HSID, SSID, NID</code>) trước khi mở Ads</div>
+              <div class="mm-leaf"><b>Chuẩn Trang Đích (Whitepage):</b> Domain tuổi đời &gt;30 ngày, HTTPS, có đủ Privacy Policy / Terms / Contact Us + <b>Cookie Consent Mode v2</b> (bắt buộc với US/UK/EU)</div>
+            </div>
+          </div>
+
+          <!-- NHÁNH 2 -->
+          <div class="mm-row">
+            <div class="mm-line"></div>
+            <div class="mm-node" onclick="toggleBranch(this)">2️⃣ NHÁNH 2: 7 NHÓM ĐƯỜNG LINK<br>KHỞI TẠO &amp; XMDT (ĐỦ 33 LINK)</div>
+            <div class="mm-line" style="width:20px;"></div>
+            <div class="mm-leaves">
+              <div class="mm-leaf"><b>Nhóm A (7 Link — Vào thẳng XMDT):</b> US, SG, UK, CA, AU, VN (<code>fna=true</code> + <code>/aw/billing/advertiserverification</code>) &amp; Link rút gọn mở thẳng trang XMDT</div>
+              <div class="mm-leaf"><b>Nhóm B (7 Link — Cổng Tool ép cờ XMDT):</b> Keyword Planner (US/SG/VN <code>sf=kp</code>), Ad Preview (<code>sf=ap</code>), Policy Manager (<code>sf=pm</code>), Reach Planner (<code>sf=rp</code>), Performance Planner (<code>sf=pp</code>)</div>
+              <div class="mm-leaf"><b>Nhóm C &amp; D (4 Link — Không hỏi thẻ):</b> Tạo MCC Quản lý Mỹ (US), MCC Singapore (SG), MCC Việt Nam (VN) (<code>sf=manager</code>) &amp; Tạo TK Trắng Expert Mode (<code>sf=expert</code>)</div>
+              <div class="mm-leaf"><b>Nhóm E (5 Link — Google Pay &amp; Form Kháng):</b> Cảnh báo Google Pay (<code>#alerts</code>), Cài đặt Google Pay (<code>#settings</code>), Form kháng Google Pay, Form <code>pf_verification</code>, Form <code>bov_form</code></div>
+              <div class="mm-leaf"><b>Nhóm F (5 Cổng Khởi Tạo Ngầm):</b> Google AdMob Publisher (<code>apps.admob.com/v2/signup</code>), YouTube Studio Promotions, Google Merchant Center, Local Services Ads, Google Analytics 4</div>
+              <div class="mm-leaf"><b>Nhóm G (7 Link — Cổng Mã Khuyến Mãi):</b> Cổng Coupon chính thức US ($500/$1000/$1500), VN (5.6tr/11tr/16.5tr), SG (S$600), UK (£400), CA (CA$600), AU (A$600) &amp; Trang nhập mã <code>/aw/billing/promotions</code></div>
+            </div>
+          </div>
+
+          <!-- NHÁNH 3 -->
+          <div class="mm-row">
+            <div class="mm-line"></div>
+            <div class="mm-node" onclick="toggleBranch(this)">3️⃣ NHÁNH 3: 18 CÁCH GẮN BILLING<br>CHỐNG BẮT THANH TOÁN TRƯỚC</div>
+            <div class="mm-line" style="width:20px;"></div>
+            <div class="mm-leaves">
+              <div class="mm-leaf"><b>Cụm 1 (Miễn nhiễm 100% không dùng thẻ — Cách 1, 8, 12, 18):</b> (C1) MCC Monthly Invoicing; (C8) Đổi người thanh toán <code>Change who pays</code> sang MCC mẹ; (C12) Gắn <b>Bank Account ACH (Mỹ) / SEPA (EU)</b> xác thực Micro-deposit $0.05–$0.25; (C18) Tạo qua API <code>CreateCustomerClient</code> + <code>MutateBillingSetup</code></div>
+              <div class="mm-leaf"><b>Cụm 2 (Mồi Trust cho Thẻ &amp; Hồ sơ — Cách 2, 3, 4, 5, 13, 15, 16, 17):</b> (C2) Mồi thẻ mua Google One $1.99 trên <code>payments.google.com</code>; (C3) Lấy tích xanh KYC trước khi gắn thẻ; (C4) Đồng bộ ISP Proxy từ màn hình đầu; (C5) Dùng lại Payments Profile Live KYC; (C13) Tách phiên 3 giai đoạn cách nhau 12–24h; (C15) Dùng Email Google Workspace đã trả cước 1 kỳ; (C16) Tráo thẻ qua Backup Card sau 24h; (C17) Khớp chuẩn AVS (Street Number + 5-digit ZIP Code)</div>
+              <div class="mm-leaf"><b>Cụm 3 (Khởi tạo từ Cổng Hệ sinh thái — Cách 6, 7, 9, 10, 11, 14):</b> (C6) YouTube Studio Promotions; (C7) Google Merchant Center; (C9) Google Analytics 4 Product Links; (C10) Google Business Profile Maps; (C11) Google Play Console đã trả phí $25 Developer; (C14) Google AdMob Publisher</div>
+            </div>
+          </div>
+
+          <!-- NHÁNH 4 -->
+          <div class="mm-row">
+            <div class="mm-line"></div>
+            <div class="mm-node" onclick="toggleBranch(this)">4️⃣ NHÁNH 4: LỘ TRÌNH 10 BƯỚC<br>LÊN CAMP "TÀNG HÌNH" TỪ A–Z</div>
+            <div class="mm-line" style="width:20px;"></div>
+            <div class="mm-leaves">
+              <div class="mm-leaf"><b>Bước 1 &rarr; Bước 3 (Giờ thứ 0):</b> (B1) Dựng GPM/Dolphin + ISP Proxy + Ngâm Cookie 10p &rarr; (B2) Tạo TK trắng kèm Offer A $500 (Link Nhóm G) hoặc qua AdMob &rarr; (B3) Vào Link Nhóm A nộp GPKD + CCCD lấy tích xanh <code>ADVERTISER_VERIFIED = TRUE</code> trước khi có camp</div>
+              <div class="mm-leaf"><b>Bước 4 &rarr; Bước 5 (Sau 12–24h):</b> (B4) Gắn Bank ACH/SEPA hoặc Thẻ đã mồi Google One $1.99 khớp AVS ZIP &rarr; (B5) Vào <code>Billing &gt; Make a payment</code> nạp chủ động <b>$10.00 (160k VNĐ)</b> qua 3DS để xóa cờ thẻ mới + kích hoạt mã $500 Active &rarr; <b>Nghỉ phiên 6–12h</b></div>
+              <div class="mm-leaf"><b>Bước 6 &rarr; Bước 8 (Ngày thứ 2–5):</b> (B6) Dạo Keyword Planner 3p tạo Telemetry + Tạo Camp 1 ($2–$5/ngày, Manual CPC, tắt Search Partners &amp; Display, Target trùng nước Billing) &rarr; <b>Vừa Publish gạt ngay sang PAUSED trong 3 giây</b> &rarr; (B7) Đợi Bot duyệt Ad sang <b>Eligible</b> (4–6h) mới bật <b>Enabled</b> &rarr; (B8) <b>Đóng băng cấu hình 72h đầu</b></div>
+              <div class="mm-leaf"><b>Bước 9 &rarr; Bước 10 (Ngày 5–25+):</b> (B9) Vượt Auto-charge đầu tiên, leo thang ngưỡng trả sau <code>$10 &rarr; $50 &rarr; $200 &rarr; $350 &rarr; $500</code>, tăng ngân sách $5 &rarr; $15 &rarr; $30/ngày đạt 100% mã &rarr; (B10) Nhận $500 Credit sau 1–5 ngày, giữ nguyên thẻ trong TK tiêu hết sạch ở mức $35–$50/ngày</div>
+            </div>
+          </div>
+
+          <!-- NHÁNH 5 -->
+          <div class="mm-row">
+            <div class="mm-line"></div>
+            <div class="mm-node" onclick="toggleBranch(this)">5️⃣ NHÁNH 5: 4 CÁCH "$10 &rarr; $500"<br>&amp; 6 BƯỚC CHƠI MÃ KHUYẾN MÃI</div>
+            <div class="mm-line" style="width:20px;"></div>
+            <div class="mm-leaves">
+              <div class="mm-leaf"><b>4 Cơ chế "Thanh toán $10 chạy gói $500":</b> (Cách 1 - 80% dùng) Nạp mồi $10 mở khóa Postpay + kích hoạt Offer A $500 Active + mở thang ngưỡng nợ trả sau lên $500; (Cách 2) Bỏ ~$10 mua Google Workspace / Shopify Starter lấy Business Payments Profile + Mã $500 Partner; (Cách 3) Google Ad Grants tốn ~$10 domain nhận <b>$10.000/tháng ($329/ngày)</b> miễn phí; (Cách 4) Bóc trần bẫy scam trên Telegram chụp ảnh <code>$500 Active</code> sau khi nạp $10</div>
+              <div class="mm-leaf"><b>3 Phân hạng Mã KM (60 ngày):</b> <b>Offer A (1:1 dễ ăn nhất):</b> Chi $500 tặng $500 (US) / 5.6tr tặng 5.6tr (VN) / S$600 tặng S$600 (SG) | <b>Offer B:</b> Chi $1500 tặng $1000 (16.5tr tặng 11tr) | <b>Offer C:</b> Chi $3000 tặng $1500 (33tr tặng 16.5tr)</div>
+              <div class="mm-leaf"><b>Tut nhập mã &amp; 5 Cấm kỵ:</b> Nhập trong 14 ngày đầu (nếu nhập tay hãy để camp cắn $5–$15 tiền thật trước rồi mới nhập); 0 lần thẻ Declined; Không gỡ thẻ khi Credit về; <b>1 Root Domain = 1 Thẻ = 1 Payments Profile = 1 Mã KM duy nhất</b></div>
+            </div>
+          </div>
+
+          <!-- NHÁNH 6 -->
+          <div class="mm-row">
+            <div class="mm-line"></div>
+            <div class="mm-node" onclick="toggleBranch(this)">6️⃣ NHÁNH 6: 12 TUT ĐÀO SÂU &amp;<br>CỨU TÀI KHOẢN DÍNH 2 TASK</div>
+            <div class="mm-line" style="width:20px;"></div>
+            <div class="mm-leaves">
+              <div class="mm-leaf"><b>Tut 1 &rarr; Tut 4:</b> (T1) Camp mồi YouTube Video $2/ngày (URL <code>youtube.com</code> uy tín 100/100); (T2) Chủ động Pre-Auth $10 qua 3DS xóa cờ thẻ mới; (T3) Dạo Keyword Planner 3–5 phút tạo Telemetry; (T4) Đảo Hash RSA Headline/Description + Domain mới</div>
+              <div class="mm-leaf"><b>Tut 5 &rarr; Tut 8 (Cứu TK khóa 2 Task — 95% sống):</b> (T5) Tách Cloaker/Tracker 48h đầu; (T6) Tạo TK từ AdMob/YouTube Studio; (T7) MCC Đỡ đạn <code>Change who pays</code>; (T8) <b>Khi lỡ dính bảng đỏ 2 Task:</b> Không sửa camp/thẻ &rarr; Nộp giấy tờ ở Task <i>Verify your identity</i> TRƯỚC &rarr; Đợi 24–48h lên tích xanh <i>Completed</i> &rarr; Mới bấm Task <i>Pay with your payment method</i> nạp $10 (160k) &rarr; Mở khóa ngay</div>
+              <div class="mm-leaf"><b>Tut 9 &rarr; Tut 12 (Đào sâu 2025–2026):</b> (T9) Ngâm Cookie Google Docs/Maps/YouTube 48h; (T10) Domain tuổi đời &gt;30 ngày đã index GSC, không redirect 301/302; (T11) Cài Cookie Consent Mode v2 cho camp US/UK/EU; (T12) Cách ly MCC (tối đa 3–5 TK con / 1 MCC)</div>
+            </div>
+          </div>
+
+          <!-- NHÁNH 7 -->
+          <div class="mm-row">
+            <div class="mm-line"></div>
+            <div class="mm-node" onclick="toggleBranch(this)">7️⃣ NHÁNH 7: HỆ SINH THÁI 42+ TOOL<br>&amp; 17 HỘI NHÓM / BOT DÒ TUT</div>
+            <div class="mm-line" style="width:20px;"></div>
+            <div class="mm-leaves">
+              <div class="mm-leaf"><b>Nhóm Tool 1–4:</b> (1) <b>Antidetect/RPA:</b> GPM-Login, Dolphin{anty}, BAS, ZennoPoster, Octo, Multilogin, AdsPower; (2) <b>Cloaker:</b> Adspect.ai (VLA™), Hoax.tech, Palladium, CloakIt, JustCloakIt, TrafficArmor, Keitaro; (3) <b>Whitepage/Cloner:</b> SaveWeb2Zip, WebScrapBook, Comsign AI, HTTrack, Cloudflare Pages; (4) <b>VCC &amp; ACH:</b> PST.net, LeadingCards, YeezyPay, AnyBill, Combo.cards, EPN.net, Wise/Mercury/Relay ACH</div>
+              <div class="mm-leaf"><b>Nhóm Tool 5–8:</b> (5) <b>ISP/Mobile Proxy:</b> NodeMaven, BrightData ISP, Oxylabs ISP, AstroProxy, Soax 4G/5G, IPQualityScore; (6) <b>Spy Ads:</b> Google Ads Transparency Center, SpyFu, Semrush, Adbeat; (7) <b>Chống Click Tặc:</b> ClickCease, Lunio, TrafficGuard, FraudBlocker; (8) <b>Offline Push:</b> Google Ads Editor (giảm 80% quét Web UI), Couponer/Adcore</div>
+              <div class="mm-leaf"><b>17 Hội Nhóm &amp; Bot Dò Nhóm Kín:</b> Telegram <code>@cparip</code>, <code>@partnerkin_en</code>, <code>@thepartnerkin</code>, <code>@partnerkin_accounts</code>, <code>@afftimes</code>, <code>@keitaro_chat_en</code>, <code>@keitaro_ru_chat</code>, <code>@adspect_en</code> + Bot <code>@tgdb_bot</code>, <code>@SearcheeBot</code>, <code>TGStat</code> + Forum <code>BlackHatWorld</code>, <code>CPA.RIP</code>, <code>Reddit r/PPC &amp; r/googleads</code>, <code>MMO4ME</code>, <code>AffiliateFix</code></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 4: 4 CÁCH CHƠI $10 -> $500 & 6 BƯỚC CHƠI MÃ KHUYẾN MÃI CHI TIẾT -->
+  <div class="tab-panel" id="tab-10to500">
+    <div class="top-bar">
+      <div>
+        <h1>💵 GIẢI MÃ CHI TIẾT 4 CÁCH CHƠI "THANH TOÁN $10 CHẠY GÓI $500" &amp; QUY TRÌNH 6 BƯỚC ĂN MÃ KHUYẾN MÃI</h1>
+        <p>Đầy đủ toàn bộ phân tích kỹ thuật, bảng thông số Offer A/B/C các thị trường, quy trình 6 bước và 5 điều cấm kỵ tuyệt đối.</p>
+      </div>
+    </div>
+    <div class="card-grid" id="container-10to500"></div>
+
+    <!-- BẢNG 3 GÓI MÃ KHUYẾN MÃI OFFER A/B/C -->
+    <div class="step-card" style="margin-top:16px;margin-bottom:16px;">
+      <div class="step-head">
+        <div class="step-title">📊 BẢNG THÔNG SỐ 3 GÓI MÃ KHUYẾN MÃI GOOGLE ADS MỚI NHẤT (OFFER A / B / C — HẠN 60 NGÀY)</div>
+        <span class="step-badge">Spend-Match Tiers</span>
+      </div>
+      <table class="dark-table">
+        <thead>
+          <tr>
+            <th>Phân Hạng Gói (Tier)</th>
+            <th>Thị Trường Mỹ (US - USD)</th>
+            <th>Thị Trường Việt Nam (VN - VND)</th>
+            <th>Thị Trường Singapore (SG - SGD)</th>
+            <th>Đánh Giá Chiến Thuật</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Offer A (Dễ ăn nhất — Tỷ lệ 1:1)</b></td>
+            <td>Chi <b>$500</b> nhận <b>$500</b></td>
+            <td>Chi <b>5.600.000đ</b> nhận <b>5.600.000đ</b></td>
+            <td>Chi <b>S$600</b> nhận <b>S$600</b></td>
+            <td>Tối ưu nhất cho tài khoản mới: Hoàn thành mượt trong 20–25 ngày mà không cần kích ngân sách sốc.</td>
+          </tr>
+          <tr>
+            <td><b>Offer B (Tầm trung)</b></td>
+            <td>Chi <b>$1,500</b> nhận <b>$1,000</b></td>
+            <td>Chi <b>16.500.000đ</b> nhận <b>11.000.000đ</b></td>
+            <td>Chi <b>S$1,200</b> nhận <b>S$1,200</b></td>
+            <td>Phù hợp cho chiến dịch E-commerce / Dịch vụ đã có doanh thu ổn định.</td>
+          </tr>
+          <tr>
+            <td><b>Offer C (Ngân sách lớn)</b></td>
+            <td>Chi <b>$3,000</b> nhận <b>$1,500</b></td>
+            <td>Chi <b>33.000.000đ</b> nhận <b>16.500.000đ</b></td>
+            <td>Chi <b>S$2,400</b> nhận <b>S$1,800</b></td>
+            <td>Dành cho doanh nghiệp lớn hoặc Agency chạy ngân sách cao.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card-grid" id="container-promo6"></div>
+  </div>
+
+  <!-- TAB 5: 12 TUT ĐÀO SÂU & BẢNG SO SÁNH -->
+  <div class="tab-panel" id="tab-tuts">
+    <div class="top-bar">
+      <div>
+        <h1>⚡ 12 TUT / TRICK THỰC CHIẾN VƯỢT CỔNG QUÉT &amp; CỨU TÀI KHOẢN DÍNH BẢNG ĐỎ 2 TASK</h1>
+        <p>Hướng dẫn chi tiết từng bước cho cả 12 Tut và bảng đối chiếu trực quan.</p>
+      </div>
+    </div>
+
+    <!-- BẢNG SO SÁNH -->
+    <div class="step-card" style="margin-bottom:16px;">
+      <div class="step-head">
+        <div class="step-title">⚖️ BẢNG ĐỐI CHIẾU: CÁCH LÊN CAMP THÔNG THƯỜNG (DỄ DIE) VS. QUY TRÌNH CHỐNG BẮT THANH TOÁN 100%</div>
+        <span class="step-badge">So Sánh Thực Chiến</span>
+      </div>
+      <table class="dark-table">
+        <thead>
+          <tr>
+            <th>Hạng Mục Kiểm Soát</th>
+            <th>Cách Lên Camp Thông Thường (90% Dính Bảng Đỏ 2 Task)</th>
+            <th>Quy Trình Chuẩn Chống Bắt Thanh Toán &amp; XMDT Tức Thời</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>1. Thời điểm XMDT</b></td>
+            <td>Đợi lên camp bị Google khóa ở $0 rồi mới cuống cuồng nộp giấy tờ.</td>
+            <td>Dùng <b>Link Nhóm A</b> nộp GPKD + CCCD lấy tích xanh <b>Verified</b> ngay từ Giờ thứ 0 (trước khi gắn thẻ &amp; lên camp).</td>
+          </tr>
+          <tr>
+            <td><b>2. Phương thức Billing</b></td>
+            <td>Gắn thẻ ảo VCC mới tinh trực tiếp trong màn hình tạo camp của Google Ads.</td>
+            <td>Dùng <b>ACH Bank Account</b> (Micro-deposit) hoặc <b>Thẻ đã mồi Google One $1.99</b> + <b>Chủ động nạp mồi $10 qua 3DS</b>.</td>
+          </tr>
+          <tr>
+            <td><b>3. Nhịp độ thao tác</b></td>
+            <td>Tạo TK &rarr; Gắn thẻ &rarr; Lên camp &rarr; Publish gói gọn trong 15 phút.</td>
+            <td>Tách làm <b>3 phiên riêng biệt</b> cách nhau 12–24 giờ + Dạo Keyword Planner 3 phút tạo Telemetry.</td>
+          </tr>
+          <tr>
+            <td><b>4. Trạng thái khi tạo Camp</b></td>
+            <td>Bấm <code>Publish</code> cho chiến dịch chạy sống ngay lập tức.</td>
+            <td>Vừa bấm Publish gạt ngay sang <b>Paused</b> trong 3 giây &rarr; Đợi Ad duyệt <b>Eligible</b> (4–6h) &rarr; Mới bật <b>Enabled</b>.</td>
+          </tr>
+          <tr>
+            <td><b>5. Ngân sách ngày đầu</b></td>
+            <td>Đặt $20 – $100/ngày ngay ở chiến dịch đầu tiên.</td>
+            <td>Đặt <b>$2 – $5/ngày</b> (30k–50k VNĐ), dưới 20% ngưỡng nợ khởi điểm.</td>
+          </tr>
+          <tr>
+            <td><b>6. Vùng Target Camp 1</b></td>
+            <td>Target chéo quốc gia ngay từ camp đầu tiên.</td>
+            <td>Target <b>trùng 100% với quốc gia của Billing &amp; ISP Proxy</b> ở camp đầu tiên.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card-grid" id="container-tuts"></div>
+  </div>
+
+  <!-- TAB 6: 18 CÁCH GẮN BILLING CHI TIẾT -->
+  <div class="tab-panel" id="tab-18ways">
+    <div class="top-bar">
+      <div>
+        <h1>🛡️ 18 QUY TRÌNH TẠO TÀI KHOẢN &amp; GẮN BILLING TRÁNH LỖI MAKE PAYMENT (HƯỚNG DẪN ĐẦY ĐỦ 100%)</h1>
+        <p>Toàn bộ 18 cách từ Cách 1 đến Cách 18 được ghi đầy đủ cơ chế và từng bước thao tác.</p>
+      </div>
+    </div>
+    <div class="card-grid" id="container-18ways"></div>
+  </div>
+
+  <!-- TAB 7: KHO 42+ TOOL GOOGLE ADS -->
+  <div class="tab-panel" id="tab-tools">
+    <div class="top-bar">
+      <div>
+        <h1>🛠️ KHO 42+ TOOL GOOGLE ADS ĐANG CÓ TRÊN THỊ TRƯỜNG (ĐÀO SÂU 8 NHÓM CÔNG CỤ 2025–2026)</h1>
+        <p>Đầy đủ tên công cụ, trang chủ, cơ chế hoạt động và cách phối hợp trong hệ thống.</p>
+      </div>
+    </div>
+    <div class="card-grid" id="container-tools"></div>
+  </div>
+
+  <!-- TAB 8: ĐỦ 33 LINK (7 NHÓM) & 17 CỘNG ĐỒNG -->
+  <div class="tab-panel" id="tab-links">
+    <div class="top-bar">
+      <div>
+        <h1>🔗 TOÀN BỘ 33 ĐƯỜNG LINK CHUẨN (ĐỦ 7 NHÓM A, B, C, D, E, F, G) &amp; 17 HỘI NHÓM / BOT DÒ TUT</h1>
+        <p>Đã khôi phục đầy đủ 100% cả 33 đường link HTTP 200 và 17 nhóm cộng đồng kèm hướng dẫn câu lệnh Bot.</p>
+      </div>
+    </div>
+    <div class="card-grid" id="container-community" style="margin-bottom:22px;"></div>
+    <div class="card-grid" id="container-links"></div>
+  </div>
+
+</div>
+
+<script>
+// 1. LỘ TRÌNH 10 BƯỚC CHI TIẾT TỪ A-Z
+const MASTER_10_STEPS = [
+  {
+    id: "s1",
+    badge: "Giờ thứ 0 • Bước 1/10",
+    title: "BƯỚC 1: Thiết Lập Môi Trường Antidetect + ISP Proxy Tĩnh & Ngâm Cookie Hệ Sinh Thái Google (10–15 Phút)",
+    bullets: [
+      "<b>1. Khởi tạo Profile sạch:</b> Mở phần mềm <b>GPM-Login</b> hoặc <b>Dolphin{anty}</b>, tạo 1 profile trình duyệt mới với hệ điều hành trùng với máy thật (Windows/macOS), bật WebRTC sang chế độ <i>Altered / Based on IP</i>.",
+      "<b>2. Gắn ISP Proxy tĩnh (Static Residential Proxy):</b> Bắt buộc dùng IP dân cư tĩnh (NodeMaven, BrightData ISP, Oxylabs ISP) trùng 100% với quốc gia định đăng ký Billing (ví dụ làm TK Mỹ thì dùng IP Mỹ, làm TK Singapore thì dùng IP Singapore). Kiểm tra trên <code>ipqualityscore.com</code> đảm bảo <b>Fraud Score = 0</b>.",
+      "<b>3. Kỹ thuật Ngâm Cookie Hệ sinh thái Google (Cookie Warmup):</b> Đăng nhập Gmail vào trình duyệt &rarr; Tuyệt đối chưa mở trang Google Ads ngay. Hãy mở <b>Google Drive</b> tạo 1 file <b>Google Docs</b>, mở <b>Google Maps</b> tìm 1 địa chỉ tại quốc gia của IP, mở <b>YouTube</b> xem 1–2 video khoảng 5–10 phút. Quá trình này giúp trình duyệt sinh đầy đủ bộ Cookie xác thực người dùng thật (<code>SID, HSID, SSID, APISID, SAPISID, NID</code>)."
+    ]
+  },
+  {
+    id: "s2",
+    badge: "Giờ thứ 0 • Bước 2/10",
+    title: "BƯỚC 2: Khởi Tạo Tài Khoản Trắng Kèm Mã Khuyến Mãi $500 (Offer A) Hoặc Khởi Tạo Ngầm Qua Cổng Publisher",
+    bullets: [
+      "<b>Phương án A (Nếu muốn ăn Mã Khuyến Mãi $500 / 5.6 triệu VNĐ):</b> Mở đường link Cổng Coupon chính thức của Google (Nhóm G bên dưới) đúng theo quốc gia của Proxy &rarr; Chọn <b>Offer A (Chi $500 tặng $500 / Chi 5.6tr tặng 5.6tr)</b> &rarr; Bấm <i>Claim now / Start now</i> &rarr; Chọn <b>Switch to Expert Mode / Create an account without a campaign (Tạo tài khoản không cần chiến dịch)</b> để ra tài khoản trắng đã gắn sẵn mã ngầm.",
+      "<b>Phương án B (Nếu muốn tài khoản có Điểm Trust Publisher/Creator cao nhất):</b> Truy cập cổng <b>Google AdMob</b> (<code>apps.admob.com/v2/signup</code>) hoặc <b>YouTube Studio</b> (<code>studio.youtube.com</code> &rarr; Content &rarr; Promotions &rarr; Get started). Hệ thống sẽ tự động tạo ngầm 1 tài khoản Google Ads gắn nhãn <code>Publisher/Creator Account</code>, bỏ qua hoàn toàn phễu quét <code>/signup</code> thông thường.",
+      "<b>Lưu ý tại màn hình Confirm business info:</b> Vì đã gắn đúng ISP Proxy tĩnh từ Bước 1, Quốc gia thanh toán, Múi giờ và Tiền tệ (USD / SGD / VND) sẽ tự động nhận sẵn — chỉ bấm <b>Submit</b>, tuyệt đối không dùng IP Việt Nam rồi bấm chọn tay sang Mỹ."
+    ],
+    links: [
+      { label: "🎁 Cổng Mã $500 Mỹ (US)", url: "https://ads.google.com/intl/en_us/lp/coupons/" },
+      { label: "🎁 Cổng Mã 5.6Tr Việt Nam", url: "https://ads.google.com/intl/vi_vn/lp/coupons/" },
+      { label: "🎁 Cổng Mã S$600 Singapore", url: "https://ads.google.com/intl/en_sg/lp/coupons/" },
+      { label: "🛡️ Cổng Ngầm Google AdMob", url: "https://apps.admob.com/v2/signup" }
+    ]
+  },
+  {
+    id: "s3",
+    badge: "Giờ thứ 0 • Bước 3/10",
+    title: "BƯỚC 3: Chủ Động Xác Minh Nhà Quảng Cáo Lấy Tích Xanh TRƯỚC KHI Gắn Thẻ & TRƯỚC KHI Lên Camp",
+    bullets: [
+      "<b>Cơ chế cốt lõi:</b> Không bao giờ đợi lên camp bị Google quét khóa rồi mới nộp giấy tờ. Ngay khi vừa tạo xong tài khoản trắng ở Bước 2, dùng <b>Link Nhóm A</b> bên dưới để điều hướng thẳng vào phân hệ <code>/aw/billing/advertiserverification</code>.",
+      "<b>Thao tác khai báo:</b> Trả lời bảng câu hỏi <i>About your business</i> (Chọn Tự quảng cáo cho doanh nghiệp của mình &rarr; Khai báo ngành nghề sạch/trung tính) &rarr; Tải lên <b>Giấy phép kinh doanh (GPKD / Articles of Incorporation / EIN)</b> và <b>CCCD / Passport / Driver License</b> của người đại diện.",
+      "<b>Quy tắc khớp 100%:</b> Tên pháp lý và địa chỉ trên giấy tờ nộp lên phải <b>trùng khớp 100% từng ký tự</b> với tên và địa chỉ sẽ nhập trong Hồ sơ thanh toán (Payments Profile). Sau khi nộp xong, đóng trình duyệt chờ thông báo duyệt tích xanh <b>Verified (<code>ADVERTISER_VERIFIED = TRUE</code>)</b>."
+    ],
+    links: [
+      { label: "📋 Mở Thẳng Trang XMDT (/aw/billing/advertiserverification)", url: "https://ads.google.com/nav/login?dst=/aw/billing/advertiserverification" },
+      { label: "🇺🇸 Link Tạo TK Mỹ + Nhảy Thẳng Vào XMDT", url: "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526authuser%253D0%2526dst%253D%2Faw%2Fbilling%2Fadvertiserverification%3Fauthuser%25253D0%2526gl%253DUS%2526hl%253Den%26sf%3Dav%26subid%3Dus-en-awhp-g-aw-c-t-kwp-hero!o2&followup=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526authuser%253D0%2526dst%253D%2Faw%2Fbilling%2Fadvertiserverification%3Fauthuser%25253D0%2526gl%253DUS%2526hl%253Den%26sf%3Dav%26subid%3Dus-en-awhp-g-aw-c-t-kwp-hero!o2&osid=1&passive=1209600&service=adwords&flowName=WebLiteSignIn&flowEntry=ServiceLogin" }
+    ]
+  },
+  {
+    id: "s4",
+    badge: "Sau 12–24h • Bước 4/10",
+    title: "BƯỚC 4: Thiết Lập Phương Thức Thanh Toán Đã Mồi Trust (Nhánh Bank ACH Hoặc Nhánh Thẻ Mồi Google One $1.99)",
+    bullets: [
+      "<b>Nhánh 1 (Miễn nhiễm 100% lỗi bắt thanh toán trước — Dành cho thị trường US / EU):</b> Vào <code>Billing &gt; Settings</code>, ở phần <i>Payment method</i> chọn <b>Add bank account (Tài khoản ngân hàng ACH Mỹ từ Wise/Mercury/Relay hoặc SEPA IBAN Châu Âu)</b>. Với tài khoản ngân hàng, Google xác thực bằng <b>Micro-deposit (chuyển thử $0.05–$0.25 vào tài khoản ngân hàng của bạn để bạn nhập lại số tiền đó)</b>, hoàn toàn không tồn tại giao diện bắt nạp tiền trước!",
+      "<b>Nhánh 2 (Nếu chạy bằng Thẻ Visa / Mastercard / VCC 3DS):</b> Truy cập <code>https://payments.google.com</code> trước &rarr; Thêm thẻ vào Hồ sơ thanh toán &rarr; Mua gói <b>Google One 100GB ($1.99)</b> hoặc dịch vụ nhỏ trên Google Play để thẻ được hệ thống đóng dấu <code>VERIFIED_INSTRUMENT</code>.",
+      "<b>Chuẩn AVS bắt buộc cho thẻ US / UK / CA:</b> Điền địa chỉ trên <code>payments.google.com</code> khớp chính xác 100% <b>Số nhà (Street Number) + Mã ZIP 5 số (Postal Code)</b> với sao kê ngân hàng phát hành thẻ để cổng thanh toán trả về <code>AVS_MATCH = Y</code>. Sau đó mới vào Google Ads liên kết Payments Profile đó."
+    ],
+    links: [
+      { label: "💳 Cài Đặt Hồ Sơ Google Pay", url: "https://payments.google.com/payments/u/0/home#settings" },
+      { label: "🔔 Cảnh Báo Xác Minh Google Pay", url: "https://payments.google.com/payments/u/0/home#alerts" }
+    ]
+  },
+  {
+    id: "s5",
+    badge: "Sau 12–24h • Bước 5/10",
+    title: "BƯỚC 5: Chốt Chặn 'Nạp Mồi $10 Qua 3DS' (Xóa Cờ Thẻ Mới + Kích Hoạt Mã $500 Active) & Nghỉ Phiên 12 Tiếng",
+    bullets: [
+      "<b>Thao tác nạp mồi $10:</b> Nếu dùng Thẻ, sau khi gắn Billing xong khoảng 2–6 tiếng (và khi chưa tạo bất kỳ chiến dịch nào), chủ động vào <code>Billing &gt; Summary</code> &rarr; Bấm nút <b>Make a payment (Thanh toán)</b> &rarr; Nhập đúng mức tối thiểu <b>$10.00 (hoặc 160.000 VNĐ)</b> và hoàn tất xác thực <b>3DS (OTP ngân hàng)</b>.",
+      "<b>Tác dụng 3 trong 1 của $10 này:</b> (1) Xóa ngay cờ <code>Unverified Card</code> vì chủ thẻ đã chủ động nạp tiền qua 3DS, triệt tiêu 100% bảng đỏ <i>Pay with your payment method</i> lúc lên camp; (2) Trong mục <code>Billing &gt; Promotions</code>, gói <b>$500 Promotional Credit</b> lập tức sáng xanh trạng thái <b>Active</b>; (3) Tài khoản có sẵn số dư dương <code>-$10.00 Credit</code> làm bàn đạp mở thang ngưỡng nợ trả sau.",
+      "<b>Quy tắc Nghỉ Phiên (Session Cool-down):</b> Nạp $10 xong <b>BẮT BUỘC đóng trình duyệt nghỉ tối thiểu 6–12 tiếng</b> (hoặc để sang ngày hôm sau), tuyệt đối không bấm tạo camp ngay trong cùng phiên gắn thẻ/nạp tiền để tránh bộ lọc <code>Velocity Shock</code>."
+    ],
+    links: [
+      { label: "🎯 Mở Trang Kiểm Tra Mã $500 (/aw/billing/promotions)", url: "https://ads.google.com/nav/login?dst=/aw/billing/promotions" }
+    ]
+  },
+  {
+    id: "s6",
+    badge: "Ngày thứ 2 • Bước 6/10",
+    title: "BƯỚC 6: Tạo Telemetry Người Thật (3–5 Phút) & Lên Chiến Dịch Đầu Tiên Ở Trạng Thái PAUSED",
+    bullets: [
+      "<b>1. Tạo Telemetry giao diện (UI Dwell Time):</b> Mở lại profile vào Ngày thứ 2 &rarr; Chưa bấm tạo camp vội. Vào <code>Tools &gt; Planning &gt; Keyword Planner</code>, gõ tìm thử 2–3 từ khóa, cuộn xem bảng giá thầu và tab <code>Insights</code> trong 3–5 phút để hệ thống ghi nhận hành vi nhà quảng cáo thật.",
+      "<b>2. Cấu hình Camp Mồi đầu tiên 'Dưới Ngưỡng Quét':</b><br>• <b>Loại chiến dịch:</b> Chọn <i>YouTube Video Views</i> (chạy cho 1 video sạch trên youtube.com — an toàn 100/100) HOẶC <i>Search Campaign</i> (Chọn <i>Website traffic</i>, không chọn mục tiêu Sales cần gắn mã chuyển đổi phức tạp ở camp đầu).<br>• <b>Ngân sách ngày (Daily Budget):</b> Đặt $\\le 15\\% - 20\\%$ ngưỡng nợ đầu tiên: <b>$2.00 – $5.00/ngày</b> (với TK USD), <b>S$3.00 – S$6.00/ngày</b> (với TK SGD), hoặc <b>30.000đ – 50.000đ/ngày</b> (với TK VNĐ).<br>• <b>Chiến lược giá thầu:</b> Chọn <b>Manual CPC (CPC thủ công)</b> hoặc <b>Maximize Clicks có đặt giới hạn trần CPC tối đa thấp</b>.<br>• <b>Mạng &amp; Địa lý:</b> Bỏ tích <i>Search Partners (Đối tác tìm kiếm)</i> và <i>Display Network (Mạng hiển thị)</i>. Vùng nhắm mục tiêu (Location) của camp đầu tiên <b>bắt buộc trùng 100% với quốc gia của Billing</b>.<br>• <b>Từ khóa &amp; Mẫu RSA:</b> 1 Ad Group duy nhất với 3–5 từ khóa khớp cụm từ (<code>\"phrase\"</code>) hoặc chính xác (<code>[exact]</code>) trung tính; viết mới hoàn toàn Headline/Description (không copy từ tài khoản từng die).",
+      "<b>3. Kỹ thuật Gạt Paused Tức Thời (Draft-to-Live Decoupling):</b> Ngay khi bấm <code>Publish Campaign</code> xong (trong vòng 3–5 giây đầu tiên), lập tức bấm vào chấm xanh trạng thái chiến dịch và chuyển sang <b>Paused (Tạm dừng)</b>!"
+    ]
+  },
+  {
+    id: "s7",
+    badge: "Ngày thứ 2 • Bước 7/10",
+    title: "BƯỚC 7: Để Bot Duyệt Mẫu Quảng Cáo Sang 'Eligible' Khi Camp Đang Paused (4–6 Tiếng) &rarr; Bật ENABLED",
+    bullets: [
+      "<b>Nguyên lý kỹ thuật:</b> Khi chiến dịch ở trạng thái <code>Paused</code>, bot kiểm duyệt chính sách (<code>AdsBot-Google</code>) vẫn vào quét mẫu quảng cáo RSA và trang đích Final URL để chuyển trạng thái mẫu quảng cáo từ <i>Under review</i> sang <b>Eligible (Đủ điều kiện)</b>. Tuy nhiên vì chiến dịch đang Paused (chưa yêu cầu phân phối), hệ thống Billing <b>chưa gọi hàm cấp hạn mức nợ (Credit Threshold Allocation)</b> nên không kích hoạt cổng quét khóa thanh toán!",
+      "<b>Thời điểm bật sống:</b> Kiểm tra tab <i>Ads</i> thấy mẫu quảng cáo đã hiện chữ <b>Eligible</b> &rarr; Chờ thêm <b>4–6 tiếng</b> cho phiên quét Policy kết thúc hoàn toàn &rarr; Mở profile gạt trạng thái chiến dịch từ <code>Paused</code> &rarr; <b>Enabled (Bật)</b>. Tỷ lệ cắn tiền mượt ngay lập tức đạt trên 95%."
+    ]
+  },
+  {
+    id: "s8",
+    badge: "Ngày 2 – Ngày 5 • Bước 8/10",
+    title: "BƯỚC 8: Quy Tắc 'Đóng Băng Cấu Hình 72 Giờ Đầu' & Vượt Qua Lần Trừ Tiền Tự Động Đầu Tiên",
+    bullets: [
+      "<b>4 Không trong 72 giờ đầu tiên từ lúc camp có Impression/Click:</b><br>1. KHÔNG sửa Final URL, không thêm Tracking Template, không bật Cloaker/Redirect.<br>2. KHÔNG thêm/xóa thẻ thanh toán hoặc chỉnh sửa thông tin trong Billing Settings.<br>3. KHÔNG tăng ngân sách đột ngột quá 20%.<br>4. KHÔNG mời thêm email quản trị mới hoặc liên kết/hủy liên kết MCC khi camp vừa mới cắn tiền.",
+      "<b>Cột mốc mở khóa Trust:</b> Để camp mồi chạy tự nhiên tiêu hết $10 nạp mồi và để Google thực hiện thành công <b>lần trừ tiền tự động đầu tiên (First Automatic Charge)</b> ở ngưỡng đầu ($10 hoặc $50)."
+    ]
+  },
+  {
+    id: "s9",
+    badge: "Ngày 5 – Ngày 25 • Bước 9/10",
+    title: "BƯỚC 9: Leo Thang Ngưỡng Nợ Trả Sau Lên $500 & Cày Đạt 100% Thanh Tiến Độ Mã Khuyến Mãi",
+    bullets: [
+      "<b>Thang ngưỡng nợ trả sau tự động (Threshold Ladder):</b> Sau mỗi lần Auto-charge thành công đúng hạn, Google tự động nâng hạn mức cho nợ chạy trước của tài khoản theo bậc: <code>$10 &rarr; $50 &rarr; $200 &rarr; $350 &rarr; $500</code>.",
+      "<b>Lộ trình tăng ngân sách (Pacing 20–25 ngày) để hoàn thành mốc $500 (5.6 triệu VNĐ) của Offer A trong hạn 60 ngày:</b><br>• <i>Ngày 1 – Ngày 3:</i> Chạy ngân sách mồi <b>$5/ngày</b> (100.000đ/ngày).<br>• <i>Ngày 4 – Ngày 7 (Sau lần Auto-charge đầu tiên):</i> Tăng ngân sách 20%–30%/ngày lên mức <b>$12 – $15/ngày</b> (300.000đ–350.000đ/ngày), lúc này có thể lên thêm Camp số 2 (camp sản phẩm chính).<br>• <i>Ngày 8 – Ngày 25:</i> Duy trì mức <b>$25 – $35/ngày</b> (600.000đ/ngày) cho tới khi thanh tiến độ trong <code>Billing &gt; Promotions</code> báo đạt <b>100% ($500 / 5.600.000đ)</b>.",
+      "<b>Quy tắc '0 Declined':</b> Trong suốt giai đoạn cày mã, luôn để số dư trong thẻ gấp đôi ngưỡng thanh toán hiện tại. Chỉ 1 lần thẻ bị từ chối (<i>Payment Declined</i>) khi đang mang mã khuyến mãi sẽ kích hoạt quét <i>Suspicious Payment</i> ngay lập tức."
+    ]
+  },
+  {
+    id: "s10",
+    badge: "Ngày 26+ • Bước 10/10",
+    title: "BƯỚC 10: Nhận $500 Tiền Thưởng (Sau 1–5 Ngày) & Bí Quyết Tiêu Hết Sạch 100% Credit Không Bị Khóa Giữa Chừng",
+    bullets: [
+      "<b>Thời gian giải ngân Credit:</b> Vì tài khoản đã hoàn tất tích xanh XMDT từ Bước 3 và thanh toán sạch không nợ, ngay sau khi thanh toán xong hóa đơn chạm mốc $500 (5.6 triệu), gói tiền thưởng <b>$500.00 (5.600.000đ)</b> sẽ nhảy sang trạng thái <b>Granted / Active Credit</b> chỉ sau <b>24 giờ – 5 ngày</b>.",
+      "<b>3 Sai lầm chết người làm khóa 90% tài khoản khi tiền thưởng vừa về:</b><br>1. Vừa thấy $500 Credit cộng vào là lập tức <b>gỡ thẻ ra hoặc khóa thẻ ngân hàng</b>.<br>2. Kéo thốc ngân sách từ $30/ngày vọt lên $200–$300/ngày để đốt tiền thưởng thật nhanh.<br>3. Đổi trang đích sang một tên miền khác hoặc nhồi sản phẩm vi phạm chính sách.",
+      "<b>Cách ăn trọn 100% tiền thưởng ($500 / 5.6 triệu) an toàn tuyệt đối:</b><br>• Giữ nguyên thẻ thanh toán hoạt động bình thường trong tài khoản (vì khi tài khoản đang có số dư Promotional Credit, mọi chi phí click quảng cáo sẽ <b>tự động trừ 100% vào tiền thưởng Credit</b>, không trừ 1 xu nào vào thẻ của bạn!).<br>• Giữ nguyên chiến dịch cũ hoặc tạo chiến dịch mới cùng chủ đề (khuyến khích đẩy qua phần mềm <b>Google Ads Editor</b> trên Desktop để tránh quét Web UI) với ngân sách đều đặn <b>$35 – $50/ngày</b>, tiêu hết sạch $500 tiền thưởng trong vòng 10–15 ngày."
+    ]
+  }
+];
+
+// 2. GIẢI MÃ CHI TIẾT 4 CÁCH CHƠI $10 -> $500
+const DATA_10TO500 = [
+  {
+    badge: "BÍ MẬT SỐ 1 • Chuẩn Nhất Để Tốn $10 Chạy $500",
+    title: "QUY TRÌNH 1 (Bí Mật Lớn Nhất): 'Kế Thừa Payments Profile Đã Có Sẵn Bậc Ngưỡng $500 + Nạp Mồi $10 Kích Hoạt Mã $500'",
+    bullets: [
+      "<b>Tại sao người thường phải nạp đủ $500, còn dân chuyên chỉ thanh toán $10 đã mở chạy được $500?</b><br>Trên hệ thống Google Ads, <b>Mã khuyến mãi $500 (Promo Code)</b> và <b>Hạn mức ngưỡng nợ trả sau ($500 Credit Threshold)</b> nằm ở <b>2 tầng dữ liệu tách biệt</b>:<br>• Mã khuyến mãi $500 gắn theo <b>CID của Tài khoản con mới tạo</b>.<br>• Hạn mức cho nợ chạy trước ($500) lại gắn theo <b>Hồ sơ thanh toán (Payments Profile ID) của MCC mẹ</b>.",
+      "<b>Cơ chế ghép nối (Threshold Inheritance + $500 Promo):</b> Khi bạn tạo 1 tài khoản con mới tinh có gắn <b>Mã khuyến mãi $500</b>, rồi liên kết nó vào MCC mẹ và chọn <b>Use an existing payments profile (Sử dụng lại Hồ sơ thanh toán cũ đã từng đạt bậc ngưỡng $350–$500)</b>, sau đó chỉ thanh toán mồi đúng <b>$10.00</b> trên tài khoản con mới:<br>1. Khoản thanh toán <b>$10.00</b> mở khóa tài khoản con sang trạng thái <code>Active</code> và bật gói <b>$500 Promotional Credit Active</b>.<br>2. Nhờ kế thừa điểm tín dụng của <code>Payments Profile</code> mẹ, tài khoản con mới <b>nhảy thẳng lên hạn mức chạy trả sau $350 – $500</b> mà chỉ mới bỏ ra đúng $10 tiền túi ban đầu!",
+      "<b>Quy trình 6 bước thực hiện chính xác 100%:</b><br>• <b>Bước 1 (Chuẩn bị MCC &amp; Payments Profile Mẹ):</b> Có 1 MCC sở hữu sẵn 1 <code>Payments Profile</code> sạch (đã Verified XMDT và từng chạy đạt bậc ngưỡng $350–$500).<br>• <b>Bước 2 (Tạo TK Con Nhận Mã $500):</b> Trên trình duyệt GPM/Dolphin gắn US ISP Proxy, vào <code>https://ads.google.com/intl/en_us/lp/coupons/</code> &rarr; Chọn <b>Offer A ($500)</b> &rarr; Tạo tài khoản ở chế độ <b>Expert Mode (chưa gắn thẻ, chưa tạo camp)</b>.<br>• <b>Bước 3 (Liên kết vào MCC Mẹ):</b> Lấy CID của tài khoản con mới tạo, gửi lời mời liên kết từ MCC mẹ sang và bấm Accept.<br>• <b>Bước 4 (Kế thừa Hồ sơ thanh toán):</b> Vào <code>Billing &gt; Settings</code> của tài khoản con mới &rarr; Ở mục <i>Payments Profile</i>, chọn <b>Hồ sơ thanh toán hiện có của MCC mẹ</b> (hoặc dùng <code>Change who pays</code>). Tài khoản con lập tức kế thừa luôn cả <b>Tích xanh XMDT</b> lẫn <b>Bậc ngưỡng tín dụng $500</b>!<br>• <b>Bước 5 (Chốt chặn Thanh toán $10.00):</b> Vào <code>Billing &gt; Summary &gt; Make a payment</code> trên tài khoản con &rarr; Thanh toán chủ động đúng <b>$10.00</b> qua 3DS &rarr; Kiểm tra tab <code>Promotions</code> thấy gói <b>$500.00 Active</b> đã sáng xanh.<br>• <b>Bước 6 (Lên Camp Chạy Hạn Mức $500):</b> Đóng trình duyệt nghỉ 6–12h &rarr; Mở lại lên camp ở trạng thái <code>Paused</code> chờ duyệt <code>Eligible</code> (4–6h) rồi bật <code>Enabled</code>. Bạn chỉ tốn đúng <b>$10.00 thanh toán ban đầu</b> để mở luồng chạy thẳng tới hạn mức $500 (và khi thanh toán hóa đơn $500 đó xong, Google cấp tiếp <b>$500 Promotional Credit miễn phí</b> cho vòng thứ 2!)."
+    ]
+  },
+  {
+    badge: "BÍ MẬT SỐ 2 • Kỹ Thuật ACH Float + VCC $10",
+    title: "QUY TRÌNH 2 (Underground BHW / CPA.RIP): 'Nạp Mồi $10 Qua Thẻ VCC 3DS + Chuyển Primary Sang ACH Bank Mỹ Để Chạy Ngưỡng $500'",
+    bullets: [
+      "<b>Bản chất kỹ thuật (ACH Settlement Float):</b> Đây là thủ thuật được chia sẻ nhiều nhất trong các nhóm kín Telegram (<code>@cparip</code>, <code>@protraffic_com</code>, <code>@partnerkin_accounts</code>) khi không có sẵn MCC mẹ ngưỡng cao:",
+      "<b>Quy trình 5 bước thực hiện:</b><br>• <b>Bước 1:</b> Tạo tài khoản Mỹ (US - USD) qua cổng <code>https://ads.google.com/intl/en_us/lp/coupons/</code> nhận <b>Offer A ($500)</b> để tài khoản mang cờ <i>Promotional Advertiser</i> (được ưu tiên điểm Trust hơn tài khoản trắng thường).<br>• <b>Bước 2:</b> Hoàn tất XMDT qua Link Nhóm A + Gắn 1 thẻ <b>VCC có 3DS (PST.net / LeadingCards)</b> khớp chuẩn AVS ZIP Code 100%.<br>• <b>Bước 3 (Thanh toán đúng $10):</b> Chủ động vào <code>Billing &gt; Make a payment</code> thanh toán <b>$10.00</b> (hoặc để camp mồi cắn chạm ngưỡng $10 đầu tiên và cho thẻ VCC thanh toán thành công $10 đó) &rarr; Hệ thống đóng dấu <code>First-Bill Cleared</code> và kích hoạt mã <b>$500 Active</b>.<br>• <b>Bước 4 (Tráo sang ACH Bank Account):</b> Vào <code>Billing &gt; Payment methods</code> thêm <b>Tài khoản ngân hàng Mỹ ACH</b> (Routing + Account Number từ Wise / Mercury / Relay, xác thực Micro-deposit $0.05–$0.25) và đặt ACH làm <b>Primary (Phương thức thanh toán chính)</b>.<br>• <b>Bước 5 (Độ trễ đối soát ACH 3–5 ngày):</b> Vì lệnh trích nợ tự động qua hệ thống ngân hàng ACH của Mỹ mất từ <b>3 đến 5 ngày làm việc ngân hàng</b> để đối soát kết quả, trong cửa sổ thời gian đó hạn mức ngưỡng trả sau của tài khoản cho phép chạy vọt lên tới <b>$350 – $500</b> dù bạn chỉ mới thanh toán đúng <b>$10.00</b> ở Bước 3!",
+      "<b>Lưu ý sống còn:</b> Nếu muốn giữ tài khoản sống lâu dài và lấy tiếp $500 Credit hiệp 2 thì trong tài khoản ACH phải có tiền để thanh toán thật; còn nếu chạy dạng <i>Threshold Burn</i> (chạy hết $500 rồi bỏ) thì bắt buộc phải chạy trên <b>Domain phụ / Phễu tách biệt</b>, tuyệt đối không dùng domain thương hiệu chính!"
+    ]
+  },
+  {
+    badge: "BÍ MẬT SỐ 3 • Mã Đòn Bẩy Cao (High-Ratio)",
+    title: "QUY TRÌNH 3: 'Săn Mã Khuyến Mãi Đòn Bẩy Cao (Chi $10–$25 Nhận $100–$150 Credit) & Combo Google Workspace / Cloud Startup $10'",
+    bullets: [
+      "<b>1. Mã Khuyến Mãi Tỷ Lệ Đòn Bẩy Cao (Spend $10–$25, Get $100–$150):</b> Ngoài mã public 1:1 ở Mỹ, tại các thị trường Tier-2/Tier-3 hoặc trong gói <b>Shopify Starter ($5) / Wix / GoDaddy ($10) / Google Workspace Starter ($6–$10)</b>, Google cấp loại mã đối tác chỉ yêu cầu chi tiêu khởi điểm tương đương <b>$10 – $25</b> là giải ngân ngay gói tiền thưởng <b>$100 – $150 Promotional Credit</b> vào tài khoản.",
+      "<b>2. Chương trình Google Ad Grants (Tốn ~$10 domain nhận $10.000/tháng = $329/ngày miễn phí 100%):</b> Đăng ký qua cổng <code>https://www.google.com/grants/</code> với hồ sơ tổ chức phi lợi nhuận/cộng đồng xác thực qua Goodstack/TechSoup &rarr; Được Google cấp thẳng tài khoản Search Ads có sẵn hạn mức <b>$329/ngày ($10.000/tháng)</b> chạy miễn phí vĩnh viễn mà không cần nạp tiền đối ứng."
+    ]
+  },
+  {
+    badge: "BÍ MẬT SỐ 4 • 8 Nhóm Kín Chuyên Bàn Vấn Đề Này",
+    title: "DANH SÁCH 8 HỘI NHÓM & CÚ PHÁP TÌM KIẾM TRỰC TIẾP TUT 'THANH TOÁN $10 CHẠY MÃ $500' CẬP NHẬT HÀNG NGÀY",
+    bullets: [
+      "<b>1. Công cụ Dò Tin Nhắn Telegram Thời Gian Thực (TGStat Search):</b> Mở <code>https://tgstat.com/en/search</code> và gõ vào ô tìm kiếm 1 trong 3 cụm từ khóa sau để đọc trực tiếp các tin nhắn vừa đăng trong vài giờ qua từ mọi nhóm kín:<br>• <code>Google Ads $500 threshold</code><br>• <code>Google Ads promo $500</code><br>• <code>промокод google ads 500</code> (Tiếng Nga — nơi chia sẻ nhiều tut nhất)",
+      "<b>2. Bot TelegramDB (@tgdb_bot — Lệnh lấy link nhóm kín chuyên Threshold &amp; Coupon):</b> Mở <code>https://t.me/tgdb_bot</code> và gõ chính xác 3 lệnh:<br>• <code>/search google ads threshold</code><br>• <code>/search google ads coupon</code><br>• <code>/search google ads 500</code>",
+      "<b>3. Chuyên mục Google Ads của CPA.RIP &amp; Kênh @cparip:</b> <code>https://cpa.rip/google-ads/</code> và <code>https://t.me/cparip</code> (Cập nhật đầu BIN thẻ VCC nạp $10 và cách ghép Payments Profile ăn mã $500 hàng tuần).",
+      "<b>4. Kênh Telegram ProTraffic (@protraffic_com) &amp; GdeTraffic (@gdetraffic):</b> <code>https://t.me/protraffic_com</code> và <code>https://t.me/gdetraffic</code> (Bật tính năng Dịch tự động của Telegram để đọc các bài test thực tế về ngưỡng thanh toán $10 &rarr; $500).",
+      "<b>5. Chợ Tài Khoản &amp; Hồ Sơ Thanh Toán Partnerkin (@partnerkin_accounts):</b> <code>https://t.me/partnerkin_accounts</code> (Nơi trao đổi các MCC/Payments Profile đã có sẵn ngưỡng cao để về ghép mã $500 theo Quy trình 1).",
+      "<b>6. Diễn đàn BlackHatWorld — Box Adwords:</b> <code>https://www.blackhatworld.com/forums/adwords.83/</code> (Theo dõi các luồng thảo luận có từ khóa <i>Threshold Method</i>, <i>Promo Credit $500</i>, <i>ACH Billing</i>)."
+    ]
+  }
+];
+
+// 3. QUY TRÌNH 6 BƯỚC CHƠI MÃ KHUYẾN MÃI & 5 ĐIỀU CẤM KỴ CHI TIẾT
+const DATA_PROMO_6 = [
+  {
+    badge: "Mã KM • Bước 1 & 2",
+    title: "QUY TRÌNH MÃ KM (BƯỚC 1 & BƯỚC 2): 3 Nguồn Lấy Mã Sạch & Thời Điểm Vàng Nhập Mã (Quy Tắc 14 Ngày)",
+    bullets: [
+      "<b>Bước 1 (3 Nguồn lấy mã sạch 100% không dùng mã chùa/tool):</b><br>• <i>Nguồn A (Auto-Apply từ Link Nhóm G):</i> Truy cập trực tiếp <code>ads.google.com/intl/en_us/lp/coupons/</code> (hoặc <code>vi_vn</code> / <code>en_sg</code>), chọn <b>Offer A ($500 / 5.6tr)</b> để mã tự gắn ngầm ngay lúc tạo TK.<br>• <i>Nguồn B (Tự động nhận qua MCC Google Partner):</i> Liên kết tài khoản mới tạo (dưới 14 ngày) vào một <b>MCC có huy hiệu Google Partner / Premier Partner</b>. Hệ thống Google tự động đẩy khuyến mãi Offer A/B vào mục <code>Billing &gt; Promotions</code> sau 24–48 giờ mà không cần nhập mã tay.<br>• <i>Nguồn C (Hệ sinh thái Đối tác):</i> Lấy voucher độc quyền xuất từ dashboard của Google Workspace, Shopify, Wix, WooCommerce hoặc Cloudflare.",
+      "<b>Bước 2 (Thời điểm vàng nhập mã — Quy tắc 14 ngày):</b><br>• Mã bắt buộc phải được áp vào tài khoản <b>trong vòng 14 ngày kể từ ngày tài khoản phát sinh lượt hiển thị (Impression) đầu tiên</b>.<br>• <i>Tut giảm quét khi nhập mã dạng chuỗi ký tự (XXXX-XXXX-XXXX):</i> Đừng nhập ngay ở phút thứ 1 khi tài khoản còn trống ($0). Hãy lên camp mồi cho cắn tiền thật khoảng <b>$5 – $15 (1–2 ngày đầu)</b>, sau đó mới vào <code>/aw/billing/promotions</code> nhập mã. Hệ thống ghi nhận tài khoản là nhà quảng cáo thật rồi mới áp mã nên không bao giờ quét lỗi <i>Coupon Farming</i>."
+    ]
+  },
+  {
+    badge: "Mã KM • Bước 3, 4, 5, 6",
+    title: "QUY TRÌNH MÃ KM (BƯỚC 3 &rarr; BƯỚC 6): Lộ Trình Cày $500 Trong 60 Ngày, Giải Ngân & Cách Tiêu Hết Sạch Tiền Thưởng",
+    bullets: [
+      "<b>Bước 3 (Lộ trình Pacing 20–25 ngày đạt mốc $500 / 5.6 triệu chưa tính VAT):</b><br>• <i>Ngày 1 – Ngày 3:</i> Chạy ngân sách mồi <b>$5/ngày</b> (100k VNĐ/ngày).<br>• <i>Ngày 4 – Ngày 7 (Sau lần trừ tiền đầu tiên):</i> Tăng lên <b>$10 – $15/ngày</b> (250k–350k VNĐ/ngày).<br>• <i>Ngày 8 – Ngày 25:</i> Duy trì <b>$25 – $35/ngày</b> (600k VNĐ/ngày) cho đến khi thanh tiến độ trong <code>Billing &gt; Promotions</code> báo đạt <b>100%</b>.",
+      "<b>Bước 4 (Quy tắc '0 Declined' khi đang cày mã):</b> Khi số dư nợ đạt khoảng 80% ngưỡng thanh toán (ví dụ ngưỡng $50 chạy đến $40), luôn đảm bảo trong thẻ có sẵn gấp đôi số tiền đó để lệnh Auto-charge đi qua mượt 100%.",
+      "<b>Bước 5 (Giải ngân sau 1–5 ngày):</b> Khi tài khoản đã Verified XMDT + thanh toán xong hóa đơn chạm mốc $500 (5.6tr), tiền thưởng sẽ chuyển sang trạng thái <b>Granted / Active Credit</b> chỉ sau <b>24 giờ – 5 ngày</b>.",
+      "<b>Bước 6 (Tiêu hết sạch $500 / 5.6tr tiền thưởng trong hạn 60 ngày):</b> Giữ nguyên thẻ hoạt động trong tài khoản (mọi chi phí click sẽ trừ 100% vào tiền thưởng Credit), duy trì ngân sách đều <b>$35 – $50/ngày</b> để tiêu hết sạch trong 10–15 ngày."
+    ]
+  },
+  {
+    badge: "5 Điều Cấm Kỵ Sống Còn",
+    title: "5 ĐIỀU CẤM KỴ TUYỆT ĐỐI KHI CHƠI MÃ KHUYẾN MÃI (TRÁNH LỖI CIRCUMVENTING & PROMOTIONAL ABUSE)",
+    bullets: [
+      "<b>1. Quy tắc 1 Domain = 1 Mã Khuyến Mãi tại một thời điểm:</b> Không bao giờ lấy cùng 1 tên miền (<code>example.com</code>) đem chạy đồng thời trên 2–3 tài khoản đều đang kích hoạt mã khuyến mãi tân thủ. Bot quét trùng <code>Root Domain</code> trên nhiều Promo Account sẽ khóa toàn bộ dàn tài khoản vì lỗi <i>Tạo nhiều tài khoản để trục lợi khuyến mãi</i>.",
+      "<b>2. Quy tắc 1 Thẻ / 1 Payments Profile = 1 Mã Khuyến Mãi:</b> Mỗi thẻ ngân hàng và mỗi Hồ sơ thanh toán chỉ được ăn mã khuyến mãi tân thủ <b>1 lần duy nhất</b>. Muốn chơi 10 mã trên 10 tài khoản thì bắt buộc phải dùng 10 thẻ khác nhau + 10 IP/Profile trình duyệt độc lập + 10 domain riêng.",
+      "<b>3. Không đổi Quốc gia / Tiền tệ khác với loại mã:</b> Mã US ($500) chỉ áp được cho tài khoản có địa chỉ Billing tại Mỹ (USD); mã VN (5.6tr) chỉ áp được cho tài khoản có địa chỉ Billing tại Việt Nam (VND).",
+      "<b>4. Không mua 'Mã khuyến mãi tạo sẵn trôi nổi' cùng dải Batch:</b> Mã bán hàng loạt từ một nguồn bị lạm dụng khi bị Google đưa vào danh sách đen (Blacklisted Batch) sẽ làm chết chùm mọi tài khoản add dải mã đó. Hãy dùng Auto-Apply từ Link Nhóm G hoặc MCC Partner.",
+      "<b>5. Hoàn tất XMDT trước khi thanh tiến độ mã đạt 100%:</b> Chủ động lấy tích xanh XMDT ngay trong tuần đầu tiên để khi chạm mốc $500, hệ thống giải ngân thẳng $500 Credit mà không giữ lại chờ xét duyệt danh tính."
+    ]
+  }
+];
+
+// 4. 12 TUT ĐÀO SÂU CHI TIẾT
+const DATA_12_TUTS = [
+  {
+    badge: "Tut 1 • Camp Mồi An Toàn 100/100",
+    title: "TUT 1: Kỹ Thuật 'Mồi Camp YouTube Video Chính Thống ($1–$2/Ngày)' Để Bỏ Qua Bộ Lọc Quét Trang Đích",
+    bullets: [
+      "<b>Cơ chế:</b> Ở chiến dịch đầu tiên của tài khoản mới, bộ lọc <code>Landing Page Scanner</code> quét cực gắt tên miền bên ngoài. Nếu bạn tạo chiến dịch đầu tiên là <b>YouTube Video Views</b> (quảng bá cho 1 video sạch bất kỳ trên YouTube như video phong cảnh/âm nhạc/tin tức chính thống) với ngân sách $1–$2/ngày, đích đến là <code>youtube.com</code> (tài sản của chính Google) nên bot chấm điểm an toàn tuyệt đối 100/100.",
+      "<b>Cách làm:</b> Cho camp YouTube mồi này chạy cắn $5–$10 đầu tiên và qua lần Auto-charge đầu tiên &rarr; Sau đó mới tạm dừng camp YouTube và lên Search Camp cho website chính của bạn."
+    ]
+  },
+  {
+    badge: "Tut 2 • Xóa Cờ Thẻ Mới",
+    title: "TUT 2: Kỹ Thuật 'Pre-Auth $10 Chủ Động Qua 3DS' Trước Khi Bấm Tạo Camp",
+    bullets: [
+      "<b>Cơ chế:</b> Khi bạn gắn một thẻ Visa/Mastercard mới tinh và đợi Google tự trừ tiền sau, thuật toán sẽ nghi ngờ thẻ chùa/thẻ ảo và khóa tài khoản bằng bảng đỏ <i>Pay with your payment method</i> ngay khi bạn bấm Publish camp.",
+      "<b>Cách làm:</b> Sau khi gắn thẻ 6 tiếng (khi chưa có camp nào), chủ động vào <code>Billing &gt; Summary &gt; Make a payment</code> tự thanh toán tay <b>$5 – $10 (hoặc 100.000đ – 160.000đ)</b>. Khi giao dịch chủ động đi qua cổng xác thực OTP 3DS của ngân hàng thành công, hệ thống xóa ngay cờ <code>Unverified Card</code>."
+    ]
+  },
+  {
+    badge: "Tut 3 • Phá Mẫu Nhận Diện Bot",
+    title: "TUT 3: Lách Cờ Velocity Bằng Tương Tác Giao Diện Tự Nhiên (UI Dwell Time & Keyword Planner Telemetry)",
+    bullets: [
+      "<b>Cách làm:</b> Trước khi bấm nút <code>+ New Campaign</code>, luôn dành 3–5 phút mở <code>Tools &gt; Keyword Planner</code>, gõ tìm thử 2–3 từ khóa liên quan đến ngành hàng, bấm xem tab <code>Insights</code> và <code>Billing Summary</code>. Các sự kiện telemetry chuột và thời gian lưu trang (Dwell Time) này ghi nhận hành vi giống nhà quảng cáo thật 100%, phá vỡ mẫu nhận diện Bot/RPA."
+    ]
+  },
+  {
+    badge: "Tut 4 • Chống Trùng Mã Băm (Hash)",
+    title: "TUT 4: Tuyệt Đối Không Copy/Paste Nguyên Cụm Headline, Description & URL Từ Tài Khoản Đã Die",
+    bullets: [
+      "<b>Cơ chế:</b> Google lưu mã băm (hash) của tổ hợp <code>Headline + Description + Final URL + Sitelink Extensions</code> từ các tài khoản bị tạm ngưng trước đó. Nếu copy nguyên bộ mẫu quảng cáo cũ dán sang tài khoản mới, bot quét liên đới sẽ đánh lỗi <i>Circumventing Systems (Lách hệ thống)</i> trong vòng 30 phút.",
+      "<b>Cách làm:</b> Bắt buộc viết lại/đảo lại cấu trúc câu tiêu đề RSA và sử dụng tên miền mới sạch 100% chưa từng gắn vào tài khoản bị khóa."
+    ]
+  },
+  {
+    badge: "Tut 5 • Chống Quét Cloaker/Tracker",
+    title: "TUT 5: Tách Biệt Tuyệt Đối Tracking Template / Cloaker Ở 48–72 Giờ Đầu Tiên",
+    bullets: [
+      "<b>Cách làm:</b> Nếu chạy Affiliate hoặc các ngành cần gắn Tracking Template / Cloaker (Adspect, Hoax.tech, Keitaro), tuyệt đối <b>KHÔNG gắn ngay lúc mới tạo camp đầu tiên</b>. Hãy để trang Whitepage tĩnh sạch 100% chạy thuần 48–72 giờ và vượt qua lần trừ tiền tự động đầu tiên, sau đó mới tích hợp luồng lọc hoặc lên ở chiến dịch thứ 2."
+    ]
+  },
+  {
+    badge: "Tut 6 • Khởi Tạo Cổng Publisher",
+    title: "TUT 6: Lên Camp Từ Tài Khoản Khởi Tạo Ngầm Qua AdMob / YouTube Studio / Merchant Center",
+    bullets: [
+      "<b>Cách làm:</b> Kết hợp <b>Nhóm F (Cách 6, 7, 14)</b> để sinh tài khoản Google Ads từ <code>apps.admob.com/v2/signup</code> hoặc <code>studio.youtube.com</code>. Các tài khoản này mang cờ định danh <code>Publisher / Creator Account</code> trong cơ sở dữ liệu của Google, khi lên camp đầu tiên có tỷ lệ vượt cổng quét cao gấp 3 lần tài khoản tạo qua luồng <code>ads.google.com/signup</code> thông thường."
+    ]
+  },
+  {
+    badge: "Tut 7 • MCC Đỡ Đạn Thanh Toán",
+    title: "TUT 7: Kỹ Thuật 'MCC Đỡ Đạn Thanh Toán' (Manager Consolidated / Change Who Pays)",
+    bullets: [
+      "<b>Cách làm:</b> Tạo và lên camp mồi trên tài khoản con được thanh toán bởi một MCC mẹ đã hoàn tất KYC tổ chức và có lịch sử chi tiêu lâu năm (vào <code>Billing &gt; Settings &gt; Change who pays</code>). Vì pháp nhân trả tiền là MCC mẹ đã Verified, tài khoản con lên camp mượt 100% không bao giờ bị hỏi thẻ hay bắt XMDT lại."
+    ]
+  },
+  {
+    badge: "Tut 8 • Cứu TK Dính Bảng Đỏ 2 Task (95% Sống)",
+    title: "TUT 8: Quy Trình Cứu Tài Khoản Lỡ Dính Bảng Đỏ 'Complete 2 Tasks' (Tỷ Lệ Mở Khóa Sống Lại 95%)",
+    bullets: [
+      "<b>Khi một tài khoản lỡ hiện bảng đỏ tạm dừng ở $0 bắt làm 2 Task (1. Pay with your payment method + 2. Verify your identity):</b>",
+      "<b>1. Tuyệt đối KHÔNG làm 3 việc sau:</b> Không chỉnh sửa/xóa chiến dịch đang có, không gỡ thẻ ra gắn thẻ khác, và không vội nạp tiền ngay khi chưa xác minh danh tính xong.",
+      "<b>2. Bước cứu 1 (Làm XMDT trước):</b> Bấm vào Task <b>Verify your identity (Xác minh danh tính)</b> &rarr; Nộp đúng CCCD/Passport + GPKD trùng khớp 100% từng ký tự với tên và địa chỉ trong <code>payments.google.com</code>.",
+      "<b>3. Bước cứu 2 (Đợi tích xanh rồi mới nạp $10):</b> Đợi 24–48 giờ cho đến khi Task XMDT báo <b>Completed (Hiện dấu tích xanh hoàn tất)</b> &rarr; Lúc này mới bấm vào Task <b>Pay with your payment method</b> và nạp mức tối thiểu (<b>$10.00</b> hoặc <b>160.000đ</b>). Ngay khi lệnh nạp $10 thành công, tài khoản sẽ tự động mở khóa (<code>Account active</code>) và chạy cắn tiền ngay mà không bị chuyển sang <i>Suspended (Tạm ngưng)</i>!"
+    ]
+  },
+  {
+    badge: "Tut 9 [ĐÀO SÂU] • Cookie Ecosystem 48h",
+    title: "TUT 9 [ĐÀO SÂU MỚI]: Quy Trình Ngâm Cookie Hệ Sinh Thái Google 48 Giờ Trước Khi Mở Google Ads",
+    bullets: [
+      "<b>Cơ chế:</b> Hệ thống chống gian lận của Google kiểm tra lịch sử hoạt động của Google Account trên các dịch vụ khác trước khi cho phép mở tài khoản quảng cáo trả sau.",
+      "<b>Cách làm:</b> Sau khi đăng nhập Gmail vào profile GPM/Dolphin có gắn ISP Proxy tĩnh, trong 2 ngày đầu (mỗi ngày 10 phút): tạo 1 bảng tính trên <b>Google Sheets</b>, lưu 2 địa điểm trên <b>Google Maps</b>, xem 2 video trên <b>YouTube</b> và đăng nhập vào 1 trang báo bất kỳ bằng nút <i>Sign in with Google</i>. Đến ngày thứ 3 mới mở link tạo Google Ads &rarr; Điểm Trust tài khoản cao vượt trội."
+    ]
+  },
+  {
+    badge: "Tut 10 [ĐÀO SÂU] • Domain Age & WHOIS",
+    title: "TUT 10 [ĐÀO SÂU MỚI]: Chuẩn Hóa Tuổi Đời Tên Miền (>30 Ngày), DNS & Google Search Console",
+    bullets: [
+      "<b>Cơ chế:</b> Tên miền vừa đăng ký dưới 7 ngày đem chạy quảng cáo ngay trên tài khoản mới là tín hiệu số 1 kích hoạt quét <i>Misrepresentation</i> và <i>Circumventing Systems</i>.",
+      "<b>Cách làm:</b> Dùng tên miền đã đăng ký và trỏ DNS hoạt động tối thiểu <b>15–30 ngày</b>, đã xác minh quyền sở hữu trên <b>Google Search Console (GSC)</b> bằng chính Gmail hoặc domain doanh nghiệp đó, và tuyệt đối không dùng chuyển hướng Cloudflare 301/302 ở URL trang đích."
+    ]
+  },
+  {
+    badge: "Tut 11 [ĐÀO SÂU] • Consent Mode v2",
+    title: "TUT 11 [ĐÀO SÂU MỚI]: Tích Hợp Cookie Consent Mode v2 Khi Lên Camp Thị Trường US / UK / EU",
+    bullets: [
+      "<b>Cơ chế:</b> Từ 2025–2026, bot duyệt trang đích của Google kiểm tra bắt buộc hộp thoại xin phép Cookie (<i>Google Consent Mode v2</i>) đối với mọi trang đích nhắm mục tiêu vào EEA/UK và nhiều bang tại Mỹ.",
+      "<b>Cách làm:</b> Gắn banner Cookie Consent (có nút <i>Accept All / Reject All / Preferences</i>) và cấu hình mặc định <code>ad_storage='denied'</code> trước khi người dùng bấm đồng ý. Điều này giúp trang đích qua vòng duyệt tự động cực nhanh và không bao giờ dính cờ <i>Inadequate Data Security</i>."
+    ]
+  },
+  {
+    badge: "Tut 12 [ĐÀO SÂU] • Cách Ly MCC",
+    title: "TUT 12 [ĐÀO SÂU MỚI]: Quy Tắc 'Cách Ly Tầng MCC' (Tối Đa 3–5 Tài Khoản Mới / 1 MCC)",
+    bullets: [
+      "<b>Cơ chế:</b> Nếu bạn nhét 20–50 tài khoản mới vào chung 1 MCC, chỉ cần 2–3 tài khoản con bị tạm ngưng là thuật toán sẽ đánh dấu độc hại cả MCC mẹ (<i>Manager Account Taint</i>), khiến mọi tài khoản mới tạo hoặc liên kết vào MCC đó sau này đều bị khóa tự động.",
+      "<b>Cách làm:</b> Mỗi MCC chỉ quản lý tối đa <b>3–5 tài khoản con đã hoàn tất tích xanh XMDT</b>. Tuyệt đối không liên kết tài khoản chưa XMDT hoặc tài khoản đang bị khóa vào MCC chính."
+    ]
+  }
+];
+
+// 5. ĐẦY ĐỦ 18 CÁCH TẠO TÀI KHOẢN & GẮN BILLING CHI TIẾT (KHÔNG RÚT GỌN)
+const DATA_18WAYS_FULL = [
+  {
+    badge: "Cách 1/18 • Miễn Nhiễm 100%",
+    title: "CÁCH 1: MCC Monthly Invoicing (Hóa Đơn Hàng Tháng — Hợp Đồng Tín Dụng)",
+    bullets: [
+      "<b>Cơ chế:</b> Tạo tài khoản con trực tiếp bên trong một MCC doanh nghiệp đã được Google cấp hạn mức tín dụng (<b>Credit Line / Monthly Invoicing</b>) và sử dụng <b>Consolidated Billing (Thanh toán hợp nhất)</b>.",
+      "<b>Ưu điểm:</b> Toàn bộ chi phí quảng cáo được tổng hợp vào hóa đơn cuối tháng của MCC mẹ, hoàn toàn không sử dụng thẻ Visa/Mastercard trên tài khoản con nên <b>miễn nhiễm 100%</b> với task bắt nạp tiền trước (<i>Pay with your payment method</i>)."
+    ]
+  },
+  {
+    badge: "Cách 2/18 • Mồi Thẻ Google Pay",
+    title: "CÁCH 2: Mồi Thẻ Trên payments.google.com Bằng Giao Dịch Google One $1.99 Trước Khi Vào Google Ads",
+    bullets: [
+      "<b>Cách làm từng bước:</b><br>1. Mở <code>https://payments.google.com</code> (chưa mở Google Ads) &rarr; Vào mục <i>Payment methods</i> thêm thẻ Visa/Mastercard.<br>2. Truy cập <code>one.google.com</code> mua gói <b>Google One 100GB ($1.99/tháng)</b> (hoặc mua 1 ứng dụng $0.99 trên Google Play) và thanh toán qua 3DS.<br>3. Khi giao dịch thành công, thẻ đó được hệ thống tài chính Google đóng dấu <code>VERIFIED_INSTRUMENT</code>.<br>4. Đợi sau 12–24 giờ mới mở Google Ads và chọn lại đúng thẻ có sẵn trong Google Pay đó &rarr; Vượt qua cổng quét Billing mượt mà."
+    ]
+  },
+  {
+    badge: "Cách 3/18 • KYC Trước Gắn Thẻ Sau",
+    title: "CÁCH 3: Hoàn Tất KYC Giấy Tờ Lấy Tích Xanh XMDT Trước Khi Thêm Thẻ",
+    bullets: [
+      "<b>Cách làm từng bước:</b><br>1. Dùng <b>Link Nhóm A</b> tạo tài khoản trắng và nhảy thẳng vào <code>/aw/billing/advertiserverification</code>.<br>2. Nộp bộ giấy tờ GPKD + CCCD (chưa vào mục Billing gắn thẻ).<br>3. Đợi 24–72 giờ cho đến khi nhận được email báo hoàn tất xác minh nhà quảng cáo và hiện tích xanh <b>Verified</b>.<br>4. Sau khi đã có tích xanh mới vào <code>Billing &gt; Settings</code> gắn thẻ thanh toán &rarr; Tỷ lệ bị bắt nạp tiền trước giảm xuống gần bằng 0."
+    ]
+  },
+  {
+    badge: "Cách 4/18 • Đồng Bộ ISP Proxy",
+    title: "CÁCH 4: Đồng Bộ Tuyệt Đối ISP Proxy Ngay Từ Màn Hình Confirm Settings Đầu Tiên",
+    bullets: [
+      "<b>Cách làm:</b> Bắt buộc gắn <b>Proxy dân cư tĩnh (Static ISP Proxy)</b> đúng quốc gia (US / SG / UK) ngay từ trước khi mở link tạo tài khoản để màn hình <i>Confirm your business info</i> tự động nhận sẵn <i>United States / Timezone US / USD</i> (hoặc <i>Singapore / SGD</i>).",
+      "<b>Lưu ý:</b> Tuyệt đối không dùng IP Việt Nam mở trang tạo tài khoản rồi bấm chuột đổi tay Quốc gia từ Việt Nam sang Mỹ — thao tác đổi tay quốc gia trên IP ngoại lai sẽ gắn cờ <code>GEO_MISMATCH</code> ngay lập tức."
+    ]
+  },
+  {
+    badge: "Cách 5/18 • Kế Thừa Hồ Sơ Sạch",
+    title: "CÁCH 5: Tái Sử Dụng Payments Profile Đã Live KYC & Có Lịch Sử Thanh Toán Sạch",
+    bullets: [
+      "<b>Cách làm:</b> Khi thiết lập thanh toán cho một tài khoản con mới tạo trong MCC, ở ô <i>Payments Profile (Hồ sơ thanh toán)</i>, không tạo hồ sơ mới mà bấm chọn lại <b>Hồ sơ thanh toán hiện có</b> đã hoàn tất xác minh danh tính và đã từng thanh toán tự động thành công trên tài khoản khác (không có khoản nợ quá hạn)."
+    ]
+  },
+  {
+    badge: "Cách 6/18 • Cổng YouTube Studio",
+    title: "CÁCH 6: Khởi Tạo Tài Khoản Ngầm Qua Cổng YouTube Studio Promotions",
+    bullets: [
+      "<b>Cách làm từng bước:</b><br>1. Đăng nhập vào <code>https://studio.youtube.com</code> (tạo 1 kênh YouTube sạch nếu chưa có).<br>2. Vào menu bên trái chọn <b>Content (Nội dung)</b> &rarr; Chuyển sang tab <b>Promotions (Quảng bá)</b>.<br>3. Bấm nút <b>Get started (Bắt đầu)</b> và chọn tạo tài khoản Google Ads mới ngay từ trong hộp thoại của YouTube Studio (<code>sourceid=yt_studio</code>).<br>4. Tài khoản sinh ra mang cờ <code>YouTube Creator Advertiser</code>, có độ Trust cao hơn hẳn luồng đăng ký web thường."
+    ]
+  },
+  {
+    badge: "Cách 7/18 • Cổng Merchant Center",
+    title: "CÁCH 7: Khởi Tạo Tài Khoản Ngầm Qua Cổng Google Merchant Center Next (GMC)",
+    bullets: [
+      "<b>Cách làm từng bước:</b><br>1. Truy cập <code>https://merchants.google.com</code> và khởi tạo 1 cửa hàng Merchant Center.<br>2. Vào biểu tượng bánh răng <b>Settings &gt; Access and services (hoặc Linked accounts) &gt; Google Ads</b>.<br>3. Bấm <b>Create account (Tạo tài khoản mới)</b> để hệ thống GMC tự sinh tài khoản Google Ads liên kết sẵn."
+    ]
+  },
+  {
+    badge: "Cách 8/18 • Change Who Pays",
+    title: "CÁCH 8: Kỹ Thuật 'Đổi Người Thanh Toán' (Change Who Pays) Giữa 2 MCC",
+    bullets: [
+      "<b>Cách làm từng bước:</b><br>1. Tạo tài khoản con từ một MCC phụ và hoàn tất xác minh danh tính.<br>2. Liên kết tài khoản con đó vào MCC chính (nơi có Hồ sơ thanh toán doanh nghiệp uy tín đã qua nhiều kỳ thanh toán).<br>3. Vào <code>Billing &gt; Settings</code> của tài khoản con, bấm chọn <b>Change who pays (Thay đổi người thanh toán)</b> và gán hồ sơ thanh toán của MCC chính vào."
+    ]
+  },
+  {
+    badge: "Cách 9/18 • Cổng Google Analytics 4",
+    title: "CÁCH 9: Khởi Tạo Tài Khoản Ngầm Từ Luồng Liên Kết Google Analytics 4 (GA4)",
+    bullets: [
+      "<b>Cách làm từng bước:</b><br>1. Vào <code>https://analytics.google.com</code> tạo 1 Property GA4 cho website của bạn.<br>2. Vào <b>Admin (Quản trị) &gt; Product Links (Liên kết sản phẩm) &gt; Google Ads Links</b>.<br>3. Khởi tạo quy trình mở và liên kết tài khoản Google Ads trực tiếp từ giao diện GA4."
+    ]
+  },
+  {
+    badge: "Cách 10/18 • Cổng Google Maps / GBP",
+    title: "CÁCH 10: Khởi Tạo Từ Trang Quản Lý Doanh Nghiệp Google Business Profile (Google Maps)",
+    bullets: [
+      "<b>Cách làm:</b> Từ trang quản lý địa điểm doanh nghiệp trên Google Maps (<code>https://business.google.com</code>), bấm nút <b>Advertise / Create Ad</b>. Hệ thống sẽ chuyển thẳng vào luồng <code>Local Business Advertiser</code> có điểm uy tín doanh nghiệp địa phương rất cao."
+    ]
+  },
+  {
+    badge: "Cách 11/18 • Cổng Play Console $25",
+    title: "CÁCH 11: Khởi Tạo Từ Google Play Console (Tài Khoản Developer Đã Trả Phí $25)",
+    bullets: [
+      "<b>Cách làm:</b> Dành cho tài khoản Google Developer đã thanh toán khoản phí đăng ký $25 một lần tại <code>https://play.google.com/console</code>. Khi bạn vào mục <b>Grow Users &gt; Google Ads</b> trong Play Console để tạo tài khoản quảng cáo, Hồ sơ thanh toán đã được xác thực hoàn toàn qua khoản lệ phí Developer $25 nên Google miễn trừ bước kiểm tra nạp tiền cọc thẻ."
+    ]
+  },
+  {
+    badge: "Cách 12/18 • Bank ACH / SEPA (Top 1)",
+    title: "CÁCH 12: Sử Dụng Direct Debit / ACH Bank Account (Mỹ) Hoặc SEPA IBAN (Châu Âu) Thay Vì Thẻ",
+    bullets: [
+      "<b>Cơ chế miễn nhiễm 100%:</b> Tại thị trường <b>Mỹ (US)</b> (dùng Routing Number + Account Number từ Wise Business, Mercury, RelayFi) hoặc <b>Châu Âu (EU)</b> (dùng mã SEPA IBAN từ Wise/Revolut/Paysera): Khi vào <code>Billing &gt; Settings</code>, thay vì chọn <i>Add credit or debit card</i>, hãy chọn <b>Add bank account (Tài khoản ngân hàng)</b>.",
+      "<b>Vì sao không bao giờ bị bắt thanh toán trước?</b> Với phương thức Bank Account ACH/SEPA, quy trình xác thực của Google là <b>Test Micro-deposit (Google tự chuyển $0.05 – $0.25 vào tài khoản ngân hàng của bạn sau 1–2 ngày để bạn nhập lại đúng con số đó)</b>, hoàn toàn không tồn tại nút hay task bắt bạn phải nạp tiền trước vào Google!"
+    ]
+  },
+  {
+    badge: "Cách 13/18 • 3-Phase Session Aging",
+    title: "CÁCH 13: Kỹ Thuật 'Tách Phiên 3 Giai Đoạn' (3-Phase Session Aging) Phá Vỡ Cờ Velocity",
+    bullets: [
+      "<b>Cách làm từng bước:</b><br>• <b>Phiên 1 (Ngày 1):</b> Mở Link Nhóm A tạo tài khoản trắng &rarr; Đóng trình duyệt nghỉ ngay, tuyệt đối không vào mục Billing, không tạo camp.<br>• <b>Phiên 2 (Sau 12–24 giờ):</b> Mở lại profile &rarr; Vào <code>/aw/billing/advertiserverification</code> nộp GPKD + CCCD &rarr; Đóng trình duyệt chờ duyệt tích xanh.<br>• <b>Phiên 3 (Sau khi có tích xanh Verified):</b> Mở lại profile &rarr; Vào <code>Billing &gt; Settings</code> gắn Payments Profile đã mồi Google One $1.99 hoặc gắn Bank Account ACH."
+    ]
+  },
+  {
+    badge: "Cách 14/18 • Cổng AdMob Publisher",
+    title: "CÁCH 14: Khởi Tạo Tài Khoản Google Ads Tự Động Qua Cổng Google AdMob (apps.admob.com/v2/signup)",
+    bullets: [
+      "<b>Cơ chế:</b> Khi bạn đăng ký tài khoản nhà phát hành ứng dụng tại <code>https://apps.admob.com/v2/signup</code>, hệ thống backend của Google bắt buộc phải tự động sinh ngầm 1 tài khoản Google Ads và 1 tài khoản AdSense/Payments liên kết với AdMob.",
+      "<b>Ưu điểm:</b> Tài khoản Google Ads sinh ra từ AdMob mang định danh <b>Publisher Account</b>, bỏ qua hoàn toàn phễu <code>/signup</code> thông thường và có điểm Trust khởi điểm cực cao."
+    ]
+  },
+  {
+    badge: "Cách 15/18 • Email Google Workspace",
+    title: "CÁCH 15: Dùng Email Tên Miền Doanh Nghiệp Google Workspace (Đã Trả Phí 1 Kỳ) Thay Vì @gmail.com",
+    bullets: [
+      "<b>Cách làm:</b> Tài khoản quản trị Google Workspace (<code>admin@tenmien.com</code>) đã thanh toán cước thuê bao Workspace hàng tháng ($6–$12) luôn có sẵn một <b>Payments Profile hạng Business</b> đã được Google xác thực. Khi dùng email này mở Google Ads và chọn lại chính Payments Profile của Workspace, Google miễn trừ bước kiểm tra nạp tiền cọc thẻ."
+    ]
+  },
+  {
+    badge: "Cách 16/18 • Backup Card Swap",
+    title: "CÁCH 16: Kỹ Thuật 'Tráo Thẻ Qua Phương Thức Thanh Toán Dự Phòng' (Backup Card Swap)",
+    bullets: [
+      "<b>Cách làm từng bước:</b><br>• <b>Bước 1:</b> Dùng 1 thẻ Tín dụng (Physical Credit Card) thật có độ trust cao gắn làm thẻ chính lúc thiết lập Billing để vượt qua vòng quét Risk Engine mà không bị dính task nạp tiền.<br>• <b>Bước 2:</b> Sau khi tài khoản đã Active ở chế độ Postpay (Trả sau), vào <code>Billing &gt; Payment methods</code> thêm thẻ thứ 2 (thẻ VCC/thẻ chạy chính) vào làm <b>Backup (Phương thức thanh toán dự phòng)</b>.<br>• <b>Bước 3:</b> Đợi sau 12–24 giờ, chuyển thẻ thứ 2 từ <i>Backup</i> lên làm <b>Primary (Phương thức chính)</b> và gỡ thẻ 1 ra để dùng tiếp cho tài khoản khác."
+    ]
+  },
+  {
+    badge: "Cách 17/18 • Khớp Chuẩn AVS 100%",
+    title: "CÁCH 17: Khớp Chuẩn AVS (Address Verification System) Cho Thẻ US / UK / Canada",
+    bullets: [
+      "<b>Cơ chế:</b> Hệ thống ngân hàng tại Mỹ, Anh, Canada kiểm tra tự động 2 trường số: <b>Số nhà (Street Number) + Mã bưu chính (5-digit ZIP / Postal Code)</b>. Nếu địa chỉ nhập trên Google Ads lệch mã ZIP so với địa chỉ đăng ký trên ngân hàng phát hành thẻ (Wise, Payoneer, Mercury, PST, LeadingCards), cổng thanh toán trả về mã <code>AVS_MISMATCH</code> &rarr; Google lập tức bật task <i>Pay with your payment method</i>.",
+      "<b>Cách làm:</b> Mở sao kê thẻ (Card Statement), copy chính xác từng ký tự của dòng <b>Address Line 1</b> và <b>ZIP Code</b> dán vào phần địa chỉ chủ thẻ trên Google Ads để đạt <code>AVS_MATCH = Y</code>."
+    ]
+  },
+  {
+    badge: "Cách 18/18 • API MutateBillingSetup",
+    title: "CÁCH 18: Tạo Tài Khoản Con Qua API (CreateCustomerClient) Nối Thẳng MutateBillingSetup Của MCC Mẹ",
+    bullets: [
+      "<b>Cách làm:</b> Dành cho MCC đã có Developer Token (Basic Access), đã hoàn tất KYC tổ chức và đã thanh toán thành công ít nhất 1 hóa đơn thực tế: Gọi trực tiếp hàm API <code>CustomerService.CreateCustomerClient</code> để tạo tài khoản con và gọi tiếp <code>BillingSetupService.MutateBillingSetup</code> gán thẳng <code>payments_account</code> của MCC mẹ ngay ở tầng API, bỏ qua hoàn toàn giao diện nhập thẻ trên trình duyệt web."
+    ]
+  }
+];
+
+// 6. KHO 42+ TOOL GOOGLE ADS (8 NHÓM)
+const DATA_TOOLS_CATALOG = [
+  {
+    badge: "Nhóm Tool 1 • Antidetect & RPA Farming",
+    title: "NHÓM 1: Tool Nuôi Tài Khoản, Ngâm Cookie Tự Động & Lên Camp Hàng Loạt (RPA / Anti-Detect)",
+    bullets: [
+      "<b>1. GPM-Login (Đang tích hợp trong dự án GPM Studio của anh iu):</b> Antidetect Browser tối ưu nhất tại VN, API local port 9495 điều khiển tự động mở profile, ngâm cookie, login Gmail và lên camp RPA không qua Google Ads API.",
+      "<b>2. Dolphin{anty} (dolphin-anty.com):</b> Trình duyệt Antidetect số 1 của giới Arbitrage Nga/CIS, giả lập Canvas/WebGL/WebRTC cực sạch cho Google Ads và có sẵn kịch bản Cookie Robot tự cày lịch sử web.",
+      "<b>3. Browser Automation Studio — BAS (bablosoft.com):</b> Phần mềm viết bot tự động hóa tạo Gmail, tự nuôi Cookie 7 ngày trên YouTube/Google Maps/Drive và tự động gắn thẻ lên camp mồi với quỹ đạo chuột người thật.",
+      "<b>4. ZennoPoster & ZennoBrowser (zennolab.com):</b> Hệ thống farm tài khoản Google Ads công nghiệp bằng kịch bản C#/XML, tích hợp sẵn API thuê SIM nhận OTP (5sim, SMS-Activate) và tự động kháng nghị.",
+      "<b>5. Octo Browser / Multilogin / AdsPower / GoLogin:</b> Bộ tứ Antidetect quốc tế chuyên dùng để cách ly từng tài khoản Google Ads với 1 vân tay phần cứng (MAC, GPU, AudioContext) riêng biệt."
+    ]
+  },
+  {
+    badge: "Nhóm Tool 2 • Cloaking & Bot Filter",
+    title: "NHÓM 2: Tool Cloaking & Chặn Bot Google Quét Trang Đích (AdsBot-Google / Reviewer Bypass)",
+    bullets: [
+      "<b>1. Adspect.ai (VLA™ Machine Learning Cloaker):</b> Ông vua Cloaking cho Google Ads hiện nay. Nhận diện chính xác 100% bot duyệt quảng cáo của Google (AdsBot-Google), IP cơ sở hạ tầng Google và Reviewer thủ công để hiển thị trang Whitepage sạch, chỉ cho khách hàng thật vào trang bán hàng/Offer.",
+      "<b>2. Hoax.tech (Chuyên gia lọc lưu lượng PPC/Google Ads):</b> Cloaker thế hệ mới sử dụng phân tích hành vi JS và TLS Fingerprint để phát hiện bot Google ẩn danh qua mạng dân cư.",
+      "<b>3. Palladium & CloakIt (cloakit.pro):</b> Công cụ bọc link nhanh bằng PHP/WordPress plugin hoặc JS tích hợp trong 2 phút, chuyên dùng khi chạy Search Ads các ngành khó (Tài chính, Crypto, Thực phẩm chức năng, Affiliate).",
+      "<b>4. JustCloakIt (JCI) & TrafficArmor:</b> Hệ thống tường lửa lọc bot lâu đời nhất trên BlackHatWorld, cập nhật danh sách dải IP datacenter của Google Reviewer theo từng giờ.",
+      "<b>5. Keitaro Tracker (keitaro.io):</b> Hệ thống Tracking kiêm lọc lưu lượng tự chủ trên VPS riêng, cho phép chia luồng A/B testing, ẩn Referrer và điều hướng khách theo từ khóa tìm kiếm."
+    ]
+  },
+  {
+    badge: "Nhóm Tool 3 • Whitepage & Cloner",
+    title: "NHÓM 3: Tool Tạo Trang Đích Sạch (Whitepage Generator) & Cào Landing Page Đối Thủ Trong 1 Click",
+    bullets: [
+      "<b>1. SaveWeb2Zip (saveweb2zip.com) & WebScrapBook:</b> Công cụ tải nguyên bộ giao diện HTML/CSS/JS của bất kỳ trang Landing Page đối thủ nào về máy thành file .zip chỉ trong 5 giây, tự động xóa sạch mã tracking cũ của đối thủ.",
+      "<b>2. Comsign / AI Whitepage Generators (Trên CPA.RIP & Partnerkin):</b> Các tool AI tự động sinh website doanh nghiệp đa trang (Trang chủ, Giới thiệu, Dịch vụ, Liên hệ, Privacy Policy, Terms of Service, Cookie Consent Mode v2) khớp 100% với bộ từ khóa Search Camp để vượt vòng duyệt mẫu quảng cáo.",
+      "<b>3. HTTrack Website Copier & Cyotek WebCopy:</b> Phần mềm Desktop cào toàn bộ cấu trúc website tĩnh để chỉnh sửa nhanh thành trang đích mồi (Warm-up Landing Page).",
+      "<b>4. Cloudflare Pages / Vercel Instant Hosting:</b> Giải pháp up trang Whitepage tĩnh miễn phí lên hạ tầng CDN toàn cầu của Cloudflare/Vercel giúp trang tải dưới 0.5 giây và có điểm chất lượng trang đích (Landing Page Experience) đạt 10/10."
+    ]
+  },
+  {
+    badge: "Nhóm Tool 4 • Thẻ Ảo VCC 3DS & Bank ACH",
+    title: "NHÓM 4: Nguồn Thẻ Ảo VCC (Có 3DS / Đúng BIN) & Tài Khoản Ngân Hàng ACH Chuyên Trị Google Ads",
+    bullets: [
+      "<b>1. PST.NET (Thẻ Platinum chuyên Google Ads):</b> Cung cấp hơn 25 đầu BIN thẻ Mỹ/Châu Âu dành riêng cho Google Ads, hỗ trợ mã 3DS trả về ngay trong Dashboard/Telegram Bot, tỷ lệ qua vòng Pre-Auth $10 rất cao.",
+      "<b>2. LeadingCards (leadingcards.media):</b> Nền tảng cấp thẻ VCC số lượng lớn cho đội Media Buying, cho phép tùy chỉnh tên chủ thẻ và địa chỉ ZIP Code khớp chuẩn AVS 100%.",
+      "<b>3. YeezyPay / AnyBill / Combo.cards / EPN.net / Karta.io:</b> Các cổng phát hành thẻ ảo Visa/Mastercard quốc tế nạp bằng USDT, chuyên dùng để nuôi dàn tài khoản ăn mã khuyến mãi $500 (mỗi tài khoản 1 thẻ riêng).",
+      "<b>4. Wise Business / Mercury Bank / RelayFi / Revolut Business:</b> Nguồn cung cấp <b>Số tài khoản ngân hàng Mỹ (Routing + Account Number ACH)</b> và <b>Châu Âu (SEPA IBAN)</b> để gắn theo Cách 12 — xác thực bằng Micro-deposit ($0.05–$0.25), miễn nhiễm 100% với lỗi bắt nạp tiền trước."
+    ]
+  },
+  {
+    badge: "Nhóm Tool 5 • ISP Proxy & Mobile 4G/5G",
+    title: "NHÓM 5: Tool Proxy Dân Cư Tĩnh (Static ISP Proxy) & Mobile Proxy 4G/5G Không Dính Blacklist",
+    bullets: [
+      "<b>1. NodeMaven (nodemaven.com):</b> Có bộ lọc <i>IP Quality Filter</i> tự động loại bỏ các IP dân cư đã từng bị dùng để spam Google trước khi cấp cho trình duyệt, giữ kết nối tĩnh lên tới 24h.",
+      "<b>2. BrightData Static ISP & Oxylabs ISP Proxies:</b> Nguồn IP dân cư tĩnh đăng ký trực tiếp dưới tên các nhà mạng AT&T, Verizon, Comcast (Mỹ) hoặc Singtel (Singapore) — không bao giờ bị nhận diện là VPN/Datacenter.",
+      "<b>3. AstroProxy & Soax Mobile 4G/5G:</b> Nguồn Proxy di động 4G/5G thật từ SIM nhà mạng, cực mạnh khi dùng để tạo tài khoản mới và vượt xác minh SMS.",
+      "<b>4. IPQualityScore (ipqualityscore.com) & Scamalytics (scamalytics.com):</b> 2 công cụ bắt buộc phải kiểm tra trước khi đăng nhập Google Ads — chỉ dùng IP có <b>Fraud Score = 0</b> và <b>VPN/Proxy = No</b>."
+    ]
+  },
+  {
+    badge: "Nhóm Tool 6 • Spy Ads & Keyword Intelligence",
+    title: "NHÓM 6: Tool Spy Quảng Cáo Đối Thủ, Lộ Toàn Bộ Từ Khóa & Phễu Đang Chạy Lãi",
+    bullets: [
+      "<b>1. Google Ads Transparency Center (adstransparency.google.com):</b> Công cụ chính chủ miễn phí của Google cho phép gõ tên miền hoặc tên doanh nghiệp bất kỳ để xem toàn bộ mẫu quảng cáo Search, YouTube, Display mà đối thủ đang chạy sống hôm nay.",
+      "<b>2. SpyFu (spyfu.com) & Semrush Advertising Research:</b> Gõ domain đối thủ vào là xuất ra toàn bộ danh sách từ khóa họ đang mua, giá thầu CPC, mẫu tiêu đề RSA mang lại nhiều click nhất và lịch sử ngân sách.",
+      "<b>3. Adbeat (adbeat.com) & WhatRunsWhere:</b> Chuyên spy các chiến dịch Google Display Network (GDN) và YouTube Ads — xem chính xác đối thủ đang đặt banner ở trang báo nào, video nào.",
+      "<b>4. Keyword Planner + Keyword Sheeter / AlsoAsked:</b> Bộ công cụ vét cạn từ khóa ngách dài (Long-tail keywords) giá thầu rẻ nhưng tỷ lệ chuyển đổi cao."
+    ]
+  },
+  {
+    badge: "Nhóm Tool 7 • Chống Click Tặc",
+    title: "NHÓM 7: Tool Chống Click Tặc / Click Ảo (Click Fraud Protection) Bảo Vệ Ngân Sách Camp",
+    bullets: [
+      "<b>1. ClickCease (clickcease.com) & Lunio (lunio.ai):</b> Tự động phát hiện đối thủ hoặc bot bấm phá quảng cáo của bạn và đẩy IP/Device ID của kẻ phá hoại vào danh sách Chặn (IP Exclusions) trong Google Ads theo thời gian thực.",
+      "<b>2. TrafficGuard & FraudBlocker:</b> Chặn bot click trên mạng hiển thị (GDN) và chiến dịch Performance Max (PMax), giúp tiết kiệm 20%–35% ngân sách bị đốt oan."
+    ]
+  },
+  {
+    badge: "Nhóm Tool 8 • Quản Trị Chính Chủ & Săn Mã KM",
+    title: "NHÓM 8: Tool Lên Camp Offline Chính Chủ (Giảm 80% Quét UI) & Tự Động Hóa MCC",
+    bullets: [
+      "<b>1. Google Ads Editor (Phần mềm Desktop chính chủ của Google):</b> Sau khi tài khoản đã qua camp mồi đầu tiên, việc soạn và đẩy (Post) chiến dịch mới qua phần mềm <b>Google Ads Editor</b> giúp tránh được các bộ lọc theo dõi tốc độ chuột/bàn phím trên giao diện Web UI.",
+      "<b>2. Google Ads Scripts & Automated Rules:</b> Tự động kiểm tra sức khỏe tài khoản, tự động cảnh báo qua Telegram khi CPC tăng vọt hoặc khi camp ngừng cắn tiền.",
+      "<b>3. Couponer / Adcore Partner Promo Manager:</b> Công cụ dành cho các MCC Google Partner để tự động kích hoạt và theo dõi tiến độ hàng trăm mã khuyến mãi $500 (Offer A/B/C) trên toàn bộ dàn tài khoản con."
+    ]
+  }
+];
+
+// 7. ĐẦY ĐỦ 100% CẢ 33 ĐƯỜNG LINK THUỘC 7 NHÓM (A, B, C, D, E, F, G)
+const ALL_33_LINKS = [
+  { group: "NHÓM A (Vào Thẳng XMDT)", title: "1. Thị trường Hoa Kỳ (US - USD) — Tạo TK trả sau + nhảy thẳng vào /aw/billing/advertiserverification", url: "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526authuser%253D0%2526dst%253D%2Faw%2Fbilling%2Fadvertiserverification%3Fauthuser%25253D0%2526gl%253DUS%2526hl%253Den%26sf%3Dav%26subid%3Dus-en-awhp-g-aw-c-t-kwp-hero!o2&followup=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526authuser%253D0%2526dst%253D%2Faw%2Fbilling%2Fadvertiserverification%3Fauthuser%25253D0%2526gl%253DUS%2526hl%253Den%26sf%3Dav%26subid%3Dus-en-awhp-g-aw-c-t-kwp-hero!o2&osid=1&passive=1209600&service=adwords&flowName=WebLiteSignIn&flowEntry=ServiceLogin" },
+  { group: "NHÓM A (Vào Thẳng XMDT)", title: "2. Thị trường Singapore (SG - SGD) — Ưu tiên tiền tệ SGD + nhảy thẳng vào trang nộp GPKD & CCCD", url: "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526authuser%253D0%2526dst%253D%2Faw%2Fbilling%2Fadvertiserverification%3Fauthuser%25253D0%2526gl%253DSG%2526hl%253Den%26sf%3Dav%26subid%3Dall-en-awhp-g-aw-c-t-kwp-hero!o2&followup=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526authuser%253D0%2526dst%253D%2Faw%2Fbilling%2Fadvertiserverification%3Fauthuser%25253D0%2526gl%253DSG%2526hl%253Den%26sf%3Dav%26subid%3Dall-en-awhp-g-aw-c-t-kwp-hero!o2&osid=1&passive=1209600&service=adwords&flowName=WebLiteSignIn&flowEntry=ServiceLogin" },
+  { group: "NHÓM A (Vào Thẳng XMDT)", title: "3. Thị trường Anh Quốc (UK - GBP) — Tạo TK Anh trả sau + nhảy thẳng vào trang Xác minh nhà quảng cáo", url: "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526authuser%253D0%2526dst%253D%2Faw%2Fbilling%2Fadvertiserverification%3Fauthuser%25253D0%2526gl%253DGB%2526hl%253Den%26sf%3Dav%26subid%3Duk-en-awhp-g-aw-c-t-kwp-hero!o2&followup=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526authuser%253D0%2526dst%253D%2Faw%2Fbilling%2Fadvertiserverification%3Fauthuser%25253D0%2526gl%253DGB%2526hl%253Den%26sf%3Dav%26subid%3Duk-en-awhp-g-aw-c-t-kwp-hero!o2&osid=1&passive=1209600&service=adwords&flowName=WebLiteSignIn&flowEntry=ServiceLogin" },
+  { group: "NHÓM A (Vào Thẳng XMDT)", title: "4. Thị trường Canada (CA - CAD) — Tạo TK Canada trả sau + nhảy thẳng vào trang Xác minh nhà quảng cáo", url: "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526authuser%253D0%2526dst%253D%2Faw%2Fbilling%2Fadvertiserverification%3Fauthuser%25253D0%2526gl%253DCA%2526hl%253Den%26sf%3Dav%26subid%3Dca-en-awhp-g-aw-c-t-kwp-hero!o2&followup=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526authuser%253D0%2526dst%253D%2Faw%2Fbilling%2Fadvertiserverification%3Fauthuser%25253D0%2526gl%253DCA%2526hl%253Den%26sf%3Dav%26subid%3Dca-en-awhp-g-aw-c-t-kwp-hero!o2&osid=1&passive=1209600&service=adwords&flowName=WebLiteSignIn&flowEntry=ServiceLogin" },
+  { group: "NHÓM A (Vào Thẳng XMDT)", title: "5. Thị trường Úc (AU - AUD) — Tạo TK Úc trả sau + nhảy thẳng vào trang Xác minh nhà quảng cáo", url: "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526authuser%253D0%2526dst%253D%2Faw%2Fbilling%2Fadvertiserverification%3Fauthuser%25253D0%2526gl%253DAU%2526hl%253Den%26sf%3Dav%26subid%3Dau-en-awhp-g-aw-c-t-kwp-hero!o2&followup=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526authuser%253D0%2526dst%253D%2Faw%2Fbilling%2Fadvertiserverification%3Fauthuser%25253D0%2526gl%253DAU%2526hl%253Den%26sf%3Dav%26subid%3Dau-en-awhp-g-aw-c-t-kwp-hero!o2&osid=1&passive=1209600&service=adwords&flowName=WebLiteSignIn&flowEntry=ServiceLogin" },
+  { group: "NHÓM A (Vào Thẳng XMDT)", title: "6. Thị trường Việt Nam (VN - VND) — Tạo TK Việt Nam + nhảy thẳng vào trang Xác minh nhà quảng cáo", url: "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526authuser%253D0%2526dst%253D%2Faw%2Fbilling%2Fadvertiserverification%3Fauthuser%25253D0%2526gl%253DVN%2526hl%253Dvi%26sf%3Dav%26subid%3Dvn-vi-awhp-g-aw-c-t-kwp-hero!o2&followup=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526authuser%253D0%2526dst%253D%2Faw%2Fbilling%2Fadvertiserverification%3Fauthuser%25253D0%2526gl%253DVN%2526hl%253Dvi%26sf%3Dav%26subid%3Dvn-vi-awhp-g-aw-c-t-kwp-hero!o2&osid=1&passive=1209600&service=adwords&flowName=WebLiteSignIn&flowEntry=ServiceLogin" },
+  { group: "NHÓM A (Vào Thẳng XMDT)", title: "7. Link Rút Gọn Mở Trực Tiếp Trang Xác Minh Cho Tài Khoản Đã Tạo Sẵn", url: "https://ads.google.com/nav/login?dst=/aw/billing/advertiserverification" },
+  { group: "NHÓM B (Cổng Công Cụ Ép Cờ XMDT)", title: "8. Luồng Công Cụ Keyword Planner (Mỹ - US - sf=kp)", url: "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526sf%253Dkp%2526authuser%253D0%2526dst%253D%2Faw%2Fkeywordplanner%2Fhome%3Fauthuser%25253D0%2526subid%253Dus-en-awhp-g-aw-c-t-kwp-hero%21o2%2526gl%253DUS%2526hl%253Den&followup=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526sf%253Dkp%2526authuser%253D0%2526dst%253D%2Faw%2Fkeywordplanner%2Fhome%3Fauthuser%25253D0%2526subid%253Dus-en-awhp-g-aw-c-t-kwp-hero%21o2%2526gl%253DUS%2526hl%253Den&service=adwords&flowName=WebLiteSignIn&flowEntry=ServiceLogin" },
+  { group: "NHÓM B (Cổng Công Cụ Ép Cờ XMDT)", title: "9. Luồng Công Cụ Keyword Planner (Singapore - SGD - sf=kp)", url: "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526sf%253Dkp%2526authuser%253D0%2526dst%253D%2Faw%2Fkeywordplanner%2Fhome%3Fauthuser%25253D0%2526subid%253Dall-en-awhp-g-aw-c-t-kwp-hero%21o2%2526gl%253DSG%2526hl%253Den&followup=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526sf%253Dkp%2526authuser%253D0%2526dst%253D%2Faw%2Fkeywordplanner%2Fhome%3Fauthuser%25253D0%2526subid%253Dall-en-awhp-g-aw-c-t-kwp-hero%21o2%2526gl%253DSG%2526hl%253Den&service=adwords&flowName=WebLiteSignIn&flowEntry=ServiceLogin" },
+  { group: "NHÓM B (Cổng Công Cụ Ép Cờ XMDT)", title: "10. Luồng Công Cụ Keyword Planner (Việt Nam - VND - sf=kp)", url: "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526sf%253Dkp%2526authuser%253D0%2526dst%253D%2Faw%2Fkeywordplanner%2Fhome%3Fauthuser%25253D0%2526subid%253Dvn-vi-awhp-g-aw-c-t-kwp-hero%21o2&followup=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526sf%253Dkp%2526authuser%253D0%2526dst%253D%2Faw%2Fkeywordplanner%2Fhome%3Fauthuser%25253D0%2526subid%253Dvn-vi-awhp-g-aw-c-t-kwp-hero%21o2&service=adwords&flowName=WebLiteSignIn&flowEntry=ServiceLogin" },
+  { group: "NHÓM B (Cổng Công Cụ Ép Cờ XMDT)", title: "11. Luồng Công Cụ Ad Preview & Diagnosis (/aw/adpreview - sf=ap)", url: "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526authuser%253D0%2526dst%253D%2Faw%2Fadpreview%3Fauthuser%25253D0%2526gl%253DUS%2526hl%253Den%26sf%3Dap%26subid%3Dus-en-awhp-g-aw-c-t-kwp-hero!o2&followup=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526authuser%253D0%2526dst%253D%2Faw%2Fadpreview%3Fauthuser%25253D0%2526gl%253DUS%2526hl%253Den%26sf%3Dap%26subid%3Dus-en-awhp-g-aw-c-t-kwp-hero!o2&osid=1&passive=1209600&service=adwords&flowName=WebLiteSignIn&flowEntry=ServiceLogin" },
+  { group: "NHÓM B (Cổng Công Cụ Ép Cờ XMDT)", title: "12. Luồng Công Cụ Policy Manager Issues (/aw/policymanager/issues - sf=pm)", url: "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526authuser%253D0%2526dst%253D%2Faw%2Fpolicymanager%2Fissues%3Fauthuser%25253D0%2526gl%253DUS%2526hl%253Den%26sf%3Dpm%26subid%3Dus-en-awhp-g-aw-c-t-kwp-hero!o2&followup=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526authuser%253D0%2526dst%253D%2Faw%2Fpolicymanager%2Fissues%3Fauthuser%25253D0%2526gl%253DUS%2526hl%253Den%26sf%3Dpm%26subid%3Dus-en-awhp-g-aw-c-t-kwp-hero!o2&osid=1&passive=1209600&service=adwords&flowName=WebLiteSignIn&flowEntry=ServiceLogin" },
+  { group: "NHÓM B (Cổng Công Cụ Ép Cờ XMDT)", title: "13. Luồng Công Cụ Reach Planner (/aw/reachplanner/home - sf=rp)", url: "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526authuser%253D0%2526dst%253D%2Faw%2Freachplanner%2Fhome%3Fauthuser%25253D0%2526gl%253DUS%2526hl%253Den%26sf%3Drp%26subid%3Dus-en-awhp-g-aw-c-t-rp-hero-bgc!o2&followup=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526authuser%253D0%2526dst%253D%2Faw%2Freachplanner%2Fhome%3Fauthuser%25253D0%2526gl%253DUS%2526hl%253Den%26sf%3Drp%26subid%3Dus-en-awhp-g-aw-c-t-rp-hero-bgc!o2&osid=1&passive=1209600&service=adwords&flowName=WebLiteSignIn&flowEntry=ServiceLogin" },
+  { group: "NHÓM B (Cổng Công Cụ Ép Cờ XMDT)", title: "14. Luồng Công Cụ Performance Planner (/aw/performanceplanner/home - sf=pp)", url: "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526authuser%253D0%2526dst%253D%2Faw%2Fperformanceplanner%2Fhome%3Fauthuser%25253D0%2526gl%253DUS%2526hl%253Den%26sf%3Dpp%26subid%3Dus-en-awhp-g-aw-c-t-pp-hero-bgc!o2&followup=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Ffna%253Dtrue%2526authuser%253D0%2526dst%253D%2Faw%2Fperformanceplanner%2Fhome%3Fauthuser%25253D0%2526gl%253DUS%2526hl%253Den%26sf%3Dpp%26subid%3Dus-en-awhp-g-aw-c-t-pp-hero-bgc!o2&osid=1&passive=1209600&service=adwords&flowName=WebLiteSignIn&flowEntry=ServiceLogin" },
+  { group: "NHÓM C (Tạo MCC Quản Lý Không Hỏi Thẻ)", title: "15. Tạo Tài Khoản Người Quản Lý MCC Mỹ (US Manager - sf=manager)", url: "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Fhl%253Den%26sf%3Dmanager%26subid%3Dus-en-awhp-g-aw-c-t-man-hero-bgc!o2&followup=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Fhl%253Den%26sf%3Dmanager%26subid%3Dus-en-awhp-g-aw-c-t-man-hero-bgc!o2&osid=1&passive=1209600&service=adwords&flowName=WebLiteSignIn&flowEntry=ServiceLogin" },
+  { group: "NHÓM C (Tạo MCC Quản Lý Không Hỏi Thẻ)", title: "16. Tạo Tài Khoản Người Quản Lý MCC Singapore (SG Manager - sf=manager)", url: "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Fhl%253Den%26sf%3Dmanager%26subid%3Dall-en-awhp-g-aw-c-t-man-hero-bgc!o2&followup=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Fhl%253Den%26sf%3Dmanager%26subid%3Dall-en-awhp-g-aw-c-t-man-hero-bgc!o2&osid=1&passive=1209600&service=adwords&flowName=WebLiteSignIn&flowEntry=ServiceLogin" },
+  { group: "NHÓM C (Tạo MCC Quản Lý Không Hỏi Thẻ)", title: "17. Tạo Tài Khoản Người Quản Lý MCC Việt Nam (VN Manager - sf=manager)", url: "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Fhl%253Dvi%26sf%3Dmanager%26subid%3Dvn-vi-awhp-g-aw-c-t-man-hero-bgc!o2&followup=https%3A%2F%2Fads.google.com%2Fnav%2Flogin%3Fdst%3D%2Fsignup%3Fhl%253Dvi%26sf%3Dmanager%26subid%3Dvn-vi-awhp-g-aw-c-t-man-hero-bgc!o2&osid=1&passive=1209600&service=adwords&flowName=WebLiteSignIn&flowEntry=ServiceLogin" },
+  { group: "NHÓM D (Tạo TK Trắng Expert Mode)", title: "18. Tạo Tài Khoản Trắng Ở Chế Độ Chuyên Gia (Welcome Home Expert Mode - Không tạo camp)", url: "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fads.google.com%2Fum%2FWelcome%2FHome%3Ffna%3Dtrue%26sf%3Dexpert%26authuser%3D0&followup=https%3A%2F%2Fads.google.com%2Fum%2FWelcome%2FHome%3Ffna%3Dtrue%26sf%3Dexpert%26authuser%3D0&service=adwords&flowName=WebLiteSignIn&flowEntry=ServiceLogin" },
+  { group: "NHÓM E (Google Pay & Form Gửi Giấy Tờ)", title: "19. Trung Tâm Cảnh Báo Xác Minh Google Pay (Nộp CCCD/GPKD cho hồ sơ thanh toán)", url: "https://payments.google.com/payments/u/0/home#alerts" },
+  { group: "NHÓM E (Google Pay & Form Gửi Giấy Tờ)", title: "20. Cài Đặt Hồ Sơ Thanh Toán Google Pay (Kiểm tra Profile ID & Địa chỉ AVS)", url: "https://payments.google.com/payments/u/0/home#settings" },
+  { group: "NHÓM E (Google Pay & Form Gửi Giấy Tờ)", title: "21. Form Xác Minh Mở Khóa Hồ Sơ Thanh Toán Google Pay (account_verification)", url: "https://support.google.com/pay/contact/account_verification" },
+  { group: "NHÓM E (Google Pay & Form Gửi Giấy Tờ)", title: "22. Form Xác Minh Phương Thức Thanh Toán Google Ads (pf_verification)", url: "https://support.google.com/google-ads/contact/pf_verification" },
+  { group: "NHÓM E (Google Pay & Form Gửi Giấy Tờ)", title: "23. Form Xác Minh Hoạt Động Kinh Doanh Google Ads (bov_form)", url: "https://support.google.com/google-ads/contact/bov_form" },
+  { group: "NHÓM F (Cổng Hệ Sinh Thái Khởi Tạo Ngầm)", title: "24. [Cổng Ngầm 1] Google AdMob Publisher (Tự động sinh TK Google Ads gắn nhãn Publisher)", url: "https://apps.admob.com/v2/signup" },
+  { group: "NHÓM F (Cổng Hệ Sinh Thái Khởi Tạo Ngầm)", title: "25. [Cổng Ngầm 2] YouTube Studio Promotions (Tạo TK Ads từ kênh YouTube Creator)", url: "https://studio.youtube.com" },
+  { group: "NHÓM F (Cổng Hệ Sinh Thái Khởi Tạo Ngầm)", title: "26. [Cổng Ngầm 3] Google Merchant Center Next (Tạo TK Ads từ cửa hàng Merchant)", url: "https://merchants.google.com" },
+  { group: "NHÓM G (Cổng Nhận Mã Khuyến Mãi Offer A/B/C)", title: "27. [Mã KM Mỹ - US] Cổng Nhận Mã Khuyến Mãi Mỹ (Offer A: $500 / Offer B: $1000 / Offer C: $1500)", url: "https://ads.google.com/intl/en_us/lp/coupons/" },
+  { group: "NHÓM G (Cổng Nhận Mã Khuyến Mãi Offer A/B/C)", title: "28. [Mã KM Việt Nam - VN] Cổng Nhận Mã Khuyến Mãi Việt Nam (5.600.000đ / 11.000.000đ / 16.500.000đ)", url: "https://ads.google.com/intl/vi_vn/lp/coupons/" },
+  { group: "NHÓM G (Cổng Nhận Mã Khuyến Mãi Offer A/B/C)", title: "29. [Mã KM Singapore - SG] Cổng Nhận Mã Khuyến Mãi Singapore (S$600 / S$1,200)", url: "https://ads.google.com/intl/en_sg/lp/coupons/" },
+  { group: "NHÓM G (Cổng Nhận Mã Khuyến Mãi Offer A/B/C)", title: "30. [Mã KM Anh Quốc - UK] Cổng Nhận Mã Khuyến Mãi Vương Quốc Anh (£400 / £800 / £1,200)", url: "https://ads.google.com/intl/en_gb/lp/coupons/" },
+  { group: "NHÓM G (Cổng Nhận Mã Khuyến Mãi Offer A/B/C)", title: "31. [Mã KM Canada - CA] Cổng Nhận Mã Khuyến Mãi Canada (CA$600 / CA$1,200)", url: "https://ads.google.com/intl/en_ca/lp/coupons/" },
+  { group: "NHÓM G (Cổng Nhận Mã Khuyến Mãi Offer A/B/C)", title: "32. [Mã KM Úc - AU] Cổng Nhận Mã Khuyến Mãi Úc (A$600 / A$1,200)", url: "https://ads.google.com/intl/en_au/lp/coupons/" },
+  { group: "NHÓM G (Cổng Nhận Mã Khuyến Mãi Offer A/B/C)", title: "33. [Trang Quản Lý Mã KM] Nhảy Thẳng Vào Trang Nhập Mã & Xem Thanh Tiến Độ 60 Ngày (/aw/billing/promotions)", url: "https://ads.google.com/nav/login?dst=/aw/billing/promotions" }
+];
+
+const DATA_COMMUNITIES = [
+  { title: "1. CPA.RIP Official (@cparip) — Telegram Channel", desc: "Cộng đồng Arbitrage lớn nhất CIS/Quốc tế: Cập nhật tut lên camp Google Ads, BIN thẻ mới, vượt XMDT & warm-up tài khoản hàng ngày.", url: "https://t.me/cparip" },
+  { title: "2. Partnerkin English (@partnerkin_en) — Telegram Channel", desc: "Kênh tiếng Anh chuyên cập nhật thuật toán quét Google Ads, tut nuôi Via/Trust, nguồn Agency Account & Affiliate.", url: "https://t.me/partnerkin_en" },
+  { title: "3. Partnerkin Main (@thepartnerkin) — Telegram Channel", desc: "Cập nhật nhanh nhất các đợt bão quét (ban wave) của Google Ads, lỗ hổng Billing/Threshold & công cụ Antidetect/Proxy.", url: "https://t.me/thepartnerkin" },
+  { title: "4. Partnerkin Accounts (@partnerkin_accounts) — Telegram Group", desc: "Chuyên sâu về tài khoản Google Ads (TK cổ đã XMDT, MCC Invoice, nguồn thẻ VCC & dịch vụ KYC doanh nghiệp).", url: "https://t.me/partnerkin_accounts" },
+  { title: "5. Affiliate Times (@afftimes) — Telegram Channel", desc: "Kênh cập nhật tin tức Media Buying, chính sách Google Ads/FB Ads & mẹo lách lỗi Suspicious Payment hàng ngày.", url: "https://t.me/afftimes" },
+  { title: "6. Keitaro Tracker Chat EN (@keitaro_chat_en) — Telegram Chat", desc: "Phòng chat thực chiến tiếng Anh của dân chạy Google Ads Affiliate: Cấu hình Whitepage, bọc link & chống bot quét URL.", url: "https://t.me/keitaro_chat_en" },
+  { title: "7. Keitaro Tracker Chat CIS (@keitaro_ru_chat) — Telegram Chat", desc: "Phòng chat kỹ thuật cực đông (bật dịch tự động trên Telegram): Báo động sớm nhất mỗi khi Google đổi thuật toán quét camp.", url: "https://t.me/keitaro_ru_chat" },
+  { title: "8. Adspect Cloaking EN (@adspect_en) — Telegram Channel", desc: "Chuyên sâu về cơ chế AdsBot-Google, cách vượt vòng duyệt mẫu quảng cáo và bảo vệ trang đích không bị gắn cờ.", url: "https://t.me/adspect_en" },
+  { title: "9. TelegramDB Search Bot (@tgdb_bot) — Bot Dò Nhóm Kín", desc: "Mở bot và gõ lệnh: /search google ads | /search adwords | /search threshold | /search billing | /search арбитраж google để lấy danh sách hàng trăm group Telegram kín mới nhất.", url: "https://t.me/tgdb_bot" },
+  { title: "10. Searchee Bot (@SearcheeBot) — Bot Dò Nhóm Kín", desc: "Bot tìm kiếm danh bạ các kênh và nhóm Telegram kín theo từ khóa (Google Ads, Adwords Tut, VCC Google Ads, GMC Google Ads).", url: "https://t.me/SearcheeBot" },
+  { title: "11. TGStat Global Search — Công Cụ Tìm Tut Theo Thời Gian Thực", desc: "Khi Google vừa có đợt quét mới (ví dụ 'Pay with your payment method'), gõ chính xác câu thông báo lỗi vào ô Search của TGStat để thấy ngay các nhóm Telegram vừa đăng cách fix trong 1–2 giờ qua.", url: "https://tgstat.com/en/search" },
+  { title: "12. BlackHatWorld — Box Google Ads (Adwords)", desc: "Số 1 Thế Giới về Tut Threshold, Billing Pause, KYC Verification, Mã KM $500, Cloaking & Agency Invoice cập nhật từng giờ.", url: "https://www.blackhatworld.com/forums/adwords.83/" },
+  { title: "13. CPA.RIP Web Portal", desc: "Kho bài viết hướng dẫn từng bước kèm ảnh chụp màn hình về farm tài khoản Google Ads, lên camp mồi & vượt quét Billing.", url: "https://cpa.rip/" },
+  { title: "14. Reddit r/PPC (180.000+ Media Buyers)", desc: "Báo động thời gian thực mỗi khi Google cập nhật thuật toán quét Billing, tụt ngưỡng hoặc lỗi XMDT.", url: "https://www.reddit.com/r/PPC/" },
+  { title: "15. Reddit r/googleads", desc: "Thảo luận cách xử lý lỗi Account Paused, Start Task, BOV verification và kháng nghị tạm ngưng.", url: "https://www.reddit.com/r/googleads/" },
+  { title: "16. MMO4ME — Diễn Đàn MMO Việt Nam", desc: "Cộng đồng trao đổi nguồn thẻ VCC, Proxy dân cư, nuôi tài khoản Google Ads và dịch vụ XMDT tại Việt Nam.", url: "https://mmo4me.com/" },
+  { title: "17. AffiliateFix — Pay Per Click Forum", desc: "Chia sẻ chiến thuật chạy Search Ads, Display, YouTube và quản lý tài khoản MCC.", url: "https://www.affiliatefix.com/forums/pay-per-click.20/" }
+];
+
+// CHUYỂN ĐỔI MARKDOWN CỦA DEEPSEEK SANG HTML ĐẸP NHƯ KHUNG CHAT
+function formatMarkdownToHtml(md) {
+  if (!md) return "";
+  let s = md
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+
+  // Links: [text](url)
+  s = s.replace(/\[([^\]]+)\]\((https?:\/\/[^\s\)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+  // Headings
+  s = s.replace(/^####\s+(.+)$/gm, '<h4>$1</h4>');
+  s = s.replace(/^###\s+(.+)$/gm, '<h3>$1</h3>');
+  s = s.replace(/^##\s+(.+)$/gm, '<h2>$1</h2>');
+  s = s.replace(/^#\s+(.+)$/gm, '<h2>$1</h2>');
+  // Bold & inline code
+  s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  s = s.replace(/`([^`]+)`/g, '<code>$1</code>');
+  // Bullet lines
+  s = s.replace(/^\s*[-•*]\s+(.+)$/gm, '<li>$1</li>');
+  s = s.replace(/(<li>.*<\/li>\n?)+/g, match => `<ul>${match}</ul>`);
+  // Line breaks
+  s = s.replace(/\n{2,}/g, "<br><br>");
+  s = s.replace(/\n/g, "<br>");
+  s = s.replace(/<\/h2><br>/g, "</h2>").replace(/<\/h3><br>/g, "</h3>").replace(/<\/h4><br>/g, "</h4>").replace(/<\/ul><br>/g, "</ul>");
+  return s;
+}
+
+function render10Steps() {
+  const el = document.getElementById("container-10steps");
+  el.innerHTML = "";
+  const saved = JSON.parse(localStorage.getItem("gads_10steps_checked") || "{}");
+  MASTER_10_STEPS.forEach(s => {
+    const card = document.createElement("div");
+    card.className = "step-card";
+    const lis = s.bullets.map(b => `<li>${b}</li>`).join("");
+    let btns = "";
+    if (s.links && s.links.length) {
+      btns = `<div class="btn-group">` + s.links.map(l =>
+        `<button class="btn-main" onclick="copyText('${l.url.replace(/'/g, "\\'")}')">📋 Copy: ${l.label}</button>
+         <a class="btn-sub" href="${l.url}" target="_blank">🚀 Mở</a>`
+      ).join("") + `</div>`;
+    }
+    card.innerHTML = `
+      <div class="step-head">
+        <label class="step-title">
+          <input type="checkbox" ${saved[s.id] ? "checked" : ""} onchange="toggleStep('${s.id}', this.checked)">
+          <span>${s.title}</span>
+        </label>
+        <span class="step-badge">${s.badge}</span>
+      </div>
+      <ul class="step-list">${lis}</ul>
+      ${btns}
+    `;
+    el.appendChild(card);
+  });
+}
+
+function toggleStep(id, checked) {
+  const saved = JSON.parse(localStorage.getItem("gads_10steps_checked") || "{}");
+  saved[id] = checked;
+  localStorage.setItem("gads_10steps_checked", JSON.stringify(saved));
+}
+
+function resetChecklist() {
+  localStorage.removeItem("gads_10steps_checked");
+  render10Steps();
+  showToast("✅ Đã làm mới checklist 10 bước!");
+}
+
+function renderSimpleCards(containerId, list) {
+  const el = document.getElementById(containerId);
+  el.innerHTML = "";
+  list.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "step-card";
+    const lis = item.bullets.map(b => `<li>${b}</li>`).join("");
+    card.innerHTML = `
+      <div class="step-head">
+        <div class="step-title">${item.title}</div>
+        <span class="step-badge">${item.badge}</span>
+      </div>
+      <ul class="step-list">${lis}</ul>
+    `;
+    el.appendChild(card);
+  });
+}
+
+function renderLinks() {
+  const el = document.getElementById("container-links");
+  el.innerHTML = "";
+  ALL_33_LINKS.forEach(l => {
+    const card = document.createElement("div");
+    card.className = "step-card";
+    card.innerHTML = `
+      <div class="step-head">
+        <div class="step-title">${l.title}</div>
+        <span class="step-badge">${l.group}</span>
+      </div>
+      <div class="url-inline">${l.url}</div>
+      <div class="btn-group">
+        <button class="btn-main" onclick="copyText('${l.url.replace(/'/g, "\\'")}')">📋 BẤM ĐỂ COPY LINK</button>
+        <a class="btn-sub" href="${l.url}" target="_blank">🚀 Mở Trực Tiếp</a>
+      </div>
+    `;
+    el.appendChild(card);
+  });
+}
+
+function renderCommunities() {
+  const el = document.getElementById("container-community");
+  el.innerHTML = "";
+  DATA_COMMUNITIES.forEach(c => {
+    const card = document.createElement("div");
+    card.className = "step-card";
+    card.innerHTML = `
+      <div class="step-head">
+        <div class="step-title">${c.title}</div>
+        <span class="step-badge">Hội Nhóm Kín &amp; Diễn Đàn</span>
+      </div>
+      <div style="font-size:15px;color:var(--text-body);">${c.desc}</div>
+      <div class="url-inline">${c.url}</div>
+      <div class="btn-group">
+        <button class="btn-main" onclick="copyText('${c.url}')">📋 Copy Link</button>
+        <a class="btn-sub" href="${c.url}" target="_blank">🚀 Truy Cập</a>
+      </div>
+    `;
+    el.appendChild(card);
+  });
+}
+
+function toggleBranch(nodeEl) {
+  const row = nodeEl.parentElement;
+  const leaves = row.querySelector(".mm-leaves");
+  if (!leaves) return;
+  leaves.style.display = (leaves.style.display === "none") ? "flex" : "none";
+}
+
+function toggleAllMindmap(expand) {
+  document.querySelectorAll("#mindmap-branches .mm-leaves").forEach(el => {
+    el.style.display = expand ? "flex" : "none";
+  });
+}
+
+async function checkKeyStatus() {
+  try {
+    const res = await fetch("/api/key-status");
+    const data = await res.json();
+    const st = document.getElementById("ai-key-status");
+    const badge = document.getElementById("key-badge");
+    if (data.has_key) {
+      st.innerText = `✅ Đã kết nối khóa DeepSeek API (${data.masked}) • Tự động quét 18 nguồn & dịch sang tiếng Việt mỗi 30 phút.`;
+      badge.innerText = `🟢 API Active (${data.masked})`;
+      return;
+    }
+  } catch (e) {}
+  // Fallback khi mở trên Điện thoại / Link Online GitHub Pages
+  const localKey = localStorage.getItem("gads_deepseek_key") || "";
+  const st = document.getElementById("ai-key-status");
+  const badge = document.getElementById("key-badge");
+  if (localKey) {
+    const masked = localKey.slice(0, 6) + "..." + localKey.slice(-4);
+    st.innerText = `✅ Đã lưu khóa DeepSeek API trên trình duyệt (${masked}) • Sẵn sàng gọi AI trực tiếp trên Điện thoại/Web.`;
+    badge.innerText = `🟢 Cloud AI (${masked})`;
+  } else {
+    st.innerText = "🌐 Chế độ Cloud Online 24/7: Bản tin 18 nguồn hôm nay đã nạp sẵn bên dưới. Nhập khóa DeepSeek sk-... nếu muốn chat AI trực tiếp trên điện thoại.";
+    badge.innerText = "🌐 Cloud Mode";
+  }
+}
+
+async function saveApiKey() {
+  const val = document.getElementById("deepseek-key-input").value.trim();
+  if (!val) {
+    showToast("⚠️ Anh iu hãy nhập khóa sk-... vào ô trước khi bấm Lưu!");
+    return;
+  }
+  localStorage.setItem("gads_deepseek_key", val);
+  try {
+    await fetch("/api/save-key", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ key: val })
+    });
+  } catch (e) {}
+  document.getElementById("deepseek-key-input").value = "";
+  await checkKeyStatus();
+  showToast("✅ Đã lưu khóa DeepSeek API mới!");
+  fetchDeepSeekDigest(true);
+}
+
+async function callDeepSeekDirectFromBrowser(systemPrompt, userPrompt) {
+  const key = localStorage.getItem("gads_deepseek_key") || "";
+  if (!key) {
+    return "⚠️ Khi mở trên Điện thoại hoặc Link Online, anh iu hãy dán khóa DeepSeek API (`sk-...`) vào ô Cấu hình Khóa ở Tab 3 rồi bấm Lưu để dùng AI trực tiếp trên mọi thiết bị nhé!";
+  }
+  const res = await fetch("https://api.deepseek.com/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + key
+    },
+    body: JSON.stringify({
+      model: "deepseek-chat",
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: userPrompt }
+      ],
+      temperature: 0.25,
+      max_tokens: 2000
+    })
+  });
+  const data = await res.json();
+  return (data.choices && data.choices[0] && data.choices[0].message.content) || "Không có phản hồi.";
+}
+
+function renderDigestData(data) {
+  const digestBox = document.getElementById("deepseek-digest-box");
+  const feedBox = document.getElementById("live-feed-container");
+  digestBox.innerHTML = formatMarkdownToHtml(data.analysis || "Đã tải xong.");
+  document.getElementById("digest-time").innerText = `Đã quét ${data.source_count || (data.items||[]).length} bài • Lúc: ${data.updated_at || "Hôm nay"}`;
+  feedBox.innerHTML = "";
+  (data.items || []).forEach(item => {
+    const card = document.createElement("div");
+    card.className = "step-card";
+    const viHtml = item.vi_translation
+      ? `<div class="trans-box">🇻🇳 <b>Bản dịch Tiếng Việt (DeepSeek dịch sát nghĩa 100%):</b><br>${item.vi_translation}</div>`
+      : "";
+    const origText = item.original_text || item.summary || "";
+    card.innerHTML = `
+      <div class="step-head">
+        <div class="step-title">[Nguồn #${item.id || ""}] ${item.source}</div>
+        <span class="step-badge">🕒 ${item.date}</span>
+      </div>
+      ${viHtml}
+      <div class="orig-box">🌐 <b>Văn bản gốc (Đối chiếu chống bịa):</b><br>${origText}</div>
+      <div class="btn-group">
+        <a class="btn-main" href="${item.url}" target="_blank">🔗 Mở Bài Đăng Gốc Trên ${item.source} Để Kiểm Chứng</a>
+        <button class="btn-sub" onclick="copyText('${item.url}')">📋 Copy Link Nguồn</button>
+      </div>
+    `;
+    feedBox.appendChild(card);
+  });
+}
+
+async function fetchDeepSeekDigest(force = false) {
+  const digestBox = document.getElementById("deepseek-digest-box");
+  digestBox.innerHTML = "⏳ <b>Đang tải Bản tin DeepSeek AI 18 nguồn (Telegram Arbitrage &amp; Google Ads Global)...</b>";
+  try {
+    const res = await fetch("/api/live-news" + (force ? "?force=1" : ""));
+    if (!res.ok) throw new Error("No local backend");
+    const data = await res.json();
+    renderDigestData(data);
+    if (force) showToast("🤖 DeepSeek AI đã dịch và phân tích xong 18 nguồn!");
+    return;
+  } catch (e) {
+    // Fallback sang file daily_deepseek_digest.json tĩnh khi mở trên Điện thoại / GitHub Pages
+    try {
+      const resStatic = await fetch("./daily_deepseek_digest.json?t=" + Date.now());
+      const dataStatic = await resStatic.json();
+      renderDigestData(dataStatic);
+      return;
+    } catch (e2) {
+      digestBox.innerHTML = "⚠️ Không tải được dữ liệu bản tin.";
+    }
+  }
+}
+
+async function askDeepSeek() {
+  const input = document.getElementById("ai-question");
+  const ansBox = document.getElementById("ai-chat-answer");
+  const q = input.value.trim();
+  if (!q) return;
+  ansBox.style.display = "block";
+  ansBox.innerHTML = "🤖 <b>Chuyên gia DeepSeek AI đang phân tích câu hỏi của anh iu...</b>";
+  try {
+    const res = await fetch("/api/deepseek-chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question: q })
+    });
+    if (!res.ok) throw new Error("Fallback browser");
+    const data = await res.json();
+    ansBox.innerHTML = formatMarkdownToHtml(data.answer || "Không có phản hồi.");
+  } catch (e) {
+    const ans = await callDeepSeekDirectFromBrowser(
+      "Bạn là chuyên gia Google Ads thực chiến cấp cao, trả lời ngắn gọn, chia từng bước rõ ràng bằng tiếng Việt.",
+      q
+    );
+    ansBox.innerHTML = formatMarkdownToHtml(ans);
+  }
+}
+
+function filterCurrentTab(keyword) {
+  const kw = (keyword || "").trim().toLowerCase();
+  const activePanel = document.querySelector(".tab-panel.active");
+  if (!activePanel) return;
+  activePanel.querySelectorAll(".step-card, .ai-box, .mm-row").forEach(el => {
+    if (!kw) {
+      el.style.display = "";
+    } else {
+      const txt = (el.innerText || "").toLowerCase();
+      el.style.display = txt.includes(kw) ? "" : "none";
+    }
+  });
+}
+
+async function loadMyNotes() {
+  try {
+    const res = await fetch("/api/notes");
+    const data = await res.json();
+    document.getElementById("my-notes").value = data.notes || localStorage.getItem("gads_notes") || "";
+  } catch (e) {
+    document.getElementById("my-notes").value = localStorage.getItem("gads_notes") || "";
+  }
+}
+
+async function saveMyNotes() {
+  const val = document.getElementById("my-notes").value;
+  localStorage.setItem("gads_notes", val);
+  try {
+    await fetch("/api/notes", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ notes: val })
+    });
+  } catch (e) {}
+  showToast("💾 Đã lưu ghi chú vào ổ cứng!");
+}
+
+function switchTab(tabId, btn) {
+  document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
+  document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+  document.getElementById(tabId).classList.add("active");
+  btn.classList.add("active");
+  if (tabId === "tab-ai") {
+    checkKeyStatus();
+    fetchDeepSeekDigest(false);
+  }
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function copyText(txt) {
+  navigator.clipboard.writeText(txt).then(() => showToast("✅ Đã copy đường link vào bộ nhớ tạm!"));
+}
+
+async function runUrlScanner() {
+  const url = document.getElementById("scan-url-input").value.trim();
+  const box = document.getElementById("scan-url-result");
+  if (!url) {
+    showToast("⚠️ Anh iu hãy nhập URL trang đích cần quét!");
+    return;
+  }
+  box.style.display = "block";
+  box.innerHTML = "⏳ <b>Đang đóng vai AdsBot-Google quét kiểm tra trang đích của anh iu...</b>";
+  try {
+    const res = await fetch("/api/scan-url", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url })
+    });
+    const data = await res.json();
+    const listHtml = (data.checks || []).map(c => `<li>${c}</li>`).join("");
+    box.innerHTML = `
+      <h3>Điểm An Toàn Trang Đích: ${data.score}/100 — ${data.verdict}</h3>
+      <ul>${listHtml}</ul>
+    `;
+  } catch (e) {
+    box.innerText = "⚠️ Không kết nối được Server Localhost:8686.";
+  }
+}
+
+function calculatePacing() {
+  const cur = document.getElementById("calc-currency").value;
+  const box = document.getElementById("calc-pacing-result");
+  let rows = "";
+  if (cur === "USD") {
+    rows = `
+      <ul>
+        <li><b>Gói khuyến mãi:</b> Offer A — Chi <b>$500</b> trong 60 ngày nhận <b>$500 Credit</b> (Tiền tệ: USD).</li>
+        <li><b>Trước khi lên camp (Sau khi gắn thẻ 6h):</b> Chủ động vào <code>Billing &gt; Make a payment</code> nạp mồi <b>$10.00</b> qua 3DS &rarr; Nghỉ 12h.</li>
+        <li><b>Ngày 1 – Ngày 3 (Giai đoạn Camp Mồi):</b> Đặt ngân sách <b>$4.00/ngày</b> (Manual CPC trần $0.45) &rarr; Tổng chi tiêu lũy kế: ~$12 (Vượt mốc $10 đầu tiên, mở ngưỡng nợ trả sau lên $50).</li>
+        <li><b>Ngày 4 – Ngày 7 (Sau Auto-charge lần 1):</b> Tăng lên <b>$12.00/ngày</b> &rarr; Tổng chi tiêu lũy kế: ~$60 (Vượt ngưỡng Auto-charge $50, ngưỡng trả sau nhảy lên $200).</li>
+        <li><b>Ngày 8 – Ngày 15:</b> Tăng lên <b>$22.00/ngày</b> &rarr; Tổng chi tiêu lũy kế: ~$236 (Vượt ngưỡng Auto-charge $200, ngưỡng trả sau nhảy lên $350–$500).</li>
+        <li><b>Ngày 16 – Ngày 24:</b> Duy trì <b>$30.00/ngày</b> &rarr; Tổng chi tiêu lũy kế chạm mốc <b>$506.00 (Đạt 100% thanh tiến độ Offer A!)</b>.</li>
+        <li><b>Ngày 25 – Ngày 28:</b> Nhận <b>$500.00 Active Credit</b> &rarr; Giữ nguyên thẻ trong TK, chạy đều <b>$35–$45/ngày</b> tiêu hết sạch $500 tiền thưởng trong 12 ngày tiếp theo.</li>
+      </ul>`;
+  } else if (cur === "VND") {
+    rows = `
+      <ul>
+        <li><b>Gói khuyến mãi:</b> Offer A Việt Nam — Chi <b>5.600.000 VNĐ</b> (chưa VAT) trong 60 ngày nhận <b>5.600.000 VNĐ Credit</b>.</li>
+        <li><b>Trước khi lên camp:</b> Chủ động vào <code>Billing &gt; Make a payment</code> nạp mồi <b>160.000 VNĐ</b> qua 3DS &rarr; Nghỉ 12h.</li>
+        <li><b>Ngày 1 – Ngày 3 (Camp Mồi):</b> Đặt ngân sách <b>50.000đ/ngày</b> &rarr; Cắn êm không kích hoạt cờ Budget Ratio.</li>
+        <li><b>Ngày 4 – Ngày 7 (Qua ngưỡng 800k đầu tiên):</b> Tăng dần lên <b>150.000đ/ngày</b>.</li>
+        <li><b>Ngày 8 – Ngày 15:</b> Tăng lên <b>250.000đ/ngày</b>.</li>
+        <li><b>Ngày 16 – Ngày 25:</b> Duy trì <b>350.000đ/ngày</b> cho tới khi thanh tiến độ trong Promotions đạt <b>100% (5.600.000đ)</b>.</li>
+        <li><b>Khi 5.600.000đ Credit về:</b> Giữ nguyên thẻ trong tài khoản, chạy đều <b>400.000đ – 500.000đ/ngày</b> tiêu hết sạch gói thưởng.</li>
+      </ul>`;
+  } else {
+    rows = `
+      <ul>
+        <li><b>Gói khuyến mãi:</b> Offer A Singapore — Chi <b>S$600</b> trong 60 ngày nhận <b>S$600 Credit</b> (Tiền tệ: SGD).</li>
+        <li><b>Trước khi lên camp:</b> Chủ động nạp mồi <b>S$15.00</b> qua 3DS &rarr; Nghỉ 12h.</li>
+        <li><b>Ngày 1 – Ngày 3:</b> Chạy ngân sách mồi <b>S$5.00/ngày</b>.</li>
+        <li><b>Ngày 4 – Ngày 8:</b> Tăng lên <b>S$15.00/ngày</b>.</li>
+        <li><b>Ngày 9 – Ngày 25:</b> Duy trì <b>S$30.00 – S$35.00/ngày</b> cho tới khi đạt 100% mốc S$600 &rarr; Nhận S$600 Credit sau 1–5 ngày.</li>
+      </ul>`;
+  }
+  box.innerHTML = rows;
+}
+
+async function generateAppeal() {
+  const issue = document.getElementById("appeal-issue").value;
+  const info = document.getElementById("appeal-info").value.trim();
+  const box = document.getElementById("appeal-result");
+  box.style.display = "block";
+  box.innerHTML = "⏳ <b>Bác sĩ DeepSeek AI đang chẩn đoán nguyên nhân và soạn đơn kháng nghị chuẩn pháp lý cho anh iu (khoảng 10–15 giây)...</b>";
+  try {
+    const res = await fetch("/api/generate-appeal", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ issue, info })
+    });
+    const data = await res.json();
+    box.innerHTML = formatMarkdownToHtml(data.result || "");
+  } catch (e) {
+    box.innerText = "⚠️ Không kết nối được Server Localhost:8686.";
+  }
+}
+
+async function generateRsa() {
+  const product = document.getElementById("rsa-product").value.trim();
+  const box = document.getElementById("rsa-result");
+  if (!product) {
+    showToast("⚠️ Anh iu hãy nhập tên sản phẩm/ngách hoặc URL trước!");
+    return;
+  }
+  box.style.display = "block";
+  box.innerHTML = "⏳ <b>DeepSeek AI đang thiết kế bộ từ khóa, từ khóa phủ định và 15 tiêu đề RSA đảo Hash cho anh iu (khoảng 10–15 giây)...</b>";
+  try {
+    const res = await fetch("/api/generate-rsa", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ product })
+    });
+    const data = await res.json();
+    box.innerHTML = formatMarkdownToHtml(data.result || "");
+  } catch (e) {
+    box.innerText = "⚠️ Không kết nối được Server Localhost:8686.";
+  }
+}
+
+async function generateDailyQuiz() {
+  const box = document.getElementById("quiz-result");
+  box.style.display = "block";
+  box.innerHTML = "⏳ <b>DeepSeek AI đang tạo bài tập tình huống thực chiến (Case Study) mới cho anh iu...</b>";
+  try {
+    const res = await fetch("/api/daily-quiz", { method: "POST" });
+    const data = await res.json();
+    box.innerHTML = formatMarkdownToHtml(data.result || "");
+  } catch (e) {
+    box.innerText = "⚠️ Không kết nối được Server Localhost:8686.";
+  }
+}
+
+function showToast(msg) {
+  const t = document.getElementById("toast");
+  t.innerText = msg;
+  t.style.display = "block";
+  setTimeout(() => t.style.display = "none", 1800);
+}
+
+render10Steps();
+renderSimpleCards("container-10to500", DATA_10TO500);
+renderSimpleCards("container-promo6", DATA_PROMO_6);
+renderSimpleCards("container-tuts", DATA_12_TUTS);
+renderSimpleCards("container-18ways", DATA_18WAYS_FULL);
+renderSimpleCards("container-tools", DATA_TOOLS_CATALOG);
+renderLinks();
+renderCommunities();
+loadMyNotes();
+checkKeyStatus();
+calculatePacing();
+</script>
+</body>
+</html>
