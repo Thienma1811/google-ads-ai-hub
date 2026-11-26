@@ -6,30 +6,53 @@
 <title>Google Ads AI Hub — Toàn Bộ Quy Trình Chi Tiết, Sơ Đồ Tư Duy 7 Nhánh & DeepSeek 18 Nguồn</title>
 <style>
   :root {
-    --bg-main: #13161f;
-    --bg-sidebar: #0e1017;
-    --bg-card: #1a1e2b;
-    --bg-card-hover: #1f2434;
-    --bg-code: #10131b;
-    --border: #2a3042;
-    --text-body: #d8dee9;
-    --text-bold: #ffffff;
-    --text-muted: #8b95a7;
-    --accent-blue: #60a5fa;
+    --bg-main: #0f1420;
+    --bg-sidebar: #0b0e17;
+    --bg-card: #171e2e;
+    --bg-card-hover: #1d263b;
+    --bg-code: #0d121d;
+    --border: #2e3a52;
+    --text-body: #f1f5f9;
+    --text-bold: #fde047;
+    --text-heading: #ffffff;
+    --text-muted: #cbd5e1;
+    --text-code: #67e8f9;
+    --text-italic: #86efac;
+    --accent-blue: #38bdf8;
     --accent-green: #34d399;
     --accent-amber: #fbbf24;
-    --accent-purple: #a78bfa;
+    --accent-purple: #c084fc;
     --accent-red: #f87171;
+  }
+  body.light-theme {
+    --bg-main: #f1f5f9;
+    --bg-sidebar: #ffffff;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f8fafc;
+    --bg-code: #f1f5f9;
+    --border: #cbd5e1;
+    --text-body: #0f172a;
+    --text-bold: #b45309;
+    --text-heading: #1e3a8a;
+    --text-muted: #334155;
+    --text-code: #0369a1;
+    --text-italic: #047857;
+    --accent-blue: #2563eb;
+    --accent-green: #059669;
+    --accent-amber: #d97706;
+    --accent-purple: #7c3aed;
+    --accent-red: #dc2626;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Inter, sans-serif;
+    font-family: 'Segoe UI', Inter, Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
     background: var(--bg-main);
     color: var(--text-body);
-    line-height: 1.68;
+    line-height: 1.78;
     display: flex;
     min-height: 100vh;
-    font-size: 15px;
+    font-size: 16px;
+    letter-spacing: 0.1px;
   }
 
   /* SIDEBAR */
@@ -147,64 +170,66 @@
     flex-wrap: wrap;
     gap: 14px;
   }
-  .top-bar h1 { font-size: 19.5px; font-weight: 800; color: var(--text-bold); }
-  .top-bar p { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
+  .top-bar h1 { font-size: 20px; font-weight: 800; color: var(--text-heading, #ffffff); line-height: 1.4; }
+  .top-bar p { font-size: 14.5px; color: var(--text-muted); margin-top: 6px; }
 
   /* CARDS */
-  .card-grid { display: flex; flex-direction: column; gap: 14px; min-width: 0; max-width: 100%; }
+  .card-grid { display: flex; flex-direction: column; gap: 16px; min-width: 0; max-width: 100%; }
   .step-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-left: 4px solid var(--accent-blue);
-    border-radius: 11px;
-    padding: 18px 22px;
+    border-left: 5px solid var(--accent-blue);
+    border-radius: 12px;
+    padding: 20px 24px;
     min-width: 0;
     max-width: 100%;
     overflow: hidden;
     word-wrap: break-word;
     overflow-wrap: anywhere;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
   }
-  .step-card:hover { background: var(--bg-card-hover); border-color: #3e4760; }
+  .step-card:hover { background: var(--bg-card-hover); border-color: var(--accent-blue); }
   .step-head {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 12px;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
     border-bottom: 1px solid var(--border);
-    padding-bottom: 10px;
+    padding-bottom: 12px;
     flex-wrap: wrap;
   }
   .step-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--text-bold);
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--text-heading, #ffffff);
     display: flex;
     align-items: center;
     gap: 10px;
+    line-height: 1.45;
   }
   .step-title input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
+    width: 19px;
+    height: 19px;
     accent-color: var(--accent-green);
     cursor: pointer;
   }
   .step-badge {
-    font-size: 12px;
-    font-weight: 700;
-    padding: 3px 10px;
+    font-size: 12.5px;
+    font-weight: 800;
+    padding: 4px 11px;
     border-radius: 6px;
-    background: rgba(96, 165, 250, 0.14);
-    border: 1px solid rgba(96, 165, 250, 0.3);
+    background: rgba(56, 189, 248, 0.16);
+    border: 1px solid rgba(56, 189, 248, 0.4);
     color: var(--accent-blue);
     white-space: nowrap;
   }
   .step-list {
-    padding-left: 20px;
+    padding-left: 22px;
     display: flex;
     flex-direction: column;
-    gap: 7px;
-    font-size: 15px;
+    gap: 12px;
+    font-size: 15.8px;
     color: var(--text-body);
     min-width: 0;
     max-width: 100%;
@@ -214,15 +239,30 @@
     max-width: 100%;
     word-break: break-word;
     overflow-wrap: anywhere;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed rgba(148, 163, 184, 0.18);
   }
-  .step-list b { color: var(--text-bold); }
+  .step-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .step-list b, .step-list strong {
+    color: var(--text-bold);
+    font-weight: 700;
+  }
+  .step-list i, .step-list em {
+    color: var(--text-italic);
+    font-style: normal;
+    font-weight: 600;
+  }
   code {
     background: var(--bg-code);
-    color: #93c5fd;
-    padding: 2px 7px;
+    color: var(--text-code);
+    padding: 2px 8px;
     border-radius: 5px;
-    font-family: Consolas, monospace;
-    font-size: 13px;
+    font-family: Consolas, 'Courier New', monospace;
+    font-size: 14px;
+    font-weight: 600;
     border: 1px solid var(--border);
     word-break: break-all;
     overflow-wrap: anywhere;
@@ -236,8 +276,8 @@
     border-radius: 8px;
     padding: 10px 14px;
     font-family: Consolas, monospace;
-    font-size: 12.5px;
-    color: #93c5fd;
+    font-size: 13.5px;
+    color: var(--text-code);
     word-break: break-all;
   }
   .btn-group { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
@@ -605,8 +645,9 @@
 
   <!-- THANH TÌM KIẾM NHANH TOÀN TRANG & NÚT CHIA SẺ LINK ĐIỆN THOẠI -->
   <div class="search-bar-wrap">
-    <input type="text" id="global-search-input" class="global-search" placeholder="🔍 Gõ từ khóa để lọc nhanh trong trang (ví dụ: 65 SGD, ACB, $10, $500, XMDT, ACH, Adspect, US, SG...)" oninput="filterCurrentTab(this.value)">
-    <button class="btn-main" style="background:#059669;" onclick="copyText('https://thienma1811.github.io/google-ads-ai-hub/')">📱 Copy Link Mở Trên Điện Thoại / Gửi Người Khác</button>
+    <input type="text" id="global-search-input" class="global-search" placeholder="🔍 Gõ từ khóa để lọc nhanh trong trang (ví dụ: GMC, Misrepresentation, 65 SGD, ACB, $500, XMDT, Adspect...)" oninput="filterCurrentTab(this.value)">
+    <button class="btn-main" id="theme-toggle-btn" style="background:#f59e0b;color:#0f172a;font-weight:800;" onclick="toggleThemeMode()">☀️ Đổi Nền Sáng / Tối Dễ Đọc</button>
+    <button class="btn-main" style="background:#059669;" onclick="copyText('https://thienma1811.github.io/google-ads-ai-hub/')">📱 Copy Link Mở Trên Điện Thoại</button>
   </div>
 
   <!-- TAB 1: LỘ TRÌNH 10 BƯỚC CHI TIẾT + GIẢI PHẪU 5 BỘ LỌC CỔNG QUÉT -->
@@ -3058,6 +3099,20 @@ renderSimpleCards("container-gmc", DATA_GMC_SHOPPING);
 loadMyNotes();
 checkKeyStatus();
 calculatePacing();
+
+function toggleThemeMode() {
+  const isLight = document.body.classList.toggle("light-theme");
+  localStorage.setItem("gads_hub_theme", isLight ? "light" : "dark");
+  const btn = document.getElementById("theme-toggle-btn");
+  if (btn) {
+    btn.innerHTML = isLight ? "🌙 Đổi Về Nền Tối (Dark Mode)" : "☀️ Đổi Nền Sáng (Light Mode)";
+    btn.style.background = isLight ? "#1e293b" : "#f59e0b";
+    btn.style.color = isLight ? "#ffffff" : "#0f172a";
+  }
+}
+if (localStorage.getItem("gads_hub_theme") === "light") {
+  toggleThemeMode();
+}
 </script>
 </body>
 </html>
